@@ -45,7 +45,9 @@ Bảng dưới liệt kê chi tiết các tham số:
 > groupmod -n new_modified_group_name old_group_name
 
 - Để thay đổi tên nhóm developers_2 thành deverloper, bạn gõ như sau:
-> groupmod -n developer developer_2
+```sh
+groupmod -n developer developer_2
+```
 
 - Dưới đây là cách thay đổi GID thành 545:
 > groupmod -g 545 developer
