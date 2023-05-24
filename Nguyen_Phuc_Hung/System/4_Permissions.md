@@ -46,6 +46,7 @@ Sau khi phân biệt được là file hay thư mục thì đến phần xem cá
 | x       | Thực thi           |
 | -       | Không có quyền      |
 
+
 ## Thay đổi quyền với chmod
 **chmod** là viết tắt của change mode dùng để thay đổi quyền của một thư mục hay file trên Linux.
 
