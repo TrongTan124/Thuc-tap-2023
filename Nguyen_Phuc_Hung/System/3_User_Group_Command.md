@@ -123,7 +123,7 @@ userdel -r hung
 Sự khác biệt giữa userdel và deluser là: 
 - userdel: Lệnh userdel được sử dụng để xóa tài khoản người dùng từ hệ thống. Khi sử dụng lệnh này, bạn cần chỉ định tên tài khoản người dùng cần xóa. Lệnh userdel sẽ xóa tài khoản người dùng khỏi hệ thống và xóa các thông tin người dùng từ các tệp tin hệ thống như /etc/passwd, /etc/shadow và /etc/group. Tuy nhiên, lệnh này không tự động xóa thư mục chính (home directory) của người dùng.
 
-- deluser: Lệnh deluser cũng được sử dụng để xóa tài khoản người dùng từ hệ thống. Tuy nhiên, deluser được thiết kế để có một số tùy chọn bổ sung và thực hiện một số công việc liên quan đến việc xóa tài khoản người dùng. Ví dụ, có thể sử dụng deluser để tự động xóa thư mục chính của người dùng (-remove-home), xóa tất cả các tệp tin và thư mục con trong thư mục chính (-remove-all-files), hoặc xóa người dùng khỏi các nhóm mà người dùng đang tham gia (-remove-groups). deluser cũng có khả năng xóa người dùng từ các tệp tin hệ thống tương tự như userdel.
+- deluser: Lệnh deluser cũng được sử dụng để xóa tài khoản người dùng từ hệ thống. Tuy nhiên, deluser được thiết kế để có một số tùy chọn bổ sung và thực hiện một số công việc liên quan đến việc xóa tài khoản người dùng. Ví dụ, có thể sử dụng deluser để tự động xóa thư mục chính của người dùng (-remove-home), xóa tất cả các tệp tin và thư mục con trong thư mục chính (-remove-all-files), hoặc xóa người dùng khỏi các nhóm mà người dùng đang tham gia (-remove-groups). deluser cũng có khả năng xóa người dùng từ các tệp tin hệ thống tương tự như userdel
 
 
 
