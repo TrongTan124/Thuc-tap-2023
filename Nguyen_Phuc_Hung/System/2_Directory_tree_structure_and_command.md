@@ -63,49 +63,82 @@ Dưới đây là một số lệnh dòng lệnh phổ biến được sử dụ
 
 Lệnh `cd` được sử dụng để di chuyển đến một thư mục khác.
 
-**Cú pháp:** cd [đường_dẫn_thư_mục]
+| Tùy chọn       | Mô tả                                        |
+|----------------|----------------------------------------------|
+| cd [đường_dẫn] | Di chuyển vào thư mục được chỉ định           |
+| cd -           | Di chuyển đến thư mục trước đó                |
+| cd ~           | Di chuyển đến thư mục người dùng               |
+| cd ..          | Di chuyển đến thư mục cha                      |
+| cd /           | Di chuyển đến thư mục gốc                        |
 
-**Ví dụ:** cd /home/user/Documents
 
 ## 2. Lệnh `ls`
 
 Lệnh `ls` được sử dụng để liệt kê các tệp và thư mục trong thư mục hiện tại.
 
-**Cú pháp:** ls [tùy_chọn] [đường_dẫn_thư_mục]
-
-**Ví dụ:** ls -l /home/user/Documents 
+| Tùy chọn        | Mô tả                                           |
+|-----------------|-------------------------------------------------|
+| ls              | Liệt kê tất cả các tệp và thư mục trong thư mục hiện tại |
+| ls -l           | Liệt kê chi tiết với thông tin như quyền truy cập, kích thước, ngày tạo, v.v.   |
+| ls -a           | Liệt kê tất cả các tệp và thư mục, bao gồm cả các tệp ẩn (bắt đầu bằng dấu chấm)     |
+| ls -h           | Liệt kê với đơn vị kích thước dễ đọc (KB, MB, GB)           |
+| ls -S           | Sắp xếp kết quả theo kích thước từ lớn đến nhỏ                  |
+| ls -t           | Sắp xếp kết quả theo thời gian sửa đổi từ mới nhất đến cũ nhất         |
+| ls -r           | Liệt kê theo thứ tự đảo ngược                                      |
+| ls -R           | Liệt kê đệ quy, bao gồm cả các thư mục con                          |
+| ls --color=auto | Hiển thị kết quả với màu sắc                                        |
+ 
 
 ## 3. Lệnh `mkdir`
 
 Lệnh `mkdir` được sử dụng để tạo mới một thư mục.
 
-**Cú pháp:** mkdir [tên_thư_mục]
+| Tùy chọn        | Mô tả                                            |
+|-----------------|--------------------------------------------------|
+| mkdir [tên]     | Tạo một thư mục với tên chỉ định                  |
+| mkdir -p [đường_dẫn] | Tạo các thư mục theo đường dẫn, bao gồm cả các thư mục cha không tồn tại    |
+| mkdir -m [quyền] [tên] | Tạo một thư mục với quyền truy cập được chỉ định   |
+| mkdir -v [tên]  | Hiển thị thông báo chi tiết khi tạo thư mục       |
 
-**Ví dụ:** mkdir new_directory
 
 ## 4. Lệnh `rm`
 
 Lệnh `rm` được sử dụng để xóa tệp hoặc thư mục.
 
-**Cú pháp:** rm [tùy_chọn] [tên_tệp_được_xóa]
+| Tùy chọn       | Mô tả                                                      |
+|----------------|------------------------------------------------------------|
+| rm [tệp/thư_mục] | Xóa tệp hoặc thư mục                                       |
+| rm -r [thư_mục] | Xóa thư mục và nội dung bên trong (đệ quy)                  |
+| rm -f [tệp]     | Xóa tệp mà không hiển thị cảnh báo                          |
+| rm -i [tệp]     | Xóa tệp và yêu cầu xác nhận trước khi xóa                   |
+| rm -v [tệp]     | Hiển thị thông báo chi tiết khi xóa tệp                     |
+| rm -rf [thư_mục] | Xóa thư mục và nội dung bên trong mà không yêu cầu xác nhận |
 
-**Ví dụ:** rm file.txt
 
 ## 5. Lệnh `mv`
 
 Lệnh `mv` được sử dụng để di chuyển hoặc đổi tên tệp hoặc thư mục.
 
-**Cú pháp:** mv [đường_dẫn_nguồn] [đường_dẫn_đích]
+| Tùy chọn       | Mô tả                                                        | Ví dụ                                 |
+|----------------|--------------------------------------------------------------|---------------------------------------|
+| mv [nguồn] [đích] | Di chuyển (hoặc đổi tên) tệp/thư mục từ nguồn đến đích        | mv file.txt /thumuc/moi/file.txt       |
+| mv -i [nguồn] [đích] | Di chuyển (hoặc đổi tên) và yêu cầu xác nhận trước khi ghi đè | mv -i file.txt /thumuc/moi/file.txt    |
+| mv -u [nguồn] [đích] | Di chuyển (hoặc đổi tên) chỉ khi nguồn mới hơn hoặc khác đích | mv -u file.txt /thumuc/moi/file.txt    |
+| mv -v [nguồn] [đích] | Hiển thị thông báo chi tiết khi di chuyển (hoặc đổi tên)      | mv -v file.txt /thumuc/moi/file.txt    |
 
-**Ví dụ:** mv file.txt /home/user/Documents
 
 ## 6. Lệnh `cp`
 
 Lệnh `cp` được sử dụng để sao chép tệp hoặc thư mục.
 
-**Cú pháp:** cp [đường_dẫn_nguồn] [đường_dẫn_đích]
+| Tùy chọn       | Mô tả                                                        | Ví dụ                                 |
+|----------------|--------------------------------------------------------------|---------------------------------------|
+| cp [nguồn] [đích] | Sao chép tệp/thư mục từ nguồn đến đích                      | cp file.txt /thumuc/moi/file.txt       |
+| cp -r [thư_mục] | Sao chép thư mục và nội dung bên trong (đệ quy)               | cp -r /thumuc/goc /thumuc/dich         |
+| cp -i [nguồn] [đích] | Sao chép và yêu cầu xác nhận trước khi ghi đè                 | cp -i file.txt /thumuc/moi/file.txt    |
+| cp -u [nguồn] [đích] | Sao chép chỉ khi nguồn mới hơn hoặc khác đích                 | cp -u file.txt /thumuc/moi/file.txt    |
+| cp -v [nguồn] [đích] | Hiển thị thông báo chi tiết khi sao chép                     | cp -v file.txt /thumuc/moi/file.txt    |
 
-**Ví dụ:** cp file.txt /home/user/Documents
 
 ##7. Lệnh `tree`
 - `tree`: chạy lệnh tree mà không có bất kỳ đối số nào, lệnh tree sẽ hiển thị tất cả nội dung của thư mục làm việc hiện hành ở định dạng cây. => lệnh tree trả về tổng số file và/hoặc thư mục được liệt kê
