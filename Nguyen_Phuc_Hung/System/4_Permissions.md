@@ -38,6 +38,7 @@ Với phần khoanh đỏ là phần permissions. Cấu trúc của phần permi
 |---------|-------------|
 | d       | Thư mục     |
 | -       | File        |
+
 Sau khi phân biệt được là file hay thư mục thì đến phần xem các quyền mình có thể làm đối với mỗi file hay thư mục đó. Nó được chia ra làm 3 phần là user,group, other. Ý nghĩa của r,w,x:
 | Ký hiệu | Ý nghĩa            |
 |---------|--------------------|
