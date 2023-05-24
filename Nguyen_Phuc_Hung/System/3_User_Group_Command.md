@@ -55,6 +55,10 @@ groupmod -n new_modified_group_name old_group_name
 ```sh
 groupmod -n developer developer_2
 ```
+<<<<<<< HEAD:Nguyen_Phuc_Hung/System/3_User_Group_Command.md
+=======
+
+>>>>>>> 9eded43fd3670336e26aad9586127c31c49107a3:Nguyen_Phuc_Hung/System/User_Group_Command.md
 - Dưới đây là cách thay đổi GID thành 545:
 ```sh
 groupmod -g 545 developer
