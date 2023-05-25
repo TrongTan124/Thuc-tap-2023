@@ -1,5 +1,6 @@
 ## Cấu trúc cây thư mục 
 ![directory tree](./images/directory%20tree.png)
+
 một số thư mục chính:
 - root: nơi bắt đầu của tất cả các file và thư mục
 - bin: chứa các chương trình của người dùng
