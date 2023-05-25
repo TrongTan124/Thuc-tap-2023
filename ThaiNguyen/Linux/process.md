@@ -19,7 +19,7 @@ process options:
 -r: tất cả process đang chạy
 -x: tất cả process được sở hữu bởi người dùng hiện tại
 -ef: hiển thị các process đang chạy
--u <USERNAME>: hiển thị process của một người dùng nhất định
+-u username: hiển thị process của một người dùng nhất định
 -p PID: hiển thị process với processID nhất định
 -C command: hiển thị process với command chỉ định
 2. top: hiển thị trạng thái chạy của tất cả các tiến trình trên hệ điều hành và cập nhật trạng thái liên tục
@@ -70,6 +70,7 @@ renice -N [process name]
 flag của nice và renice:
 - u username: thay đổi độ ưu tiên của một user
 - g groupname: thay đổi độ ưu tiên của một group
+
 ## Nguồn tham khảo:
 1. [Nguồn 1](https://hoclaptrinh.vn/tutorial/hoc-unix/quan-ly-tien-trinh-trong-unix-linux)
 2. [Nguồn 2](https://www.hostinger.vn/huong-dan/cach-kill-proccess-linux)
