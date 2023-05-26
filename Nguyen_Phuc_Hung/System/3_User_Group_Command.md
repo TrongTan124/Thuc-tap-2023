@@ -55,10 +55,6 @@ groupmod -n new_modified_group_name old_group_name
 ```sh
 groupmod -n developer developer_2
 ```
-<<<<<<< HEAD:Nguyen_Phuc_Hung/System/3_User_Group_Command.md
-=======
-
->>>>>>> 9eded43fd3670336e26aad9586127c31c49107a3:Nguyen_Phuc_Hung/System/User_Group_Command.md
 - Dưới đây là cách thay đổi GID thành 545:
 ```sh
 groupmod -g 545 developer
@@ -93,9 +89,11 @@ useradd -d /home/mcmohd -g developers  mcmohd
 
 - Khi một tài khoản cá nhân được tạo, bạn có thể thiết lập mật khẩu cho nó bằng cách sử dụng lệnh passwd như sau:
 > Changing password for user mcmohd20.
+```sh
 New LINUX password:
 Retype new LINUX password:
 passwd: all authentication tokens updated successfully.
+```
 
 **Note**: *Khi bạn gõ passwd accountname, nó cung cấp cho bạn tùy chọn để thay đổi mật khẩu được cung cấp nếu bạn là superuser, nếu không thì bạn chỉ có thể thay đổi mật khẩu sử dụng lệnh tương tự nhưng không xác định tên tài khoản của bạn.*
 
@@ -114,7 +112,7 @@ sudo usermod -d /home/hung -m hung
 ```sh
 sudo groupmod -n hung testaccount
 ```
-# Xóa một tài khoản trong Unix/Linux
+# Xóa một tài khoản trong Linux
 - Lệnh userdel có thể được sử dụng để xóa một tài khoản cá nhân đang tồn tại. Lệnh này là rất nguy hiểm nếu không được sử dụng với sự cẩn trọng.
 - Chỉ có một đối số hoặc một tùy chọn có sẵn cho lệnh: .r, để gỡ bỏ thư mục chính và mail của tài khoản.
 - Ví dụ, để gỡ bỏ tài khoản hung, bạn cần thông báo lệnh sau:

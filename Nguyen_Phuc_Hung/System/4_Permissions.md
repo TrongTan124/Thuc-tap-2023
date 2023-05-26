@@ -22,7 +22,8 @@ Mỗi một file hay thư mục trong Linux đều có 3 quyền đọc, ghi, th
 
 ## Ví dụ thực hành 
 Hình ảnh tổng quát nhất về quyền trong Linux:
-![](https://kienthucvps.com/wp-content/uploads/2021/07/download.png)
+
+![](https://images.viblo.asia/bc716c86-ed51-4939-b60d-3d3e342f2884.png)
 
 *Ví dụ*
 
@@ -103,6 +104,25 @@ sudo chgrp <groupname> <filename>
 ```sh
 sudo chown <username:groupname> <filename>
 ```
+
+## Setuid and Setguid
+
+- setuid (Set User ID):
+
+Khi một tập tin có thuộc tính setuid được thực thi bởi một người dùng, quyền thực thi của tập tin sẽ được chuyển sang người dùng đã đặt ID người dùng (User ID) của tập tin đó. Điều này cho phép người dùng thực thi tập tin với đặc quyền của người sở hữu tập tin.
+Ví dụ: Một tập tin có thuộc tính setuid với người sở hữu là người dùng "root" cho phép người dùng khác thực thi tập tin với đặc quyền của người dùng "root".
+
+- setgid (Set Group ID):
+Khi một tập tin có thuộc tính setgid được thực thi bởi một người dùng, quyền thực thi của tập tin sẽ được chuyển sang nhóm đã đặt ID nhóm (Group ID) của tập tin đó. Điều này cho phép người dùng thực thi tập tin với đặc quyền của nhóm sở hữu tập tin.
+Ví dụ: Một tập tin có thuộc tính setgid với nhóm sở hữu là "admin" cho phép người dùng khác thực thi tập tin với đặc quyền của nhóm "admin".
+
+**Vi du:**
+```sh
+$ sudo chown root backup
+$ sudo chmod u+s backup
+```
+
+
 ## Umask
 - Trong hệ điều hành Linux, `umask` (viết tắt từ "user file creation mask") là một cơ chế kiểm soát quyền truy cập.
 - Umask quản lý các quyền truy cập mặc định của các tệp tin và thư mục mới được tạo ra. Bằng cách thay đổi umask, bạn có thể kiểm soát quyền truy cập của các tệp tin và thư mục mà hệ thống tạo ra.
