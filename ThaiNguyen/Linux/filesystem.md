@@ -131,7 +131,20 @@ các options bao gồm:
  - v: hiển thị các dòng không tương ứng với pattern
  - w: hiển thị các dòng tương ứng theo từ
  - o: hiển thị duy nhất các phần tương ứng của mỗi dòng
-  
+ 10. tar
+ - dùng để nén hoặc giải nén file
+ ```
+ tar [options] [archive file]
+ ```
+ options:
+ - -c : tạo archive
+ - -x: giải nén file
+ - -f : tạo archive và đặt tên
+ - -t: hiển thị các file trong archive
+ - -u: nén vào một file nén hiện tại
+ - -z: nén bằng gzip
+ - -W: verify archive file
+ -  -r: update hoặc thêm file hoặc thư mục vào file tar đang có
 ### Nguồn tham khảo:
 1. [Nguồn 1](https://quantrimang.com/cong-nghe/cau-truc-cay-thu-muc-trong-linux-84056)
 2. [Nguồn 2] (https://www.cyberciti.biz/)

@@ -1,7 +1,7 @@
 ## Tiến trình
 1. Foreground: chạy bằng cách nhận input từ bàn phím và hiển thị ouput ở trên terminal
 2. Background: chạy khi không có input từ bàn phím
-### các loại tiến trình:
+### Phân loại tiến trình:
 - tiến trình mẹ và con: tiến trình con được chạy từ tiến trình mẹ
 - tiến trình orphan: xuất hiện khi tiến trình mẹ bị khử trước tiến trình con
 - tiến trình zombie: tiến trình bị khử nhưng khi chạy ps vẫn hiển thị tiến trình với trạng thái zombie

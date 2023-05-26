@@ -46,3 +46,5 @@
 + metric: số router ít nhất cần phải đi qua để đến điểm đến
 Nguồn tham khảo:
 1. [Nguồn 1](https://www.javatpoint.com/types-of-computer-network)
+2. [Nguồn 2](https://www.freecodecamp.org)
+3. [Nguồn 3](https://computersciencewiki.org/)
