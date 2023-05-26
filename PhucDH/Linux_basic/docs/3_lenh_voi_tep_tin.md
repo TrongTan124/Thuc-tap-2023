@@ -782,7 +782,7 @@ Dùng dấu `/` để tìm về phía trước của file, và ngược lại v�
 Một số tuỳ chọn cho lệnh less:
 
 - `-n`: hiển thị số dòng
-- `-x`: mặc định khi thoát khỏi trình less thì nội dung cũng mất, sử dụng tuỳ chọn này để nội dung vẫn hiện trên màn hình, đứng tại chúng nơi ta muốn xem.
+- `-X`: mặc định khi thoát khỏi trình less thì nội dung cũng mất, sử dụng tuỳ chọn này để nội dung vẫn hiện trên màn hình, đứng tại chúng nơi ta muốn xem.
 - `+f`: tương tự với `tail -f`, hiển thị cho ta liên tục các thay đổi của file
 
 |Điều khiển|Hoạt động|
