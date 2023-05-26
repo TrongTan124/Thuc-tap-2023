@@ -45,6 +45,15 @@ Linux là một hệ điều hành mã nguồn mở phát triển từ nền t�
 - Mô hình cài đặt của Arch Linux cho phép người dùng tùy chỉnh hoàn toàn hệ thống của họ.
 - Sử dụng công cụ quản lý gói pacman và có một cộng đồng phát triển đam mê.
 
+## Giấy phép mã nguồn mở
+
+- Mặc dù tinh thần của mã nguồn mở là chia sẻ miễn phí cho mọi người, nhưng trên các phương diện pháp lý và bảo mật an toàn thông tin thì vẫn cần có 1 số điểm chú ý về giấy phép như.
+
+- Có 2 loại phổ biến về giấy phép mã nguồn mở đó là:
+
+  - Một là: loại miễn phí hoàn toàn, không có bên nào đứng ra đảm bảo cho tính an toàn thông tin của các phiên bản kiểu này. Mọi thứ đảm bảo đến từ cộng đồng, ta hoàn toàn có thể kinh doanh chúng nếu có ý định. Chỉ cần tôn trọng tác giả đi trước (giữ lại chữ ký, hay đánh dấu của họ trong phiên bản), và ghi lại những gì mà ta đã thay đổi trong phiên bản (nếu có ý định public).
+  - Hai là: chả phí 1 phần, các phiên bản dạng này thì không cấm ta sử dụng. Nhưng cấm ta bán lại (bất kể có chỉnh sửa hay không, nếu public thì phải hoàn toàn miễn phí cho cộng đồng). Sẽ có 1 bên nào đó, đủ uy tín đứng ra đảm bảo các vấn đề về khắc phục lỗi, bảo mật thông tin, cập nhật, ứng dụng đặc biệt,...Như RedHat, SUSE
+
 # Kết luận
 
 Linux có một lịch sử phát triển đa dạng và các nhánh chính khác nhau đã nổi lên để đáp ứng các nhu cầu và mục tiêu cụ thể. Từ Debian ổn định đến RHEL hướng tới doanh nghiệp, Ubuntu dễ sử dụng và Fedora tập trung vào tính năng mới, mỗi nhánh có đặc điểm riêng và phục vụ cho mục tiêu cụ thể của nó.
