@@ -1,9 +1,11 @@
 ## Định nghĩa
 - khi một phần mềm hoặc lệnh được chạy, tiến trình sẽ được tạo ra để thực thi điều đó
+- tiến trình là đại diện cho một phần mềm hay lệnh đang được chạy
 ## Tiến trình
 1. Foreground: chạy bằng cách nhận input từ bàn phím và hiển thị ouput ở trên terminal
 2. Background: chạy khi không có input từ bàn phím
 ### Phân loại tiến trình:
+![Process](./images/process.png)
 - tiến trình mẹ và con: tiến trình con được chạy từ tiến trình mẹ
 - tiến trình orphan: xuất hiện khi tiến trình mẹ bị khử trước tiến trình con
 - tiến trình zombie: tiến trình bị khử nhưng khi chạy ps vẫn hiển thị tiến trình với trạng thái zombie
