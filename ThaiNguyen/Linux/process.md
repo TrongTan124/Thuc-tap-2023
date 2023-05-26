@@ -1,3 +1,5 @@
+## Định nghĩa
+- khi một phần mềm hoặc lệnh được chạy, tiến trình sẽ được tạo ra để thực thi điều đó
 ## Tiến trình
 1. Foreground: chạy bằng cách nhận input từ bàn phím và hiển thị ouput ở trên terminal
 2. Background: chạy khi không có input từ bàn phím
@@ -12,16 +14,16 @@
 ps [options] 
 ```
 process options:
--a:hiển thị process không liên quan đến terminal
--T : tất cả các process liên quan đến terminal
--A hoặc -e: viết thông tin cho tất cả process
--d : hiển thông tin cho tất cả process ngoại trừ session leader
--r: tất cả process đang chạy
--x: tất cả process được sở hữu bởi người dùng hiện tại
--ef: hiển thị các process đang chạy
--u username: hiển thị process của một người dùng nhất định
--p PID: hiển thị process với processID nhất định
--C command: hiển thị process với command chỉ định
++ -a:hiển thị process không liên quan đến terminal
++ -T : tất cả các process liên quan đến terminal
++ -A hoặc -e: viết thông tin cho tất cả process
++ -d : hiển thông tin cho tất cả process ngoại trừ session leader
++ -r: tất cả process đang chạy
++ -x: tất cả process được sở hữu bởi người dùng hiện tại
++ -ef: hiển thị các process đang chạy
++ -u username: hiển thị process của một người dùng nhất định
++ -p PID: hiển thị process với processID nhất định
++ -C command: hiển thị process với command chỉ định
 2. top: hiển thị trạng thái chạy của tất cả các tiến trình trên hệ điều hành và cập nhật trạng thái liên tục
 ```
 top [options]

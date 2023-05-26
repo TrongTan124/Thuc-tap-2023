@@ -1,5 +1,5 @@
 ## Packages
-- packages là 1 file nén bao gồm các file chứa các thông tin cần thiết để cho 1 phần mềm hoạt động 
+Packages là 1 file nén bao gồm các file chứa các thông tin cần thiết để cho 1 phần mềm hoạt động. 
 ## Repository
 - repositories là một tập hợp các mục bao gồm nhiều phần mềm và package khác nhau được cài đặt trên hệ thống
 ### Lệnh tương tác:

@@ -1,8 +1,11 @@
 ## Quyền truy cập:
+Quyền truy cấp được sử dụng để bảo mật hệ thống, tránh những bên không được cấp phép truy cập vào file.
+Có 3 loại quyền truy cập:
 1. Đọc: cho phép người dùng đọc thông tin trên file
 2. viết: cho phép người dùng sửa đổi thông tin trên file
 3. thực thi:cho phép người dùng chạy file(ví dụ file .py)
 ## 3 lớp người dùng:
+Có 3 lớp người dùng chính để kiểm soát các nhóm quyền truy cập khác nhau.
 1. Chủ sở hữu file
 2. Các thành viên trong nhóm
 3. Các người dùng khác
@@ -25,11 +28,14 @@ r: read
 w: write
 x: execute
 
-2. chown: thay đổi quyền sở hữu của 1 file
+2. chown: thay đổi quyền sở hữu của 1 file, dùng syntax như sau:
 ```
 chown owner_name file_name
 ```
-3. setuid:set quyền chạy của 1 file cho giống với user tạo ra file
+3. setuid:set quyền chạy của 1 file cho giống với user tạo ra file, dùng syntax như sau:
+```
+chmod [groupName]+[permissionName] [file name]
+```
 + setuid:
 ```
 chmod u+s file name
@@ -56,4 +62,5 @@ X bao gồm 3 số, lần lượt cho owner, người trong nhóm, và những n
 Hệ số umask được tính bằng cách như sau:
 umask = 777- value X
 ## Nguồn tham khảo:
-1. [Nguồn](https://www.geeksforgeeks.org/)
+1. [Nguồn 1](https://www.geeksforgeeks.org/)
+2. [Nguồn 2](https://www.javatpoint.com/linux-file-permissions)
