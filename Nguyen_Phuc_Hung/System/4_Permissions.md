@@ -165,6 +165,16 @@ umask [mode]
 - Lệnh chmod để thay đổi quyền, chown để thay đổi user sở hữu, chrgrp để thay đổi group sở hữu.
 - Umask quản lý các quyền truy cập mặc định của các tệp tin và thư mục mới được tạo ra. Bằng cách thay đổi umask, bạn có thể kiểm soát quyền truy cập của các tệp tin và thư mục mà hệ thống tạo ra.
 
+#### Tài liệu tham khảo:
+
+<https://kipalog.com/posts/SUID-trong-linux>
+
+<https://medium.com/@15520767/m%E1%BB%99t-ch%C3%BAt-v%E1%BB%81-setuid-2bfc5afb90ac>
+
+<https://kipalog.com/tags/Linux>
+
+<https://hocdevops.com/commands/lenh-umask-trong-linux/#:~:text=L%E1%BB%87nh%20Umask%20trong%20Linux%201%20Quy%E1%BB%81n%20c%E1%BB%A7a%20Linux,tr%E1%BB%8B%20umask%20...%204%20Ph%E1%BA%A7n%20k%E1%BA%BFt%20lu%E1%BA%ADn%20>
+
 
 
 

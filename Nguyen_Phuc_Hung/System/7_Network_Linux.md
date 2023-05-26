@@ -148,4 +148,293 @@ ping 8.8.8.8
 ```
 ![](https://scontent.xx.fbcdn.net/v/t1.15752-9/349037977_769738248132981_5639522987305232310_n.png?_nc_cat=101&ccb=1-7&_nc_sid=aee45a&_nc_ohc=xVxiqXENpuIAX8ILMZZ&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdSZNMos81KtQerIl-1IHkANv7_hzk9WrW0wQZjl91Fcbg&oe=6496B109)
 
- 
+ # Sử dụng nmcli cấu hình mạng
+ #### Lệnh show phổ biến với nmcli
+
+- Xem thông tin IP
+
+```sh
+nmcli con show
+```
+
+- Để hiển thị danh sách tất cả các thiết bị
+
+```sh
+nmcli dev 
+```
+
+- Để hiển thị cài đặt cho một thiết bị cụ thể
+
+```sh
+nmcli dev show <devicename>
+```
+
+#### Cấu hình IP tĩnh bằng nmcli
+
+- Kiểm tra các card đang có và xác định tên card mạng cần đặt ip tĩnh
+
+```sh
+nmcli c
+```
+
+- Đặt ip với tên card mạng tương ứng
+
+```sh
+nmcli c m ens33 ipv4.addresses 192.168.99.100/24
+```
+
+- Đặt ip gateway
+
+```sh
+nmcli c m ens33 ipv4.gateway 192.168.99.1
+```
+
+- Đặt mode static
+
+```sh
+nmcli c m ens33 ipv4.method manual
+```
+
+- Đặt ip dns
+
+```sh
+nmcli c m ens33 ipv4.dns "8.8.8.8"
+```
+
+- Up card mạng
+
+```sh
+nmcli c up ens33 
+```
+
+### NetworkManager và câu lệnh nmcli
+
+#### Cài đặt NetworkManager
+
+- Đối với CentOS và  Red Hat Enterprise Linux, mặc định NetworkManager đã được cài đặt sẵn. Tuy nhiên với những bản phân phối khác, người dùng cần cài đặt mới có thể sử dụng
+
+```sh
+yum install NetworkManager
+```
+
+- NetworkManager daemon mặc định sẽ được cấu hình để khởi động cùng hệ thống. Để check trạng thái của nó, sử dụng câu lệnh:
+
+```sh
+systemctl status NetworkManager
+```
+
+- Trong trường hợp NetworkManager ở trạng thái inactive, sử dụng câu lệnh systemctl để kích hoạt và cho phép nó khởi động cùng hệ thống
+
+``` sh
+systemctl start NetworkManager
+systemctl enable NetworkManager
+```
+
+#### Tương tác với NetworkManager
+
+##### Câu lệnh nmcli
+
+
+`nmcli OPTIONS OBJECT { COMMAND | help }`
+
+Trong đó, nmcli làm việc với 5 đối tượng (OBJECT) bảo gồm:
+
+1. general: làm việc với các hoạt động, các trạng thái của NetworkManager.
+2. networking: toàn bộ việc điều khiển mạng chung.
+3. radio: quản lý radio switches.
+4. connection: quản lý các kết nối (connections).
+5. device: làm việc với các thiết bị mà NetworkManager quản lý.
+
+Các options hay được sử dụng nhất đó là `-t`, `-p` và `-h`.
+
+Sử dụng `mcli help` để hiển thị ra những trợ giúp:
+
+``` sh
+ nmcli help
+Usage: nmcli [OPTIONS] OBJECT { COMMAND | help }
+
+OPTIONS
+  -t[erse]                                   terse output
+  -p[retty]                                  pretty output
+  -m[ode] tabular|multiline                  output mode
+  -f[ields] <field1,field2,...>|all|common   specify fields to output
+  -e[scape] yes|no                           escape columns separators in values
+  -n[ocheck]                                 don't check nmcli and NetworkManager versions
+  -a[sk]                                     ask for missing parameters
+  -w[ait] <seconds>                          set timeout waiting for finishing operations
+  -v[ersion]                                 show program version
+  -h[elp]                                    print this help
+
+OBJECT
+  g[eneral]       NetworkManager's general status and operations
+  n[etworking]    overall networking control
+  r[adio]         NetworkManager radio switches
+  c[onnection]    NetworkManager's connections
+  d[evice]        devices managed by NetworkManager
+  a[gent]         NetworkManager secret agent or polkit agent
+  m[onitor]       monitor NetworkManager changes
+```
+
+``` sh
+nmcli general { COMMAND | help }
+```
+
+COMMAND := { status | hostname | permissions | logging }
+
+
+Sau đây là một vài ví dụ về việc sử dụng nmcli với 5 đối tượng khác nhau:
+
+- Để hiển thị trạng thái chung của NetworkManager sử dụng câu lệnh:
+
+```sh
+nmcli general status
+```
+
+- Để kiểm soát log của NetworkManager:
+
+```sh
+nmcli general logging
+```
+
+- Để hiển thị tất cả kết nối:
+
+```sh
+nmcli connection show
+```
+
+- Để hiển thị những kết nối hiện đang chạy, thêm vào tùy chọn `-a` hoặc `--active`
+
+```sh
+nmcli connection show --active
+```
+
+- Để hiển thị các thiết bị được nhận định bởi NetworkManager và trạng thái của chúng:
+
+```sh
+nmcli device status
+```
+
+#### Bật và tắt cổng sử dụng nmcli
+
+- nmcli có thể bật và tắt bất cử cổng mạng nào
+
+``` sh
+nmcli con up id ens33
+```
+
+```sh
+nmcli dev disconnect ens3
+```
+
+Lưu ý: nên sử dụng `nmcli dev disconnect iface-name` thay vì `nmcli con down id id-string` bởi vì việc disconnect  sẽ đặt cổng mạng vào trạng thái `manual`, tức là cổng mạng ấy sẽ không có kết nối tự động trừ khi người dùng  cho phép NetworkManager khởi động lại kết nối.
+
+#### Các options trong nmcli
+
+- `type` : Loại kết nối. Các giá trị có thể sử dụng là: `adsl, bond, bond-slave, bridge, bridge-slave, bluetooth, cdma, ethernet, gsm, infiniband, olpc-mesh, team, team-slave, vlan, wifi, wimax`.
+
+Mỗi một loại đều có một số các tùy chọn đi kèm. Ấn `tab` để xem danh sách các tùy chọn.
+
+- `con-name` : Tên được gán cho cấu hình kết nối. Tên này hoàn toàn khác so với tên của các thiết bị (em1, eth0...). Có thể có rất nhiều cấu hình kết nối cho 1 thiết bị, thay vì phải chỉnh sửa lại cấu hình, bạn chỉ cần tạo sẵn chuyển đổi khi cần.
+
+- `id` : ID của cấu hình kết nối.
+
+#### Thiết lập kết nối sử dụng nmcli
+
+- Để list các kết nối hiện có
+
+``` sh
+nmcli con show
+```
+
+
+Việc thêm một kết nối ethernet thực chất là tạo ra cấu hình và gán nó cho một thiết bị nào đó. Để xem danh sách thiết bị hiện có:
+
+``` sh
+nmcli dev status
+```
+
+#### Thêm kết nối tự động
+
+Để thêm kết nối sử dụng DHCP, sử dụng câu lệnh sau:
+
+```sh
+nmcli connection add type ethernet con-name `connection-name` ifname `interface-name`
+```
+
+ví dụ:
+
+``` sh
+nmcli con add type ethernet con-name my-office ifname ens3
+```
+
+=> Connection 'my-office' (fb157a65-ad32-47ed-858c-102a48e064a2) successfully added.
+
+- Để bật kết nối vừa tạo:
+
+``` sh
+ nmcli con up my-office
+```
+
+Xem lại trạng thái của kết nối
+
+``` sh
+nmcli device status
+```
+
+#### Tạo kết nối tĩnh
+
+- Để tạo một kết nối ethernet với cấu hình IPv4 tĩnh, sử dụng câu lệnh sau:
+
+``` sh
+nmcli connection add type ethernet con-name `connection-name` ifname `interface-name` ip4 `address` gw4 `address`
+```
+
+Note: Nếu là IPv6, sử dụng `ip6` và `gw6`. Mặc định NetworkManager sẽ thiết lập 2 tham số `ipv4.method` thành `manual` và `connection.autoconnect` thành `yes`
+
+Ví dụ:
+
+``` sh
+nmcli con add type ethernet con-name test-lab ifname ens9 ip4 10.10.10.10/24 \
+gw4 10.10.10.254
+```
+
+``` sh
+ nmcli con add type ethernet con-name test-lab ifname ens9 ip4 10.10.10.10/24 \
+gw4 10.10.10.254 ip6 abbe::cafe gw6 2001:db8::1
+```
+
+- Để thiết lập địa chỉ dns, sử dụng câu lệnh:
+
+```sh
+ nmcli con mod test-lab ipv4.dns "8.8.8.8 8.8.4.4"
+```
+
+Lưu ý rằng nó sẽ thay thế hoàn toàn những địa chỉ đã được set trước đó, nếu bạn chỉ muốn thêm địa chỉ dns vào, sử dụng tiền tố `+`:
+
+```sh
+ nmcli con mod test-lab +ipv4.dns "8.8.8.8 8.8.4.4"
+```
+
+- Để bật kết nối vừa tạo, sử dụng câu lệnh:
+
+``` sh
+ nmcli con up test-lab ifname ens9
+
+```
+
+- Xem thông tin trạng thái của thiết bị và kết nối:
+
+``` sh
+ nmcli device status
+```
+
+- Để xem thông tin chi tiết của kết nối vừa tạo:
+
+``` sh
+nmcli -p con show test-lab
+```
+
+#### Tài liệu tham khảo:
+https://viblo.asia/p/linux-networking-su-dung-netstat-quan-ly-mang-tren-linux-Az45bL7oZxY
+https://www.freecodecamp.org/news/linux-networking-commands-for-beginners/
+https://www.redhat.com/sysadmin/7-great-network-commands

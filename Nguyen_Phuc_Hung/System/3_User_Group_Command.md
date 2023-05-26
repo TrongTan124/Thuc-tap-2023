@@ -127,6 +127,9 @@ Sự khác biệt giữa userdel và deluser là:
 
 - deluser: Lệnh deluser cũng được sử dụng để xóa tài khoản người dùng từ hệ thống. Tuy nhiên, deluser được thiết kế để có một số tùy chọn bổ sung và thực hiện một số công việc liên quan đến việc xóa tài khoản người dùng. Ví dụ, có thể sử dụng deluser để tự động xóa thư mục chính của người dùng (-remove-home), xóa tất cả các tệp tin và thư mục con trong thư mục chính (-remove-all-files), hoặc xóa người dùng khỏi các nhóm mà người dùng đang tham gia (-remove-groups). deluser cũng có khả năng xóa người dùng từ các tệp tin hệ thống tương tự như userdel
 
-
+#### Tài liệu tham khảo
+https://blog.kdata.vn/them-group-trong-linux-bang-lenh-groupadd-nhu-the-nao-7976/
+https://viblo.asia/p/quan-tri-user-group-tren-linux-cho-nguoi-ngao-2oKLn0nW4QO
+https://support.maxserver.com/767313--H%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-qu%E1%BA%A3n-l%C3%BD-User-v%C3%A0-Group-tr%C3%AAn-Linux
 
 
