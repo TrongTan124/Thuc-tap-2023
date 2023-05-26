@@ -22,7 +22,8 @@ Mỗi một file hay thư mục trong Linux đều có 3 quyền đọc, ghi, th
 
 ## Ví dụ thực hành 
 Hình ảnh tổng quát nhất về quyền trong Linux:
-![](https://kienthucvps.com/wp-content/uploads/2021/07/download.png)
+
+![](https://images.viblo.asia/bc716c86-ed51-4939-b60d-3d3e342f2884.png)
 
 *Ví dụ*
 
