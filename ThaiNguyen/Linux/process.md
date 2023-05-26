@@ -9,7 +9,7 @@
 ## Lệnh tương tác:
 1. ps: hiển thị các tiến trình và trạng thái của các tiến trình
 ```
-process [options] 
+ps [options] 
 ```
 process options:
 -a:hiển thị process không liên quan đến terminal
@@ -26,6 +26,7 @@ process options:
 ```
 top [options]
 ```
+
 options:
 - n X: chạy cho đến vòng lặp thứ X
 - u username: hiển thị tiến trình của một username nhất định
