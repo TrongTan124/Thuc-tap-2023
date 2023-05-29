@@ -1,9 +1,11 @@
-## Systemctl
-- systemd là công cụ dùng để quản lý các tính năng của hệ thống và service, và giúp quản lý hệ điều hành và trạng thái của các service, dùng command systemctl
-## Cấu trúc tập tin service:
-- service: 1 script được chạy trong background
+## Systemd
+-systemd là trình quản lý hệ thống và dịch vụ cho hệ điều hành linux. systemd có thể được sử dụng để kiểm soát và quản lý các dịch vụ và unitfile, chẳng hạn như sử dụng lệnh systemctl.
+- service: nhóm các routine để điều khiển một thiết bị phần cứng trả về thông tin của hệ thống hiện tại, thường chạy ở chế độ background
+- systemd giúp cho việc quản lý các service, ví dụ khởi động, dừng hoặc kiểm tra trạng thái service, và quản lý unit file
+- chứa trong thư mục /lib/systemd/system
+## Unit file:
 - systemd quản lý các service bằng unit file, đây là các đối tượng được systemd dùng để quản lý service
-có 12 loại unit file:
+- unit file có file extension dựa trên 12 loại unit file như sau:
 1. service( quản lý hoạt động của các chương trình)
 2. socket( quản lý kết nối)
 3. device(quản lý thiết bị)
@@ -16,8 +18,7 @@ có 12 loại unit file:
 10. snapshot( sao lưu)
 11. slice( quản lý tiến trình)
 12. scope( quy định không gian hoạt động của service)
- - systemd giúp cho việc quản lý các service, ví dụ khởi động, dừng hoặc kiểm tra trạng thái service, và quản lý unit file
- ## lệnh tương tác:
+## lệnh tương tác:
  1. khởi động service
  ```
  systemctl start application.service
@@ -34,6 +35,7 @@ có 12 loại unit file:
  ```
  systemctl reload application.service
  ```
+ Theo mặc định, một số unit file của systemd không được bật luôn khi khởi động. Người dùng có thể bật hoặc tắt các file này như sau:
  5. enable service:
  ```
  systemctl enable application.service
@@ -42,6 +44,7 @@ có 12 loại unit file:
  ```
  systemctl disable application.service
  ```
+ Người dùng có thể kiểm tra trạng thái của các unit file bằng những lệnh sau:
  7. kiểm tra trạng thái:
  ```
  systemctl status application.service
@@ -49,6 +52,14 @@ có 12 loại unit file:
  8. hiển thị các unit đang hoạt động:
  ```
  systemctl list-units
+ ```
+ 9. hiển thị các unit file, bao gồm unit file không hoạt động:
+ ```
+ systemctl list-unit-files
+ ```
+ 10. edit service files
+ ```
+ systemctl edit application.service
  ```
 ## Nguồn tham khảo
 1. [Nguồn 1](https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units)

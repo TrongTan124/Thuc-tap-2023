@@ -1,20 +1,31 @@
 ## Định nghĩa
-- khi một phần mềm hoặc lệnh được chạy, tiến trình sẽ được tạo ra để thực thi điều đó
-- tiến trình là đại diện cho một phần mềm hay lệnh đang được chạy
+Các tiến trình được tạo ra khi chạy một chương trình hoặc lệnh trong hệ điều hành linux. Mục đích của chúng là thực hiện các nhiệm vụ trong hệ điều hành. Mỗi quy trình có thể được xác định bằng một ID quy trình (PID) duy nhất.
 ## Tiến trình
+Các Tiến trình có thể được chạy theo hai cách
 1. Foreground: chạy bằng cách nhận input từ bàn phím và hiển thị ouput ở trên terminal
 2. Background: chạy khi không có input từ bàn phím
 ### Phân loại tiến trình:
-![Process](./images/process.png)
-- tiến trình mẹ và con: tiến trình con được chạy từ tiến trình mẹ
+- tiến trình init,(init là viết tắt của khởi tạo), được định nghĩa là cha của tất cả quy trình linux và có PID là 1. Đây là quy trình đầu tiên bắt đầu sau khi hệ điều hành linux được khởi động và chạy cho đến khi máy tính tắt.
+- tiến trình cha và con: tiến trình con được chạy từ tiến trình cha
 - tiến trình orphan: xuất hiện khi tiến trình mẹ bị khử trước tiến trình con
 - tiến trình zombie: tiến trình bị khử nhưng khi chạy ps vẫn hiển thị tiến trình với trạng thái zombie
 - tiến trình daemon: background process chạy với quyền truy cập root
+
 ## Lệnh tương tác:
 1. ps: hiển thị các tiến trình và trạng thái của các tiến trình
 ```
 ps [options] 
 ```
+các mục được có thể được hiển thị bởi lệnh ps:
+- UID: userID của người dùng mà tiến trình thuộc về
+- PID: mã tiến trình
+- PPID: processID của process cha (ID của process khởi động nó)
+- C: Mức sử dụng CPU của tiến trình
+- STime: Thời gian bắt đầu xử lý
+- TTY: Loại thiết bị đầu cuối được liên kết với quy trình này
+- Time: thời gian CPU mà tiến trình tiêu thụ
+- CMD: lệnh bắt đầu quá trình này
+![processes](./images/processes.png)
 process options:
 + -a:hiển thị process không liên quan đến terminal
 + -T : tất cả các process liên quan đến terminal
@@ -26,6 +37,8 @@ process options:
 + -u username: hiển thị process của một người dùng nhất định
 + -p PID: hiển thị process với processID nhất định
 + -C command: hiển thị process với command chỉ định
++ -l : hiển thị các tiến trình và giá trị ưu tiên hiện tại
+
 2. top: hiển thị trạng thái chạy của tất cả các tiến trình trên hệ điều hành và cập nhật trạng thái liên tục
 ```
 top [options]
@@ -45,26 +58,34 @@ Khi top đang chạy, có thể tiến hành bấm nút như sau:
 - l: chỉ hiện thị task đang chạy
 - n rồi đánh số: hiển thị một số dòng nhất định
 - k: đóng một process theo Process ID
+![top](./images/top.png)q
 3. kill: dùng để dừng chạy tiến trình
 Option:
-+ 
-hiển thị trang có nhiều loại signals khác nhau có thể được sử dụng
++ hiển thị trang có nhiều loại signals khác nhau có thể được sử dụng
 ```
 kill -l
 ```
-+ 
-hủy một process theo process ID
+một số kill signal:
+- sigkill: hủy tiến trình ngay lập tức, bao gồm cả child process
+- sigstop: dừng tiến trình tạm thời
+- sigcont: tiếp tục tiến trình đang bị dừng 
+- sigill : hủy tiến trình do lỗi, can't be ignored
+
++ hủy một process theo process ID
 ```
 kill [pid]
 ```
-+ 
-hủy process theo tên của process 
++ hủy process theo tên của process 
 ```
 killall [signal number] [process name]
 ```
 
 
-4. nice -N: khởi động process mới với độ ưu tiên được chỉ định( số N)
+4. nice -N: 
+Sử dụng ps -l để hiển thị các nice value, sẽ xuất hiện trong phần NI.
+![nice](./images/psl.png)
+khởi động process mới với độ ưu tiên được chỉ định( số N)
+
 ```
 nice -N [process name]
 ```
@@ -72,6 +93,7 @@ nice -N [process name]
 ```
 renice -N [process name]
 ```
+![pic](./images/pic1.png)
 flag của nice và renice:
 - u username: thay đổi độ ưu tiên của một user
 - g groupname: thay đổi độ ưu tiên của một group

@@ -1,15 +1,18 @@
 ## Quyền truy cập:
-Quyền truy cấp được sử dụng để bảo mật hệ thống, tránh những bên không được cấp phép truy cập vào file.
-Có 3 loại quyền truy cập:
-1. Đọc: cho phép người dùng đọc thông tin trên file
-2. viết: cho phép người dùng sửa đổi thông tin trên file
-3. thực thi:cho phép người dùng chạy file(ví dụ file .py)
+Linux cho phép nhiều người dùng tồn tại trên hệ điều hành của nó và sử dụng quyền truy cập như một cách để ngăn người dùng không được phép truy cập vào các tệp bí mật. Điều này cho phép hệ điều hành duy trì tính bảo mật cho các tệp của người dùng.
 ## 3 lớp người dùng:
-Có 3 lớp người dùng chính để kiểm soát các nhóm quyền truy cập khác nhau.
+Linux xác định quyền cho 3 loại người dùng chính:
 1. Chủ sở hữu file
 2. Các thành viên trong nhóm
 3. Các người dùng khác
+## Có 3 loại quyền truy cập:
+Linux xác định khái niệm quyền thành 3 loại khác nhau:
+1. Đọc: cho phép người dùng đọc thông tin trên file
+2. viết: cho phép người dùng sửa đổi thông tin trên file
+3. thực thi:cho phép người dùng chạy file(ví dụ file .py)
+
 ## Các lệnh
+Người dùng có thể sửa đổi quyền bằng các lệnh sau:
 1. chmod: thay đổi quyền truy cập của 1 file
 ```
 chmod [reference] [operator] [permission]
@@ -27,7 +30,7 @@ permission:
 r: read
 w: write
 x: execute
-
+![pic1](./images/chmod.png)
 2. chown: thay đổi quyền sở hữu của 1 file, dùng syntax như sau:
 ```
 chown owner_name file_name
