@@ -8,15 +8,15 @@
 1. service( quản lý hoạt động của các chương trình)
 2. socket( quản lý kết nối)
 3. device(quản lý thiết bị)
-4. mount(gắn thiết bị)
-5. automount(tự động gắn thiết bị)
+4. mount(quản lý file system mount point)
+5. automount(cung cấp và kiểm soát việc mount các hệ thống file theo yêu cầu.)
 6. swap(quản lý vùng không gian bộ nhớ trên đĩa cứng)
 7. target(quản lý tạo liên kết)
 8. path( quản lý đường dẫn)
-9. timer(dùng cho cron-job để quản lý scheduling(Cron là hệ thống giúp linux user thực hiện scheduling)
-10. snapshot( sao lưu)
-11. slice( quản lý tiến trình)
-12. scope( quy định không gian hoạt động của service)
+9. timer(quản lý việc bật hoặc tắt service dựa trên timer, hỗ trợ việc thực hiện scheduling)
+10. snapshot( sao lưu lại trạng thái hiện tại của các units)
+11. slice( quản lý tài nguyên được các tiến trình sử dụng)
+12. scope( quy định scope hoạt động của service)
 ## lệnh tương tác:
  1. khởi động service
  ```
