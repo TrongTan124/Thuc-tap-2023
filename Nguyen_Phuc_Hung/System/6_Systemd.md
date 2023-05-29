@@ -162,7 +162,11 @@
 | ExecStopPre=        | Chỉ thị này cho phép bạn chỉ định các chương trình hoặc tệp kịch bản được thực thi trước quá trình tắt swap.`                                         |
 | ExecStopPost=       | Chỉ thị này cho phép bạn chỉ định các chương trình hoặc tệp kịch bản được thực thi sau quá trình tắt swap.`                                           |
 
+#### Tài liệu tham khảo:
 
+https://viblo.asia/p/tim-hieu-va-van-dung-systemd-de-quan-ly-he-thong-linux-phan-co-ban-WAyK8kN65xX
+https://systemd.io/
+https://man7.org/linux/man-pages/man1/init.1.html
 
 
 

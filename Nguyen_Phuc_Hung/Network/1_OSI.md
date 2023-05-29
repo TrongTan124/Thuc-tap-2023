@@ -106,3 +106,10 @@ Giao thức TCP/IP không phải là 1 thể duy nhất, mà là sự kết hợ
 | Số lớp (tầng)          | 7                                                                       | 4                                                          |
 | Truyền thông           | Hỗ trợ cả kết nối định tuyến và không dây                                  | Hỗ trợ truyền thông không kết nối từ tầng mạng                 |
 | Tính phụ thuộc         | Giao thức độc lập                                                        | Phụ thuộc vào giao thức                                     |
+
+
+#### Tài liệu tham khảo
+
+https://vi.wikipedia.org/wiki/M%C3%B4_h%C3%ACnh_OSI
+https://vietnix.vn/mo-hinh-osi-la-gi/
+https://www.imperva.com/learn/application-security/osi-model/

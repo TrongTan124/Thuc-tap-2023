@@ -41,3 +41,8 @@ Linux là một hệ điều hành mã nguồn mở phát triển từ nền t�
 - Sử dụng công cụ quản lý gói pacman và có một cộng đồng phát triển đam mê.
 # Kết luận
 Linux có một lịch sử phát triển đa dạng và các nhánh chính khác nhau đã nổi lên để đáp ứng các nhu cầu và mục tiêu cụ thể. Từ Debian ổn định đến RHEL hướng tới doanh nghiệp, Ubuntu dễ sử dụng và Fedora tập trung vào tính năng mới, mỗi nhánh có đặc điểm riêng và phục vụ cho mục tiêu cụ thể của nó.
+
+#### Tài liệu tham khảo
+https://history-computer.com/the-complete-history-of-linux-everything-you-need-to-know/
+https://blog.cloud365.vn/other/lich-su-hinh-thanh-linux/
+https://vietnix.vn/linux-la-gi/

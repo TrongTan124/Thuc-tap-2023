@@ -88,7 +88,8 @@ nice -n 5 ffmpeg -i input.mp4 output.avi
 renice -n -15 -p 5678
 ```
 
-
+#### Tài liệu tham khảo:
+https://bizflycloud.vn/tin-tuc/tim-hieu-ve-process-trong-linux-20210430234059408.htm
 
 
 

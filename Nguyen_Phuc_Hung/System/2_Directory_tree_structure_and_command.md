@@ -151,5 +151,11 @@ Lệnh `cp` được sử dụng để sao chép tệp hoặc thư mục.
   
 - `tree -d /etc/`: tất cả các lệnh trên đều liệt kê các thư mục con và file. Bạn cũng có thể chỉ liệt kê các thư mục sử dụng tham số `-d`
 
+#### Tài liệu tham khảo
+https://quantrimang.com/cong-nghe/cau-truc-cay-thu-muc-trong-linux-84056
+https://wiki.matbao.net/kb/co-ban-cau-truc-thu-muc-trong-linux/
+https://biquyetxaynha.com/cach-tao-cay-thu-muc-trong-linux
+https://bizflycloud.vn/tin-tuc/tree-lenh-liet-ke-thu-muc-va-file-theo-dang-cay-tren-linux-20180309115852667.htm
+https://www.geeksforgeeks.org/tree-command-unixlinux/
 
 
