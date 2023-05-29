@@ -2,7 +2,6 @@
 -systemd là trình quản lý hệ thống và dịch vụ cho hệ điều hành linux. systemd có thể được sử dụng để kiểm soát và quản lý các dịch vụ và unitfile, chẳng hạn như sử dụng lệnh systemctl.
 - service: nhóm các routine để điều khiển một thiết bị phần cứng trả về thông tin của hệ thống hiện tại, thường chạy ở chế độ background
 - systemd giúp cho việc quản lý các service, ví dụ khởi động, dừng hoặc kiểm tra trạng thái service, và quản lý unit file
-- chứa trong thư mục /lib/systemd/system
 ## Unit file:
 - systemd quản lý các service bằng unit file, đây là các đối tượng được systemd dùng để quản lý service
 - unit file có file extension dựa trên 12 loại unit file như sau:
