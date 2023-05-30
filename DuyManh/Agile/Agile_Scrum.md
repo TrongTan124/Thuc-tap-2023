@@ -24,6 +24,11 @@ _Tìm hiểu một số kiến thức cơ bản về Agile, Scrum_
 - **Cộng tác với khách hàng** hơn là đàm phán hợp đồng
 - **Thích nghi** với sự thay đổi hơn là làm theo kế hoạch
 Trong khi các mục bên phải có giá trị, chúng tôi coi trọng các mục bên trái hơn.
+- **Cá nhân và sự tương tác** hơn là **quy trình và công cụ**
+- **Phần mềm chạy tốt** hơn là **tài liệu đầy đủ**
+- **Cộng tác với khách hàng** hơn là **đàm phán hợp đồng**
+- **Thích nghi** với sự thay đổi hơn là **làm theo kế hoạch**
+Đó là, trong khi các mục bên phải có giá trị, chúng tôi coi trọng các mục **bên trái** hơn.
 
 
 #### 2. 12 nguyên tắc trong mô hình Agile
@@ -149,3 +154,7 @@ Bốn vai trò phổ biến nhất liên quan đến Extreme Programming:
 Cả Kanban và Extreme Programming đều đưa ra những cách tiếp cận có giá trị để quản lý và thực hiện các dự án Agile, nhưng chúng có những điểm nhấn và lĩnh vực trọng tâm khác nhau. Kanban đặc biệt hiệu quả để trực quan hóa và tối ưu hóa quy trình làm việc, trong khi XP nhấn mạnh vào thực hành kỹ thuật và cộng tác nhóm. Các nhóm có thể chọn áp dụng một hoặc cả hai cách tiếp cận này dựa trên nhu cầu và sở thích cụ thể.
 
 
+####2. Extreme Programming
+Là một Framework phát triển phần mềm linh hoạt nhằm tạo ra phần mềm chất lượng cao hơn và chất lượng cuộc sống cao hơn cho nhóm phát triển</br>
+
+Cả Kanban và Extreme Programming đều đưa ra những cách tiếp cận có giá trị để quản lý và thực hiện các dự án Agile, nhưng chúng có những điểm nhấn và lĩnh vực trọng tâm khác nhau. Kanban đặc biệt hiệu quả để trực quan hóa và tối ưu hóa quy trình làm việc, trong khi XP nhấn mạnh vào thực hành kỹ thuật và cộng tác nhóm. Các nhóm có thể chọn áp dụng một hoặc cả hai cách tiếp cận này dựa trên nhu cầu và sở thích cụ thể.
