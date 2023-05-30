@@ -147,6 +147,12 @@ Trạng thái quá trình:
 - run: CPU đang thực thi mã trong các tiến trình
 - ngủ: cho biết CPU đang thực thi một số tiến trình khác
 - bị hủy: quá trình được thực hiện và chờ bị hủy hoàn toàn
+
+Luồng:
+- là các đơn vị công việc bên trong một tiến trình chia sẻ môi trường thực thi, vì vậy chúng chia sẻ cùng bộ nhớ và tài nguyên như chương trình đã tạo ra chúng
+
+- HĐH tạo và quản lý các luồng để cho phép chúng hoạt động hiệu quả trong một chương trình
+
 ## Chap11
 Interrupt: là tín hiệu do một thiết bị  phát ra để thu hút sự chú ý đến một số nhiệm vụ hoặc sự kiện khẩn cấp cần được chú ý ngay lập tức
 Xử lý ngắt:
@@ -168,4 +174,7 @@ Bộ nhớ ảo cho phép mỗi chương trình có bộ nhớ riêng để ho�
 ## Chap 13
 Hệ thống tập tin
 Tệp: có 2 thành phần: siêu dữ liệu và dữ liệu thực tế. Siêu dữ liệu chứa các thuộc tính của dữ liệu thô trong tệp
+
+Nguồn tham khảo thêm:
+1. [Nguồn 1](https://www.tutorialspoint.com/what-are-different-types-of-interrupts)
 
