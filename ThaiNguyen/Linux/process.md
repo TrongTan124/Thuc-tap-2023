@@ -83,6 +83,8 @@ killall [signal number] [process name]
 
 
 4. nice N: 
++ dùng để chuyển nice value, giá trị quyết định độ ưu tiên của tiến trình
++ nice value càng cao thì độ ưu tiên càng thấp
 + Sử dụng ps -l để hiển thị các nice value, sẽ xuất hiện trong phần NI.
 
 ![nice](./images/psl.png)
