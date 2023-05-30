@@ -51,6 +51,7 @@ dnf upgrade packagename
 ```
 apt-get [options] [command] [package]
 ```
+
 options:
 - y: yes cho tất cả các confirmation request khi cài package
 -assume-no: no cho tất cả các confirmation request khi cài package
@@ -59,6 +60,7 @@ options:
 - m: ignore missing packages
 - q: không hiển thị lỗi hay cảnh báo
 - reinstall: cài lại
+
 commands:
 - update
 - upgrade
