@@ -26,7 +26,7 @@ các mục được có thể được hiển thị bởi lệnh ps:
 - Time: thời gian CPU mà tiến trình tiêu thụ
 - CMD: lệnh bắt đầu quá trình này
 ![processes](./images/processes.png)
-process options:
+options:
 + -a:hiển thị process không liên quan đến terminal
 + -T : tất cả các process liên quan đến terminal
 + -A hoặc -e: viết thông tin cho tất cả process
@@ -58,7 +58,7 @@ Khi top đang chạy, có thể tiến hành bấm nút như sau:
 - l: chỉ hiện thị task đang chạy
 - n rồi đánh số: hiển thị một số dòng nhất định
 - k: đóng một process theo Process ID
-![top](./images/top.png)q
+![top](./images/top.png)
 3. kill: dùng để dừng chạy tiến trình
 Option:
 + hiển thị trang có nhiều loại signals khác nhau có thể được sử dụng

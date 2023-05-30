@@ -52,6 +52,7 @@
  ```
  systemctl list-units
  ```
+ ![sys1](./images/systemctl.png)
  9. hiển thị các unit file, bao gồm unit file không hoạt động:
  ```
  systemctl list-unit-files
