@@ -199,6 +199,14 @@ cat .bashrc | less
 
 - Hiện các file với số dòng, sử dụng `-n`
 
+- Thêm nội dung đã có sẵn vào 1 file mới với cú pháp
+
+```sh
+cat << EOF > [tên file mới]
+...Nội dung đưa vào...
+EOF (end of file)
+```
+
 ## diff
 
 Lệnh diff so sánh hai text file và chỉ ra những điểm khác biệt. Có khá nhiều option khác nhau để tùy chỉnh hiển thị theo yêu cầu.
