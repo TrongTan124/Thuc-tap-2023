@@ -26,6 +26,7 @@ các mục được có thể được hiển thị bởi lệnh ps:
 - Time: thời gian CPU mà tiến trình tiêu thụ
 - CMD: lệnh bắt đầu quá trình này
 ![processes](./images/processes.png)
+
 options:
 + -a:hiển thị process không liên quan đến terminal
 + -T : tất cả các process liên quan đến terminal
@@ -81,10 +82,12 @@ killall [signal number] [process name]
 ```
 
 
-4. nice -N: 
-Sử dụng ps -l để hiển thị các nice value, sẽ xuất hiện trong phần NI.
+4. nice N: 
++ Sử dụng ps -l để hiển thị các nice value, sẽ xuất hiện trong phần NI.
+
 ![nice](./images/psl.png)
-khởi động process mới với độ ưu tiên được chỉ định( số N)
+
++ khởi động process mới với độ ưu tiên được chỉ định( số N) bằng lệnh nice N
 
 ```
 nice -N [process name]
@@ -97,6 +100,9 @@ renice -N [process name]
 flag của nice và renice:
 - u username: thay đổi độ ưu tiên của một user
 - g groupname: thay đổi độ ưu tiên của một group
+```
+renice [priority] -u/g [name]
+```
 
 ## Nguồn tham khảo:
 1. [Nguồn 1](https://hoclaptrinh.vn/tutorial/hoc-unix/quan-ly-tien-trinh-trong-unix-linux)
