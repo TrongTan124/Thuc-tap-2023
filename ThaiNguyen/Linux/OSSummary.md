@@ -7,18 +7,22 @@ Lý do tại sao chúng ta cần tài liệu:
 2. Cung cấp tài liệu cho thành viên mới tham gia dự án
 3. Hướng dẫn hoặc cung cấp thông tin hữu ích cho khách hàng sử dụng sản phẩm
 ## Chap 2:
-Transistors: allows control of current through one channel by varying the intensity of a smaller current on the second channel → because of this, it can be used to implement a bit by varying current from the secondary channel.
-cho phép điều khiển dòng điện qua một kênh bằng cách thay đổi cường độ của dòng điện nhỏ hơn trên kênh thứ hai → do đó, nó có thể được sử dụng để thực hiện một bit bằng cách thay đổi dòng điện từ kênh thứ cấp.
+Transistors: cho phép điều khiển dòng điện qua một kênh bằng cách thay đổi cường độ của dòng điện nhỏ hơn trên kênh thứ hai → do đó, nó có thể được sử dụng để thực hiện một bit bằng cách thay đổi dòng điện từ kênh thứ cấp.
+
 Cổng logic là một thiết bị thực hiện chức năng boolean. Các cổng logic có thể được nối với nhau để thực hiện các chức năng phức tạp hơn. Đầu vào và đầu ra của chúng là nhị phân. Cổng logic là các thành phần cơ bản được sử dụng để xây dựng chip.
+
 Machine code : một chuỗi các số 1 và 0 cho thiết bị biết cách thực hiện các lệnh, vì cổng logic chỉ chấp nhận đầu vào nhị phân
+
 Assembly language: biểu diễn machine code bằng cách đặt tên các mẫu bit thường được sử dụng nhất định → cho phép viết mã và gỡ lỗi nhanh hơn
+
 Assembly language-> assembler biên dịch assembly language sang machine code
-High level and low level programming languages
+
 Trừu tượng hóa: kỹ thuật che giấu sự phức tạp khi nó không liên quan đến ngữ cảnh của vấn đề.
 Ví dụ:
 - Machine cung cấp tính trừu tượng cho các cổng logic
 - Assembly language cung cấp tính trừu tượng cho machine code
 - Ngôn ngữ lập trình cung cấp tính trừu tượng cho assembly language
+
 ## Chap 3:
 Computer architecture
 von Neumann: 
