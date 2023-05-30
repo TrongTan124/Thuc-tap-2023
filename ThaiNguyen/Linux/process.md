@@ -107,4 +107,5 @@ renice [priority] -u/g [name]
 ## Nguồn tham khảo:
 1. [Nguồn 1](https://hoclaptrinh.vn/tutorial/hoc-unix/quan-ly-tien-trinh-trong-unix-linux)
 2. [Nguồn 2](https://www.hostinger.vn/huong-dan/cach-kill-proccess-linux)
+3. [Nguồn 3](https://www.makeuseof.com/change-processs-priority-linux-nice-renice/)
 
