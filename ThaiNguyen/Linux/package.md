@@ -1,7 +1,7 @@
 ## Packages
 Package là file nén chứa executable files, configuration files, các libraries và metadata cần thiết để phần mềm hoạt động chính xác trong hệ điều hành. 
 ## Repository
-- repositories là một kho lưu trữ chứa các gói phần mềm thiết yếu hoặc phổ biến sẽ được sử dụng hoặc cài đặt bởi hệ điều hành
+- repositories là một kho lưu trữ chứa các gói phần mềm(package) thiết yếu hoặc phổ biến sẽ được sử dụng hoặc cài đặt bởi hệ điều hành
 - repositories  chứa các file được sử dụng cho việc cài đặt các bản cập nhật cho phần mềm
 ### Lệnh tương tác:
 1. yum: dùng để quản lý các packages cho một số hệ điều hành linux ví dụ như red hat,có các tính năng như tải, cài đặt, xóa package,vv..
