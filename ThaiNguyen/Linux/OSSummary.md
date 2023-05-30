@@ -173,7 +173,9 @@ Bộ nhớ ảo cho phép mỗi chương trình có bộ nhớ riêng để ho�
 
 ## Chap 13
 Hệ thống tập tin
-Tệp: có 2 thành phần: siêu dữ liệu và dữ liệu thực tế. Siêu dữ liệu chứa các thuộc tính của dữ liệu thô trong tệp
+Tệp: có 2 thành phần: metadata và dữ liệu thực tế. Metadata chứa các thuộc tính của dữ liệu thô trong tệp
+
+Hầu hết các hệ thống đều có thư mục để nhóm các file lại với nhau và lưu trữ file.
 
 Nguồn tham khảo thêm:
 1. [Nguồn 1](https://www.tutorialspoint.com/what-are-different-types-of-interrupts)
