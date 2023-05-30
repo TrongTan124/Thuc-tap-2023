@@ -1,4 +1,4 @@
-##3 loại người dùng:
+## 3 loại người dùng:
 1. Root: có quyền điều khiển tuyệt đối với hệ điều hành
 2. Tài khoản hệ thống: tài khoản cần cho các hoạt động riêng như tài khoản mail
 3. Tài khoản người dùng cá nhân: cho phép người dùng tương tác với hệ thống tuy nhiên có sự giới hạn về quyền truy cập
