@@ -1,5 +1,5 @@
 ## Định nghĩa
-Các tiến trình được tạo ra khi chạy một chương trình hoặc lệnh trong hệ điều hành linux. Mục đích của chúng là thực hiện các nhiệm vụ trong hệ điều hành. Mỗi quy trình có thể được xác định bằng một ID quy trình (PID) duy nhất.
+Các tiến trình được tạo ra khi chạy một chương trình hoặc lệnh trong hệ điều hành linux. Mục đích của chúng là thực hiện các task trong hệ điều hành. Mỗi quy trình có thể được xác định bằng một ID quy trình (PID) duy nhất.
 ## Tiến trình
 Các Tiến trình có thể được chạy theo hai cách
 1. Foreground: chạy bằng cách nhận input từ bàn phím và hiển thị ouput ở trên terminal

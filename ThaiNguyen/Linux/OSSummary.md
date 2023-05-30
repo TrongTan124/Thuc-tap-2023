@@ -97,6 +97,34 @@ Quá trình khởi động:
 4. Dừng lại nếu xảy ra lỗi và in thông báo để thông báo cho người dùng
 
 Makefiles: cho phép nhiều lệnh xây dựng chạy theo thứ tự
+
+##Chap 8
+
+Di dời: quá trình thay thế các tham chiếu ký hiệu bằng các định nghĩa ký hiệu thực tế trong tệp đối tượng
+
+Các bảng di dời xác định phần nào sẽ được bù vào.
+
+Các bảng di dời trông giống như sau:
+![pic8](./images/relocationtable.png)
+
+Độ lệch(offset): vị trí trong một phần của tệp nhị phân, nơi địa chỉ bộ nhớ thực của định nghĩa ký hiệu được thay thế.
+
+Thông tin(Info): chỉ định chỉ mục của một ký hiệu trong bảng ký hiệu và loại di chuyển để thực hiện
+Type: gõ giá trị ở dạng văn bản. Giá trị loại cho biết cách thực hiện di chuyển.
+
+Giá trị ký hiệu(Symbol value): giá trị được gán cho một ký hiệu
+Trong các tệp đối tượng được chia sẻ và thực thi cuối cùng, giá trị biểu tượng giữ địa chỉ bộ nhớ cho biểu tượng đó
+
+Relocate offset: khoảng cách giữa vị trí di chuyển và vị trí bộ nhớ thực tế của định nghĩa ký hiệu.
+
+Tại sao chúng ta cần phải tính toán relocate offset? Bởi vì địa chỉ kiến trúc x86 là tương đối, vì nó không sử dụng địa chỉ tuyệt đối.
+
+Tên biểu tượng(Symbol name): tên của một biểu tượng được di chuyển.
+
+Trình liên kết(Linker): một chương trình kết hợp các tệp đối tượng được phân tách thành một tệp nhị phân cuối cùng. Nó sử dụng thông tin trong ELF của các tệp để tiến hành quá trình liên kết này.
+
+Tập lệnh trình liên kết(Linker script): tệp  cung cấp hướng dẫn về cách trình liên kết nên kết hợp(link) các object files.
+
 ## Chap9:
 Các khái niệm cơ bản về hệ điều hành
 + Quản lý CPU: cho phép các chương trình chia sẻ CPU để chạy đa nhiệm
