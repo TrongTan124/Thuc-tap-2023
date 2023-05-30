@@ -1,5 +1,5 @@
 ## Packages
-Package là file nen chứa executable files, configuration files, các libraries và metadata cần thiết để phần mềm hoạt động chính xác trong hệ điều hành. 
+Package là file nén chứa executable files, configuration files, các libraries và metadata cần thiết để phần mềm hoạt động chính xác trong hệ điều hành. 
 ## Repository
 - repositories là một kho lưu trữ chứa các gói phần mềm thiết yếu hoặc phổ biến sẽ được sử dụng hoặc cài đặt bởi hệ điều hành
 - repositories  chứa các file được sử dụng cho việc cài đặt các bản cập nhật cho phần mềm
