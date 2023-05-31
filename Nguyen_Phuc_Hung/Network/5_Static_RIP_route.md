@@ -112,6 +112,7 @@ Kí tự “S” ở đầu dòng thể hiện rằng các thông tin định tu
 
 *a. Khái niệm*
 - Routing Information Protocol (RIP) là giao thức định tuyến vector khoảng cách. Mỗi router sẽ gửi toàn bộ bảng định tuyến của nó cho router láng giềng theo định kỳ 30s/lần. Thông tin này lại tiếp tục được láng giềng lan truyền tiếp cho các láng giềng khác và cứ thế lan truyền ra mọi router trên toàn mạng. RIP chỉ sử dụng metric là hop-count để tính ra tuyến đường tốt nhất tới mạng đích. Vì sử dụng tiêu chí định tuyến là hop-count và bị giới hạn ở số hop là 15 nên giao thức này chỉ được sử dụng trong các mạng nhỏ dưới 15 hop (15 router). RIP có 2 phiên bản là RIP version 1 (RIPv1) và RIP version 2 (RIPv2).
+- Các bản tin RIP được gửi đến địa chỉ IP định sẵn (multicast address) 224.0.0.9 hoặc địa chỉ broadcast 255.255.255.255 để đảm bảo rằng các router trong miền RIP nhận được thông tin.
 
 *b. Ví dụ*
 
