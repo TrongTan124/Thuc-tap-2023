@@ -9,6 +9,8 @@
 
 #### 1.1 Mục đích ra đời của VLAN
 
+- Mục đích ra đời của VLAN (Virtual Local Area Network) là tạo ra một phân chia logic trong mạng vật lý, cho phép chia mạng thành các nhóm ảo độc lập dựa trên nhu cầu và yêu cầu của tổ chức hoặc mạng.
+
 ![](https://github.com/TrongTan124/Thuc-tap-VNPT/raw/main/MinhNN/CCNA/images/demo.jpeg)
 - VLAN là một broadcast domain được tạo bởi các switch.
 - Thông thường thì router sẽ đóng vai trò tạo broadcast domain. Đối với VLAN, switch có thể tạo ra broadcast domain.
