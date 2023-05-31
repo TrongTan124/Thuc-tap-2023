@@ -19,11 +19,11 @@ _Tìm hiểu một số kiến thức cơ bản về Agile, Scrum_
 
 
 #### 1. 4 giá trị cốt lõi
-- **Cá nhân và sự tương tác** hơn là **quy trình và công cụ**
-- **Phần mềm chạy tốt** hơn là **tài liệu đầy đủ**
-- **Cộng tác với khách hàng** hơn là **đàm phán hợp đồng**
-- **Thích nghi** với sự thay đổi hơn là **làm theo kế hoạch**
-Đó là, trong khi các mục bên phải có giá trị, chúng tôi coi trọng các mục **bên trái** hơn.
+- **Cá nhân và sự tương tác** hơn là quy trình và công cụ
+- **Phần mềm chạy tốt** hơn là tài liệu đầy đủ
+- **Cộng tác với khách hàng** hơn là đàm phán hợp đồng
+- **Thích nghi** với sự thay đổi hơn là làm theo kế hoạch
+Trong khi các mục bên phải có giá trị, chúng tôi coi trọng các mục bên trái hơn.
 
 
 #### 2. 12 nguyên tắc trong mô hình Agile
@@ -92,7 +92,60 @@ Scrum events bao gồm các hoạt động và cuộc họp được tổ chức
 ####1. KanBan
 Là một Framework phổ biến được sử dụng để triển khai phát triển phần mềm nhanh và DevOps . Nó đòi hỏi khả năng giao tiếp theo thời gian thực và tính minh bạch đầy đủ của công việc. Các mục công việc được thể hiện trực quan trên bảng kanban, cho phép các thành viên trong nhóm xem trạng thái của mọi công việc bất cứ lúc nào.
 
-####2. Extreme Programming
-Là một Framework phát triển phần mềm linh hoạt nhằm tạo ra phần mềm chất lượng cao hơn và chất lượng cuộc sống cao hơn cho nhóm phát triển</br>
+#### 1.1 Kanban board
+- Công việc của tất cả các nhóm kanban xoay quanh bảng kanban , một công cụ được sử dụng để trực quan hóa công việc và tối ưu hóa luồng công việc giữa các nhóm. Mặc dù bảng vật lý phổ biến đối với một số nhóm, nhưng bảng ảo là một tính năng quan trọng trong bất kỳ công cụ phát triển phần mềm linh hoạt nào để truy xuất nguồn gốc, cộng tác dễ dàng hơn và khả năng truy cập từ nhiều địa điểm.
+- Bất kể bảng của nhóm là dạng vật lý hay kỹ thuật số, chức năng của chúng là đảm bảo công việc của nhóm được trực quan hóa, quy trình làm việc của họ được chuẩn hóa, đồng thời tất cả các yếu tố chặn và phụ thuộc đều được xác định và giải quyết ngay lập tức. Bảng kanban cơ bản có quy trình làm việc gồm ba bước: To do, In progress và Done. Tuy nhiên, tùy thuộc vào quy mô, cấu trúc và mục tiêu của nhóm, quy trình làm việc có thể được ánh xạ để đáp ứng quy trình duy nhất của bất kỳ nhóm cụ thể nào.
+- Phương pháp kanban dựa trên sự minh bạch đầy đủ về công việc và khả năng giao tiếp theo thời gian thực. Do đó, bảng kanban nên được coi là nguồn sự thật duy nhất cho công việc của nhóm.
+#### 1.2 Benifit: 
+Kanban là một trong những phương pháp phát triển phần mềm phổ biến nhất được các nhóm nhanh nhẹn áp dụng ngày nay. Kanban cung cấp một số lợi thế bổ sung cho việc lập kế hoạch nhiệm vụ và thông lượng cho các nhóm thuộc mọi quy mô.
+
+**Lập lịch linh hoạt:** Một nhóm kanban chỉ tập trung vào công việc đang được tiến hành tích cực. Sau khi nhóm hoàn thành một hạng mục công việc, họ sẽ loại bỏ hạng mục công việc tiếp theo khỏi đầu công việc  tồn đọng . Chủ  sở hữu sản phẩm  có thể tự do sắp xếp lại ưu tiên công việc trong hồ sơ tồn đọng mà không làm gián đoạn nhóm vì bất kỳ thay đổi nào bên ngoài các mục công việc hiện tại đều không ảnh hưởng đến nhóm. Miễn là chủ sở hữu sản phẩm giữ các hạng mục công việc quan trọng nhất trên đầu trang tồn đọng, nhóm phát triển được đảm bảo rằng họ đang mang lại giá trị tối đa cho doanh nghiệp. Vì vậy, không cần lặp lại độ dài cố định mà trong  scrum .
+
+**Chu kỳ thời gian rút ngắn:** Thời gian chu kỳ là lượng thời gian cần thiết để một đơn vị công việc di chuyển qua quy trình làm việc của nhóm – từ thời điểm công việc bắt đầu cho đến thời điểm nó được vận chuyển. Bằng cách tối ưu hóa thời gian chu kỳ, nhóm có thể tự tin dự đoán việc giao công việc trong tương lai.
+
+**Ít tắc nghẽn hơn:** nguyên lý chính của kanban là giới hạn số lượng công việc đang thực hiện (WIP). Giới hạn công việc đang thực hiện làm nổi bật các tắc nghẽn và dự phòng trong quy trình của nhóm do thiếu tập trung, con người hoặc bộ kỹ năng.
+
+**Số liệu trực quan:** Một trong những giá trị cốt lõi là sự tập trung mạnh mẽ vào việc liên tục cải thiện hiệu suất và hiệu quả của nhóm với mỗi lần lặp lại công việc. Biểu đồ cung cấp một cơ chế trực quan cho các nhóm để đảm bảo rằng họ đang tiếp tục cải thiện. Khi nhóm có thể xem dữ liệu, việc phát hiện các nút thắt cổ chai trong quy trình (và loại bỏ chúng) sẽ dễ dàng hơn. Hai báo cáo phổ biến mà nhóm kanban sử dụng là biểu đồ kiểm soát và sơ đồ luồng tích lũy.
+
+**Phân phối liên tục(CD):** là phương pháp thường xuyên phát hành công việc cho khách hàng. Tích hợp liên tục (CI)  là thực hành tự động xây dựng và thử nghiệm mã tăng dần trong ngày. Chúng cùng nhau tạo thành một quy trình CI/CD cần thiết cho các nhóm phát triển (đặc biệt là các nhóm DevOps) để vận chuyển phần mềm nhanh hơn trong khi vẫn đảm bảo chất lượng cao.
+
+#### 2. Extreme Programming
+Extreme Programming(XP) Là một Framework phát triển phần mềm linh hoạt nhằm tạo ra phần mềm chất lượng cao hơn và chất lượng cuộc sống cao hơn cho nhóm phát triển . XP là Framework cụ thể nhất trong số các khung linh hoạt liên quan đến các thực tiễn kỹ thuật phù hợp để phát triển phần mềm.
+
+
+#### 2.1 Các đặc điểm chung
+- Tự động thay đổi yêu cầu phần mềm
+- Rủi ro do dự án cố định thời gian sử dụng công nghệ mới
+- Nhóm phát triển mở rộng nhỏ
+- Công nghệ đang sử dụng cho phép kiểm tra đơn vị và chức năng tự động
+
+#### 2.2 Values
+
+- **Communication:** XP nhấn mạnh tầm quan trọng của hình thức giao tiếp thích hợp – thảo luận trực tiếp với sự trợ giúp của while board hoặc cơ chế vẽ khác. 
+
+- **Simplicity:** Mục đích của việc này là để tránh lãng phí và chỉ làm những việc thực sự cần thiết chẳng hạn như giữ cho thiết kế của hệ thống càng đơn giản càng tốt để dễ bảo trì, hỗ trợ và sửa đổi hơn. Đơn giản cũng có nghĩa là chỉ giải quyết các yêu cầu mà bạn biết
+
+- **Feedback:** Thông qua phản hồi liên tục về những nỗ lực trước đây của họ, các nhóm có thể xác định các lĩnh vực cần cải thiện và sửa đổi các hoạt động. Phản hồi cũng hỗ trợ thiết kế đơn giản. Nhóm xây dựng một thứ gì đó, thu thập phản hồi về thiết kế và triển khai, sau đó điều chỉnh sản phẩm trong tương lai.
+
+- **Courage:**  ưu tiên hành động dựa trên các nguyên tắc khác để kết quả không gây hại cho nhóm. Cần can đảm để nêu ra các vấn đề về tổ chức làm giảm hiệu quả của nhóm. Cần can đảm để ngừng làm điều gì đó không hiệu quả và thử làm điều gì đó khác. Cần can đảm để chấp nhận và hành động dựa trên phản hồi, ngay cả khi khó chấp nhận.
+
+- **Respect:** Các thành viên trong nhóm của cần tôn trọng lẫn nhau để giao tiếp với nhau, cung cấp và chấp nhận phản hồi tôn trọng mối quan hệ và cùng nhau làm việc để xác định các thiết kế và giải pháp đơn giản.
+
+#### 2.3 Role
+Bốn vai trò phổ biến nhất liên quan đến Extreme Programming:
+- Customer: Khách hàng chịu trách nhiệm đưa ra tất cả các quyết định kinh doanh liên quan đến dự án, bao gồm:
+     \- Hệ thống nên làm gì (Những tính năng nào được bao gồm và chúng thực hiện những gì)?
+     \- Làm thế nào để chúng tôi biết khi hệ thống được thực hiện (tiêu chí chấp nhận của chúng tôi là gì)?
+     \- Chúng ta phải chi bao nhiêu (nguồn vốn khả dụng là bao nhiêu, trường hợp kinh doanh là gì)?
+     \- Chúng ta nên làm gì tiếp theo (chúng ta cung cấp các tính năng này theo thứ tự nào)?
+
+- Developer: XP không có nhiều nhu cầu xác định vai trò, mọi người trong nhóm (ngoại trừ khách hàng và một vài vai trò) đều được gắn nhãn là nhà phát triển. Các nhà phát triển chịu trách nhiệm hiện thực hóa các câu chuyện do Khách hàng xác định. Bởi vì các dự án khác nhau đòi hỏi sự kết hợp các kỹ năng khác nhau
+
+- The Tracker: Một số nhóm có thể có một người theo dõi như một phần của nhóm của họ. Đây thường là một trong những nhà phát triển dành một phần thời gian mỗi tuần để đảm nhận vai trò bổ sung này. Mục đích chính của vai trò này là theo dõi các số liệu liên quan mà nhóm cảm thấy cần thiết để theo dõi tiến trình của họ và xác định các lĩnh vực cần cải thiện. Các số liệu chính mà nhóm có thể theo dõi bao gồm tiến độ, lý do thay đổi, thời gian làm thêm giờ, vượt qua và không đạt các bài kiểm tra.
+
+- The Coach: Nếu nhóm mới bắt đầu áp dụng XP, nhóm sẽ thấy hữu ích khi đưa một Huấn luyện viên vào nhóm của mình. Đây thường là một nhà tư vấn bên ngoài hoặc ai đó từ nơi khác trong tổ chức, người đã sử dụng XP trước đây và được đưa vào nhóm để giúp cố vấn cho các thành viên khác trong nhóm về Thực hành XP và giúp nhóm  duy trì kỷ luật tự giác.
+
 
 Cả Kanban và Extreme Programming đều đưa ra những cách tiếp cận có giá trị để quản lý và thực hiện các dự án Agile, nhưng chúng có những điểm nhấn và lĩnh vực trọng tâm khác nhau. Kanban đặc biệt hiệu quả để trực quan hóa và tối ưu hóa quy trình làm việc, trong khi XP nhấn mạnh vào thực hành kỹ thuật và cộng tác nhóm. Các nhóm có thể chọn áp dụng một hoặc cả hai cách tiếp cận này dựa trên nhu cầu và sở thích cụ thể.
+
+
