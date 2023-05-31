@@ -141,7 +141,8 @@ Nhược điểm: ví dụ 1 đoạn mạng hỏng, 50% bị mất hết
 *Ví dụ:*
 Router Core không học từ DS2 vì AD của mạng 172.16.0.0/16 từ DS2=120>0 từ chính Core (mạng kết nối trực tiếp thì AD=0)
 ![](https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/350380346_3105002066473688_5581318517432863882_n.png?_nc_cat=100&ccb=1-7&_nc_sid=ae9488&_nc_ohc=hAhmtISWJGAAX9lHVpR&_nc_ht=scontent.fhan2-4.fna&oh=03_AdSOI-IeoUbOQLv-dPoL5bvZU9duADxGrRgsOIhSpGQRnQ&oe=649D263A)
-- Nhưng khi mạng 172.16.0.0/16 bị mất kết nối với Core => Router Core học lại từ DS2 => Metrics vô hạn => Phải giới hạn thành 16
+- Nhưng khi mạng 172.16.0.0/16 bị mất kết nối với Core => Router Core học lại từ DS2 => Metrics vô hạn => Router Core sẽ gửi một thông báo cập nhật với metric 16 (không khả dụng) cho mạng này => Khi các router khác nhận được thông báo cập nhật này, nó sẽ áp đặt holddown timer (thường là 180 giây). Trong khoảng thời gian này, các router sẽ không chấp nhận bất kỳ thông báo cập nhật mới nào liên quan đến mạng 172.16.0.0/16. Điều này giúp đảm bảo rằng các router không xây dựng lại đường đi sai lệch trong quá trình cập nhật và chờ đợi thông tin định tuyến ổn định trước khi cập nhật lại.
+
 ![](https://scontent.fhan2-3.fna.fbcdn.net/v/t1.15752-9/350045918_995200904969929_1789940944085656716_n.png?_nc_cat=108&ccb=1-7&_nc_sid=ae9488&_nc_ohc=XtVn19JQfrIAX-wqns2&_nc_ht=scontent.fhan2-3.fna&oh=03_AdTQATHYqNlrekAK534eQEZ4tD0Y1MKagZIEm1HFlYcKLw&oe=649D0115)
 
 - Khi có gói tin được chuyển đến, auto bị hủy vì có metrics là 16
@@ -155,6 +156,25 @@ Router Core không học từ DS2 vì AD của mạng 172.16.0.0/16 từ DS2=
 
 **Các thời gian cần lưu ý trong RIP:**
 ![](https://scontent.fhan2-3.fna.fbcdn.net/v/t1.15752-9/350385861_626874119352030_3714166165255444737_n.png?_nc_cat=108&ccb=1-7&_nc_sid=ae9488&_nc_ohc=3KaEnHwsGFUAX-PY-mU&_nc_ht=scontent.fhan2-3.fna&oh=03_AdS5vhW_Os3o2YoKPIyeFeOI3lY7nQBTh1gKVt_8lRCiIQ&oe=649D2D22)
+
+- Holddown-timer
+
+    Thời gian downtime cho mỗi route có định kì là 180s bắt đầu sau khi route đó mất đi. Router sẻ tiến hành quảng bá với láng giềng là route này không đến được nữa. Trong thời gian Holdtime này thì Router sẻ không nhận bất kì quảng báo nào từ route này trừ khi được neighbor cập nhật route này cho nó đầu tiên. Không chỉnh sửa bảng định tuyến cho đến khi hết thời gian timer này.
+
+- Update timer
+
+    Khoảng thời gian định kì mà Router chạy RIP gửi bản tin cập nhật định tuyến đến neighbor của nó trong topology. Timer mặc định là 30s.
+
+- Invalid timer
+
+    Khi Router nhận được bản tin cập nhật update về một subnet nào đó, sau khoảng thời gian invalid timer mà vẫn không nhận được bản cập nhật kế tiếp (theo định kì 30s/lần). Router sẻ xem route này invalid nhưng chưa vội xóa route này ra khỏi bản định tuyến mà sẻ tiến hành đưa route này vào Holddown timer. Giá trị mặc định của invalid timer là 180s
+
+- Flush timer
+
+    Khi Router nhận được bản tin cập nhật update về một subnet nào đó. Sau khoảng thời gian flush timer mà vẫn không nhận được bản cập nhật kế tiếp về subnet này nó sẻ xóa hoàn toàn route này ra khỏi routing table. Giá trị mặc định của flush timer là 240s
+
+- Thời gian timer của RIP được hiểu là khi một Route bị mất thì sau 30s cập nhật Update timer nếu không tái xuất hiện thì sau 180s sẻ được đưa vào Invalid timer. Sau 60s nữa thì nó sẻ bị xóa hoàn toàn khỏi bảng định tuyến.
+
 
 *Giả sử R1 biết đường mới đến 172.16.0.0/18, nó vẫn phải đợi 240s để được cập nhất*
 

@@ -132,7 +132,9 @@ VTP domain : các switch được tổ chức cùng thuộc một domain mới c
 
 #### 3.3 Revision Number
 - Mặc định số Revision giữa các switch đều bằng 0.
-- Khi có thay đổi Revision Number sẽ tăng lên 1 đơn vị
+- Mỗi khi VTP server thay đổi database, server sẽ tăng giá trị revision lên 1.Sau đó server sẽ quảng cáo database với giá trị revision mới (N+1). Nếu giá trị revision được quảng cáo cao hơn revision đang được lưu giữ trong các thiết bị khác, server sẽ yêu cầu các thiết bị kia đồng nhất database. Các thiết bị có số revision nhỏ hơn sẽ phải chấp nhận vlan database từ switch có revision lớn hơn.
+
+Quá trình này có ý nghĩa là nếu VTP server xóa tất cả các vlan và vtp có revision number cao nhất, các thiết bị khác cũng sẽ bị xóa vlan.
 
 #### 3.4 VTP Pruning
 
