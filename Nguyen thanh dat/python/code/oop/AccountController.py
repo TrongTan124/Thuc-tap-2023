@@ -17,7 +17,7 @@ class AccountController:
         address = validator.validate_string("Enter address")
         dob = validator.validate_dob("Enter date of birth")
         account = Account(username, password, name, phone, email, address, dob)
-        list_acc.append(account)
+        list_acc.extend(account)
         print("Success")
 
     def find_account_by_username(self, list_acc, username):
