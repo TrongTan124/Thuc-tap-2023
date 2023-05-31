@@ -9,6 +9,8 @@
 
 #### 1.1 Mục đích ra đời của VLAN
 
+- Mục đích ra đời của VLAN (Virtual Local Area Network) là tạo ra một phân chia logic trong mạng vật lý, cho phép chia mạng thành các nhóm ảo độc lập dựa trên nhu cầu và yêu cầu của tổ chức hoặc mạng.
+
 ![](https://github.com/TrongTan124/Thuc-tap-VNPT/raw/main/MinhNN/CCNA/images/demo.jpeg)
 - VLAN là một broadcast domain được tạo bởi các switch.
 - Thông thường thì router sẽ đóng vai trò tạo broadcast domain. Đối với VLAN, switch có thể tạo ra broadcast domain.
@@ -132,7 +134,9 @@ VTP domain : các switch được tổ chức cùng thuộc một domain mới c
 
 #### 3.3 Revision Number
 - Mặc định số Revision giữa các switch đều bằng 0.
-- Khi có thay đổi Revision Number sẽ tăng lên 1 đơn vị
+- Mỗi khi VTP server thay đổi database, server sẽ tăng giá trị revision lên 1.Sau đó server sẽ quảng cáo database với giá trị revision mới (N+1). Nếu giá trị revision được quảng cáo cao hơn revision đang được lưu giữ trong các thiết bị khác, server sẽ yêu cầu các thiết bị kia đồng nhất database. Các thiết bị có số revision nhỏ hơn sẽ phải chấp nhận vlan database từ switch có revision lớn hơn.
+
+Quá trình này có ý nghĩa là nếu VTP server xóa tất cả các vlan và vtp có revision number cao nhất, các thiết bị khác cũng sẽ bị xóa vlan.
 
 #### 3.4 VTP Pruning
 

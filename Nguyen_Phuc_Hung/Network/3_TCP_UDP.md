@@ -2,11 +2,17 @@ Như chúng ta đều biết TCP và UDP đều là hai giao thức cốt lõi n
 
 ## Giao thức TCP (Tranmission Control Protocol)
 **1. Khái niệm:**
+
 •	TCP là giao thức truyền tải hướng kết nối (connection-oriented), nghĩa là phải thực hiện thiết lập kết nối với đầu xa trước khi thực hiện truyền dữ liệu. Tiến trình thiết lập kết nối ở TCP được gọi là tiến trình bắt tay 3 bước (threeway handshake).
+
 •	Cung cấp cơ chế báo nhận (Acknowledgement) :Khi A gửi dữ liệu cho B, B nhận được thì gửi gói tin cho A xác nhận là đã nhận. Nếu không nhận được tin xác nhận thì A sẽ gửi cho đến khi B báo nhận thì thôi.
+
 •	Cung cấp cơ chế đánh số thứ tự gói tin (sequencing) cho các đơn vị dữ liệu được truyền, sử dụng để ráp các gói tin chính xác ở điểm nhận và loại bỏ gói tin trùng lặp.
+
 •	Có các cơ chế điều khiển luồng thích hợp (flow control) để tránh nghẽn xảy ra.
+
 •	Hỗ trợ cơ chế full-duplex ( truyền và nhận dữ liệu cùng một lúc)
+
 •	Phục hồi dữ liệu bị mất trên đường truyền ( A gửi B mà không thấy xác nhận sẽ gửi lại) .
 
 **2.Cấu trúc gói tin TCP**
@@ -27,6 +33,7 @@ Như chúng ta đều biết TCP và UDP đều là hai giao thức cốt lõi n
 | Options          | tối đa 32 bit | Cho phép thêm các tính năng khác vào TCP                   |
 | Data             |              | Dữ liệu của lớp trên                                     |
 
+
 **3. Cách thức hoạt động**
 
 TCP hoạt động theo tiến trình bắt tay 3 bước
@@ -46,7 +53,9 @@ Giả sử host B thiết lập segment có số thứ tự là 300. Segment tr�
 ## Giao thức UDP
 
 **1. Khái niệm**
+
 ![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr0n67zIDAGf0C9228SM2-HKWktHtetxZN5Q&usqp=CAU)
+
 •	Ngược lại với giao thức TCP thì UDP là giao thức truyền tải hướng không kết nối (connectionless). Nó sẽ không thực hiện thao tác xây dựng kết nối trước khi truyền dữ liệu mà thực hiện truyền ngay lập tức khi có dữ liệu cần truyền (kiểu truyền best effort) => truyền tải rất nhanh cho dữ liệu của lớp ứng dụng.
 •	Không đảm bảo tính tin cậy khi truyền dữ liệu và không có cơ chế phục hồi dữ liệu ( nó không quan tâm gói tin có đến đích hay không, không biết gói tin có bị mất mát trên đường đi hay không) => dễ bị lỗi.
 •	Không thực hiện các biện pháp đánh số thứ tự cho các đơn vị dữ liệu được truyền…
