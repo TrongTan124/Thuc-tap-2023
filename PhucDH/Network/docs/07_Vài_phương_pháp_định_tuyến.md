@@ -24,7 +24,7 @@ Việc tính toán metric của RIP thực hiện bằng một thông số đi�
 
 Metric tối đa của RIP là 15. Hình thức định tuyến RIP chỉ sử dụng được ở các Topology nhỏ mà mô hình đấu nối nhỏ hơn 16 Router. Nếu lớn hơn thì RIP không quảng bá đến được.
 
-Là giao thức chuẩn mở của IEEE. Hoạt động ở layer 4 (transport – đóng gói vào các datagram của UDP) và sử dụng port 520. Với thiết bị Router Cisco RIP sử dụng giá trị AD = 120.
+Là giao thức chuẩn mở của IEEE. Hoạt động ở layer 4 (transport – đóng gói vào các datagram của UDP) và sử dụng port 520. Với thiết bị Router Cisco RIP sử dụng giá trị AD (Administrative Distance - chỉ số tin cậy của phương thức định tuyến)= 120.
 
 Có thể bị loop trên mạng khi gặp sự cố down mạng
 
@@ -181,9 +181,9 @@ Hai router được gọi là láng giềng phải thỏa mãn các điều ki�
 
 Để xem được neighbor dùng lệnh:
 
-    ```sh
-    Show IP OSPF Neighbor
-    ```
+  ```sh
+  Show IP OSPF Neighbor
+  ```
 
 #### Trao đổi LSDB (Link State Database)
 
@@ -431,11 +431,13 @@ Gói tin hello được gửi theo chu kỳ và EIGRP có thể cấu hình đư
 
 EIGRP hoạt động khác với IGRP. Về bản chất EIGRP là một giao thức định tuyến dạng distance-vector nhưng khi cập nhật và bảo trì thông tin router lân cận và thông tin định tuyến thì nó làm việc giống như một giao thức định tuyến dạng link-state. Sau đây là các ưu điểm của EIGRP so với giao thức định tuyến distance-vector cách thông thường:
 
-- Tốc độ hội tụ nhanh.
+- Tốc độ hội tụ nhanh. Hoàn toàn không xảy ra loop trong quá trình hội tụ
 - Sử dụng băng thông hiệu quả.
 - Có hỗ trợ mạng VLSM (Variable- Length Subnet Mask) và định tuyến liên miền không phân lớp CIDR (Classless Interdomain Routing). Không giống như IGRP, EIGRP có trao đổi thông tin về subnet mask nên nó hỗ trợ được cho hệ thống IP không theo lớp.
 - Hỗ trợ cho nhiều giao thức mạng khác nhau.
-- Không phụ thuộc vào giao thức được định tuyến. Nhờ cấu trúc từng phần riêng biệt tương ứng với từng giao thức mà EIGRP không cần phải chỉnh sửa lâu. Ví dụ như khi phát triển để hỗ trợ một giao thức mới như IP chẳng hạn, EIGRP cần phải có thêm phần mới tương ứng cho IP nhưng hoàn toàn không cần phải viết lại EIGRP.
+- Không phụ thuộc vào giao thức được định tuyến. Nhờ cấu trúc từng phần riêng biệt tương ứng với từng giao thức mà EIGRP không cần phải chỉnh sửa lâu. Ví dụ như khi phát triển để hỗ trợ một giao thức mới như IP X chẳng hạn, EIGRP cần phải có thêm phần mới tương ứng cho IP X nhưng hoàn toàn không cần phải viết lại EIGRP.
+- Dễ dàng triển khai và cập nhật bảng định tuyến gần như ngay tức thì.
+- Cân bằng tải trên cả các đường có metric bằng nhau, hoặc không bằng nhau
 
 EIGRP router hội tụ nhanh vì chúng sử dụng thuật toán DUAL. DUAL bảo đảm hoạt động không bị lặp vòng khi tính toán đường đi, cho phép mọi router trong hệ thống mạng thực hiện đồng bộ cùng lúc khi có sự thảy đổi xảy ra.
 
@@ -445,6 +447,9 @@ EIGRP có thể hỗ trợ cho IP, IPX và Apple Talk nhờ có cấu trúc từ
 
 EIGRP còn có thể điều khiển giao thức Apple Talk định tuyến bảng duy trì RTMP (Routing Table Maintenance Protocol ). RTMP sử dụng số lượng hop để chọn đường nên khả năng chọn đường không được tốt lắm. Do đó, EIGRP sử dụng thông số định tuyến tổng hợp cấu hình được để chọn đường tốt nhất cho mạng Apple Talk. Là một giao thức định tuyến theo vectơ khoảng cách, RTMP thực hiện trao đổi toàn bộ thông tin định tuyến theo chu kỳ. Để giảm bớt sự quá tải này, EIGRP thực hiện phân phối thông tin định tuyến Apple Talk khi có sự kiện thay đổi mà thôi. Tuy nhiên, Apple Talk client cũng muốn nhận thông tin RTMP từ các router nội bộ, do đó EIGRP dùng cho Apple Talk chỉ nên chạy trong mạng không có client, ví dụ như các liên kết WAN chẳng hạn.
 
+Hỗ trợ cân bằng tải trên tối đa 16 đường có metric bằng nhau. với các đường có metric không bằng nhau thì cần thoả mãn thông số Variance. Thông số này mặc định là = 2 (có thể cấu hình khác), trên các con đường đến đích có metric khác nhau thì router sẽ lấy variance x FD min. Nếu kết quả lớn hơn các FD còn lại thì đó là đường đi đến đích, còn các đường khác dùng để cân bằng tải thì cần có chỉ số FD > FD min và AD (Administrative Distance - chỉ số tin cậy của các phương thức định tuyến) < FD min.
+
+![eigrp-variance](../images/eigrp-variance.jpg.png)
 
 ### Tài liệu tham khảo EIGRP
 
@@ -452,9 +457,13 @@ EIGRP còn có thể điều khiển giao thức Apple Talk định tuyến bả
 
 <https://vnpro.vn/thu-vien/so-luoc-ve-giao-thuc-dinh-tuyen-eigrp-2055.html>
 
+<https://www.youtube.com/watch?v=t0d4um-jrvg>
+
 <https://vnnet.edu.vn/giao-thuc-dinh-tuyen-eigrp-enhanced-interior-gateway-routing-protocol/>
 
 <https://www.daihockhonggiay.com/blogs/post/gioi-thieu-ve-giao-thuc-eigrp>
 
 <https://itforvn.com/tu-hoc-ccna-bai-13-giao-thuc-eigrp/>
+
+Date accessed: 31/05/2023
 

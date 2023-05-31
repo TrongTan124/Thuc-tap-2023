@@ -2,6 +2,14 @@
 
 _Tìm hiểu về UDP và TCP, so sánh chúng_
 
+[Giao thức TCP (Tranmission Control Protocol)](#giao-thức-tcp-tranmission-control-protocol)
+
+[Giao thức UDP (User Datagram Protocol)](#giao-thức-udp-user-datagram-protocol)
+
+[So sánh TCP vs UDP](#so-sánh-udp-và-tcp)
+
+___
+
 
 ## Giao thức TCP (Tranmission Control Protocol)
 
@@ -127,6 +135,8 @@ Thông thường UDP sẽ liên kết với các giao thức nâng cao để gi�
 ## So sánh UDP và TCP
 
 Giống nhau: đều là các giao thức mạng TCP/IP, có chức năng kết nối các máy lại với nhau và có thể gửi dữ liệu cho nhau….
+
+- Đều hoạt động ở layer 4
 
 Khác nhau:
 

@@ -14,7 +14,7 @@ _Lý thuyết cơ bản về định tuyến tĩnh và định tuyến đ
 
 ## Over view
 
-- Định tuyến (Routing) là quá trình tìm kiếm và xác định đường đi tốt nhất trên một mạng máy tính để gói tin tới được đích thông qua các thiết bị định tuyến.
+- Định tuyến (Routing) là quá trình tìm kiếm và xác định đường đi tốt nhất trên một mạng máy tính để gói tin tới được đích thông qua các thiết bị định tuyến. Hay có thể hiểu định tuyến là quá trình vẽ ra bản đồ mạng, với kết quả là tìm ra đường đi tốt nhất đến đích.
 
 - Để làm được điều đó thì các thiết bị định tuyến cần phải dựa vào thông tin bẳng định tuyến (Routing Table) và giao thức định tuyến ( Routing Protocol).
 
