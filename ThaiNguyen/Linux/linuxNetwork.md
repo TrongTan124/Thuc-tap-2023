@@ -18,6 +18,9 @@ IP là một tập hợp các quy tắc được sử dụng để định tuy�
 
 Giao diện mạng mô tả điểm kết nối giữa máy tính và mạng. Đây có thể là thẻ hoặc thiết bị phần cứng, chẳng hạn như thẻ giao diện mạng (NIC) hoặc có thể là thẻ ảo. Mục đích của giao diện mạng là cho phép máy tính giao tiếp với mạng và các máy tính khác được kết nối với cùng mạng đó.
 
++ Giao diện mạng vật lý: thiết bị phần cứng để tạo điều kiện kết nối với mạng như thẻ NIC
++ Giao diện mạng ảo: đây là biểu diễn ảo hóa của giao diện mạng máy tính cho phép máy tính kết nối với mạng. Nó được tạo bằng phần mềm chứ không phải thiết bị phần cứng và thường được sử dụng trong môi trường ảo hóa.
+
 ### Routing table
 - một bảng dùng để xác định các data packet được truyền trên network theo hướng nào.
 - bao gồm các thông tin như sau:
