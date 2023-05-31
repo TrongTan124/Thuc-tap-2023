@@ -14,6 +14,9 @@ IP là một tập hợp các quy tắc được sử dụng để định tuy�
 
 ### Protocol:
 - xác định cách thức liên lạc giữa hai hệ thống máy tính, và cách thức xử lý khi máy tính truyền hoặc nhận thông tin từ máy khác
+## Network interface
+
+Giao diện mạng mô tả điểm kết nối giữa máy tính và mạng. Đây có thể là thẻ hoặc thiết bị phần cứng, chẳng hạn như thẻ giao diện mạng (NIC) hoặc có thể là thẻ ảo. Mục đích của giao diện mạng là cho phép máy tính giao tiếp với mạng và các máy tính khác được kết nối với cùng mạng đó.
 
 ### Routing table
 - một bảng dùng để xác định các data packet được truyền trên network theo hướng nào.
