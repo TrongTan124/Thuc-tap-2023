@@ -1,5 +1,7 @@
+
+
 class Account:
-    def __init__ (self,username, password,name,phone,email,address,dob):
+    def __init__(self, username, password, name, phone, email, address, dob):
         self.username = username
         self.password = password
         self.name = name
@@ -7,6 +9,7 @@ class Account:
         self.email = email
         self.address = address
         self.dob = dob
-    def updatePass(self, password):
+
+    def update_pass(self, password):
         self.password = password
-    
+
