@@ -83,3 +83,10 @@ Có 2 mạng 192.168.1.1 và 192.168.1.2 muốn truy cập đến serveer 100.0.
 Ở NAT này ta sử dụng thêm thông số nữa là Port
 ![](https://github.com/TrongTan124/Thuc-tap-VNPT/raw/main/MinhNN/CCNA/images/10_network-example13.png)
 
+**Tài liệu tham khảo**
+1.  [matbao.net](https://wiki.matbao.net/nat-la-gi-huong-dan-cach-ket-noi-mang-nat-de-dang/)
+2. [totolink.vn](https://www.totolink.vn/article/90-3-loai-nat-network-address-translation-ban-can-biet.html)
+3. [hostingviet.vn](https://hostingviet.vn/nat-la-gi-nhung-uu-nhuoc-diem-cua-nat-va-cach-ket-noi)
+4. [tino.org](https://wiki.tino.org/nat-la-gi/)
+5. [Youtube VNPRO1](https://www.youtube.com/watch?v=eSmIov2DCvs&list=PLnaGQB5hLTI6nQP8MqlTCCJE3wc4g1Q0B&index=45)
+6. [Youtube VNPRO2](https://www.youtube.com/watch?v=WWrS-DLTQ8c&list=PLBOZzuSFDzSL_5CvfuNo7EhFQR1z6hhpo&index=79)
