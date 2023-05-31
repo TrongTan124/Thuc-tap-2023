@@ -7,36 +7,6 @@ class Validate:
     DOB_REGEX = r'^\d{2}/\d{2}/\d{4}$'
     
     @classmethod
-    def validate_string(cls, mess):
-        print(mess)
-        while(True):
-            string = input()
-            if(len(string) == 0):
-                print("String is empty, enter again")
-            else:
-                return string
-            
-    @classmethod    
-    def validate_phone(self, mess):
-        print(mess)
-        while(True):
-            string = self.validate_ptring("")
-            if( not re.match(self.PHONE_REGEX, string) ):
-                print("Enter phone is number and len between 10-11")
-            else:
-                return string
-            
-    @classmethod
-    def validate_email(self,mess):
-        print(mess)
-        while(True):
-            string = self.validate_string("")
-            if(not re.match(self.EMAIL_REGEX, string)):
-                print("Enter email in format example@ex.com")
-            else:
-                return string
-            
-    @classmethod
     def validate_number(self, mess):
         print(mess)
         while True:
@@ -60,14 +30,14 @@ class Validate:
                 return number
             
     @classmethod
-    def validate_dob(self, mess):
+    def validate_string(cls, mess):
         print(mess)
-        while True:
-            dob = self.validate_string("")
-            if( not re.match(self.DOB_REGEX, dob)):
-                print("You have enter date of birth in format dd/mm/yyyy")
+        while(True):
+            string = input()
+            if(len(string) == 0):
+                print("String is empty, enter again")
             else:
-                return dob    
+                return string
             
     @classmethod
     def validate_YN(self, mess):
@@ -81,3 +51,35 @@ class Validate:
             else:
                 print("You just have enter Y or N")
     
+    @classmethod    
+    def validate_phone(self, mess):
+        print(mess)
+        while(True):
+            string = self.validate_ptring("")
+            if( not re.match(self.PHONE_REGEX, string) ):
+                print("Enter phone is number and len between 10-11")
+            else:
+                return string
+            
+    @classmethod
+    def validate_email(self,mess):
+        print(mess)
+        while(True):
+            string = self.validate_string("")
+            if(not re.match(self.EMAIL_REGEX, string)):
+                print("Enter email in format example@ex.com")
+            else:
+                return string
+            
+    @classmethod
+    def validate_dob(self, mess):
+        print(mess)
+        while True:
+            dob = self.validate_string("")
+            if( not re.match(self.DOB_REGEX, dob)):
+                print("You have enter date of birth in format dd/mm/yyyy")
+            else:
+                return dob    
+                  
+
+
