@@ -1,74 +1,84 @@
 from Validate import Validate
 from Account import Account
 import hashlib
+
+
 class AccountController:
-    def addAccount(self,listAcc):
+
+    def add_account(self, list_acc):
         validator = Validate()
         md5_hash = hashlib.md5()
-        username = validator.validateString("Enter username")
-        passwordPreEn = validator.validateString("Enter password")
-        password = self.encrypMD5(passwordPreEn)
-        name = validator.validateString("Enter name")
-        phone = validator.validatePhone("Enter phone")
-        email = validator.validateEmail("Enter email")
-        address = validator.validateString("Enter address")
-        dob = validator.validateDob("Enter date of birth")
-        account = Account(username,password,name,phone,email,address,dob)
-        listAcc.append(account)
+        username = validator.validate_string("Enter username")
+        password_pre_en = validator.validate_string("Enter password")
+        password = self.encrypMD5(password_pre_en)
+        name = validator.validate_string("Enter name")
+        phone = validator.validate_phone("Enter phone")
+        email = validator.validate_email("Enter email")
+        address = validator.validate_string("Enter address")
+        dob = validator.validate_dob("Enter date of birth")
+        account = Account(username, password, name, phone, email, address, dob)
+        list_acc.append(account)
         print("Success")
-    def findAccountByUSerName(self,listAcc,username):
-        for acc in listAcc:
+
+    def find_account_by_username(self, list_acc, username):
+        for acc in list_acc:
             if(acc.username == username):
                 return acc
         return None
-    def encrypMD5(self, inputPass):
+
+    def encrypMD5(self, input_pass):
         # Create an MD5 hash object
         md5_hash = hashlib.md5()
-
         # Encode the user's input as bytes
-        user_input_bytes = inputPass.encode('utf-8')
-
+        user_input_bytes = input_pass.encode('utf-8')
         # Update the hash object with the user's input bytes
         md5_hash.update(user_input_bytes)
-
         # Get the hashed password as a hexadecimal string
         hashed_password = md5_hash.hexdigest()
         return hashed_password
-    def login(self,listAcc):
+
+    def login(self, list_acc):
         validator = Validate()
-        username = validator.validateString("Enter user name")
-        account = self.findAccountByUSerName(listAcc,username)
-        passwordEn = validator.validateString("Enter password")
-        password = self.encrypMD5(passwordEn)
-        if(account == None):
-            print("Usename or password wrong")
+        username = validator.validate_string("Enter username")
+        account = self.find_account_by_username(list_acc, username)
+        password_en = validator.validate_string("Enter password")
+        password = self.encrypMD5(password_en)
+
+        if account is None:
+            print("Username or password is incorrect")
         else:
-            if(account.password == password):
-                print("welcom user ",account.username)
-                isChangePass = validator.validateYN("You want to change pass Y/N")
-                if(isChangePass):
-                    oldpass = validator.validateString("Enter old password")
-                    newpass = validator.validateString("Enter new password")
-                    reEnterpass = validator.validateString("re enter new password")
-                    if(account.password != self.encrypMD5(oldpass)):
-                        print("old password not match current password")
-                    elif(newpass !=reEnterpass):
-                        print("newpass and reEnterpass not match")
-                    elif(newpass == reEnterpass and account.password == self.encrypMD5(oldpass)):
-                        passW = self.encrypMD5(newpass)
-                        account.updatePass(passW)
-                        print("success")
+            if account.password == password:
+                print("Welcome, user", account.username)
+                is_change_pass = validator.validate_YN("Do you want to change your password? (Y/N)")
+                if is_change_pass:
+                    is_change_pass(account)
             else:
-                print("username or password wrong")
+                print("Username or password is incorrect")
+    
+    def change_pass(self, account):   
+        validator = Validate() 
+        old_pass = validator.validate_string("Enter old password")
+        new_pass = validator.validate_string("Enter new password")
+        re_enter_pass = validator.validate_string("Re-enter new password")
                 
-    def menu(self,listAcc):
+        if account.password != self.encrypMD5(old_pass):
+            print("Old password does not match the current password")
+        elif new_pass != re_enter_pass:
+            print("New password and re-entered password do not match")
+        else:
+            pass_W = self.encrypMD5(new_pass)
+            account.update_pass(pass_W)
+            print("Password changed successfully")
+
+    def menu(self, list_acc):
         while True:
             validator = Validate()
-            choice  =validator.validateChoice("Enter choice between 1-3",1,3)
+            choice = validator.validate_choice("Enter choice between 1-3", 1, 3)
             if(choice == 1):
-                self.addAccount(listAcc)
+                self.add_account(list_acc)
             elif(choice == 2):
-                self.login(listAcc)
+                self.login(list_acc)
             else:
                 return
-            
+
+   
