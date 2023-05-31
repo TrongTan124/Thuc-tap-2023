@@ -71,6 +71,10 @@ Router (config) # interface s0/0/0
 Router (config-if) # ip nat outside
 ```
 
+SNAT còn là viết tắt của Source Network Address Translation. SNAT thường được sử dụng khi máy chủ nội bộ/private cần bắt đầu kết nối với máy chủ bên ngoài/public. Thiết bị thực hiện NAT thay đổi địa chỉ IP private của máy chủ nguồn thành IP Public. Nó cũng có thể thay đổi cổng nguồn trong TCP/UDP.
+
+Một tình huống điển hình của SNAT là khi được yêu cầu thay đổi địa chỉ hay cổng private thành public khi các gói rời khỏi mạng. Về thứ tự hoạt động, SNAT xuất hiện sau khi quyết định định tuyến được đưa ra. Bên cạnh đó, khi có nhiều máy chủ trên mạng “bên trong” muốn truy cập vào “bên ngoài”, SNAT sẽ được sử dụng.
+
 ### Dynamic NAT (NAT động)
 
 Thay vì làm thủ công, gán cho 1 IP Private với 1 IP Public nhất định thì ta để hệ thống tự gán. Dynamic NAT được dùng để ánh xạ một địa chỉ IP này sang một địa chỉ khác một cách tự động, thông thường là ánh xạ từ một địa chỉ cục bộ sang một địa chỉ được đăng ký. Bất kỳ một địa chỉ IP nào nằm trong dải địa chỉ IP công cộng đã được định trước đều có thể được gán một thiết bị bên trong mạng.
@@ -114,6 +118,24 @@ Router (config) # interface s0/0/0
 
 Router (config-if) # ip nat outside
 ```
+
+DNAT còn là viết tắt của Destination Network Address Translation. Nó có chức năng thay đổi địa chỉ đích trong IP của gói tin.
+
+Ngoài ra, DNAT cũng có thể thay đổi cổng đích trong TCP / UDP. Ứng dụng điển hình của nó là chuyển hướng các gói đến với đích là một địa chỉ/ cổng public, đi đến một địa chỉ/ cổng IP private bên trong mạng.
+
+Người dùng qua internet truy cập máy chủ web được lưu trữ trong trung tâm dữ liệu là một ví dụ điển hình mà DNAT được sử dụng để ẩn địa chỉ private. Đồng thời, thiết bị NAT chuyển IP đích public mà người dùng internet có thể truy cập thành địa chỉ IP private của máy chủ web.
+
+### Sự khác nhau giữa SNAT và DNAT
+
+||SNAT|DNAT|
+|:---:|---|---|
+|Viết tắt cho|Source NAT|Destination NAT|
+|Thuật ngữ|SNAT đổi địa chỉ IP của nguồn kết nối thành công cộng.Ngoài ra có thể đổi cổng nguồn trong TCP / UDP. Thường được dùng bởi người dùng nội bộ.|DNAT đổi địa chỉ đích trong IP. Có thể thay đổi cổng đích trong TCP / UDP. Thường sử dụng khi cần chuyển hướng các gói đến có đích là địa chỉ/ cổng public đến địa chỉ / cổng IP private bên trong mạng.|
+|Trường hợp sử dụng|Khi một client bên trong mạng LAN hay sau firewall muốn sử dụng internet.|Khi một website được lưu trữ bên trong trung tâm dữ liệu, sau firewall cần cho người dùng bên ngoài (public) kết nối đến thông qua mạng .|
+|Thay đổi về địa chỉ|SNAT thay đổi địa chỉ nguồn của gói đi qua thiết bị NAT.|DNAT thay đổi địa chỉ đích của gói đi qua Router.|
+|Thứ tự hoạt động|Sau khi quyết định định tuyến được thực hiện.|Trước khi xác định việc định tuyến.|
+|Luồng giao tiếp|Xảy ra khi bên trong mạng được bảo mật bắt đầu giao tiếp với bên ngoài.|Xảy ra khi mạng không an toàn bên ngoài (public network) bắt đầu giao tiếp với bên trong (private network).|
+|Đơn/ đa máy chủ|SNAT cho phép nhiều máy chủ bên trong mạng truy cập vào bất ký máy chủ nào bên ngoài.|DNAT cho phép máy chủ bên ngoài truy cập vào một máy chủ bên trong.|
 
 ### NAT Overload
 
@@ -200,6 +222,8 @@ Các bất lợi khi sử dụng NAT:
 <https://vietnix.vn/nat-la-gi/>
 
 <https://fptcloud.com/nat-la-gi/>
+
+<https://ndhlife.wordpress.com/2011/12/20/vai-net-c%c6%a1-b%e1%ba%a3n-v%e1%bb%81-distance-vector-va-link-state/>
 
 
 Date accessed: 31/05/2023
