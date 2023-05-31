@@ -1,0 +1,107 @@
+# Agile document 
+
+---
+## Agile mainifesto -  An alternative to documentation-driven and heavyweight software development processes
+ - Developed by 17 software development practitioners 
+ - Brief document 
+ - Base on 4 values and 12 principles
+   
+--> This set of values encourages putting people before processes, getting software out the door fast, collaborating with customers, and adjusting plans as needed.
+## The 12 agile priciples 
+1. Highest priority is to satisfy the customer through early and continuous delivery of valuable software
+2. Welcome changing requirements, even late in development. Agile processes harness change for the customer’s competitive advantage
+3. Deliver working software frequently, from a couple of weeks to a couple of months, with a preference to the shorter timescale.
+4. Business people and developers must work together daily throughout the project.
+5. Build projects around motivated individuals. Give them the environment and support they need, and trust them to get the job done.
+6. The most efficient and effective method of conveying information to and within a development team is face-to-face conversation.
+7. Working software is the primary measure of progress.
+8. Agile processes promote sustainable development. The sponsors, developers, and users should be able to maintain a constant pace indefinitely.
+9. Continuous attention to technical excellence and good design enhances agility.
+10. Simplicity—the art of maximizing the amount of work not done—is essential.
+11. The best architectures, requirements, and designs emerge from self-organizing teams.
+12. At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly.
+
+### The 4 Agile Value
+1. Individuals and interactions over processes and tools
+2. Working software over comprehensive documentation
+3. Customer collaboration over contract negotiation
+4. Responding to change over following a plan
+---
+# Scrum 
+## Scrum overview 
+    Scrum is a simple empirical process that enables teams to build products incrementally in iterations, to keep abreast of the changing market needs and align themselves to the organization's business goals.
+## Scrum Values
+    Scrum advocates self-organizing teams working towards a common goal through continuous inspection and adaptation. A minimum viable product at the end of each iteration provides an option for the teams to quickly get feedback from end users and respond much faster.
+## Scrum Role
+    A Scrum Team needs three specific roles: a Product Owner, Scrum leader, and development team.
+
+### Prduct Owner
+    Focuses on ensuring the development team delivers the most value to the business. They understand and prioritize the changing needs of end users and customers
+1. Give the team clear guidance on which features to deliver next.
+2. Bridge the gap between what the business wants and what the team understands.
+3. Decide when and how frequently releases should happen.
+
+### Scrum Leader 
+    They are accountable for the Scrum Team’s effectiveness. They coach teams, Product Owners, and the business to improve its Scrum processes and optimize delivery. 
+1. Schedule the resources needed for each Sprint.
+2. Facilitate other Sprint events and team meetings.
+3. Lead digital transformation within the team.
+4. Facilitate any team training when adopting new technologies.
+5. Communicate with external groups to solve any challenges the team might be facing as a whole.
+### Scrum development team
+    The Scrum Team consists of testers, designers, UX specialists, Ops engineers, and developers. Team members have different skill sets and cross-train each other, so no one person becomes a bottleneck in delivering work. 
+
+1. Work collaboratively to ensure a successful Sprint completion.
+2. Champion sustainable development practices.
+3. Self-organize and approach their projects with an evident we attitude.
+4. Drive the planning and estimating for how much work they can complete for each Sprint.
+
+## Scrum events - Scrum ceremonies
+    Scrum events or Scrum ceremonies are a set of sequential meetings that Scrum Teams perform regularly
+
+1. Sprint planning :  team estimate, difine goals: specific, measurable, and attainable 
+2. Sprint: member wokr together: finish - increment. Time finish base on member and project. 
+3. Daily Scrum or stand-up : short meeting check and keep planning. Report and voice any chalange. stand-up <--> as short as practical.
+4. Sprint reviews: reivew and give information for stakeholder. rework the Product Backlog base on current Sprint 
+5. Sprint Retrospective : review and improve 
+
+## 7 Scrum terms & Srum artifact
+1. Product vision - long term goal of the project or product.
+   
+2. Product Backlog - list everything that need to achieved on a project, broken down into individual items. Make up of three diffent type of items:
+   1. User stories
+   2. Bug
+   3. Task
+
+3. Sprint vision -  is what the scrum team comes up with when planning a sprint.
+
+4. Sprint backlog - is the part of product backlog as to-do list for the sprint
+
+5. Definition of Done (DOD) - all aspect of user stories completed of done in  sprint backlog
+6. Product increment -is all the product backlog items that have been completed during a sprint.
+7. Burndown Chart -is illustrating the total effort against the amount of work for a sprint
+## Agile estimation
+    Agile estimation is the process of evaluating the required effort to complete a work item. Emerging in the development field, the practice of weighing work is now widely applied among Agile teams.
+
+### 5 Techniques for Work Estimation in Agile Development 
+ 1. T-Shirt Size estimation : estimate on varius work items(User stories,epics,taks,themes,initiatives) Using size to give overviews of the complexity or required effort depending on the team's preference
+ 2. Relative Sizing: estimation uses grouping or categorizing work items with similar or equivalent difficulty.
+ 3. Planning poker:use numbered cards to assign story points to user stories and determine work items’ complexity
+ 4. The bucket System estimation: the work items which are divided into “buckets” based on their complexity
+ 5. The three point method is a probabilistic approach where each work item is assigned three different values to reflect optimistic, pessimistic, and most likely outcomes.
+# Kaban 
+    A lean method for improving the way that a team builds software, base on collaborative and experimental process improvement
+### Organizations implementing Kanban follow these stages:
+
+1. Visualize Work – define the process followed by the project team.Setup a board with a column for each process stage, and post the tasks on the board as sticky notes.
+2. Limit Work in Progress (WiP) - Kanban enforces a limit of the number of tasks the team works on concurrently – usually no more than 2-3.
+3. Pull Don’t Push – each team member finishes their current task and then “pulls” an additional assignment from the board
+4. Monitor and Improve – visualizations like the cumulative flow chart below help understand how work is progressing and identify bottlenecks in the process.
+# Extreme programming
+    A software development methodology focused on improving the code that the team builds, and  helping them to be more responsive to changing customer needs
+### The Extreme Programming method follows these lifecycle stages:
+
+   1. Planning – setting goals for the entire project and specific iterative cycles.
+   2. Designing – developers are responsible for designing the main features in the next iteration
+   3. Coding – throughout an iteration, developers constantly refactor the code to bring it down to the simplest, most elegant form possible. 
+   4. Testing – testing is done in tandem with writing the code, not afterwards as a separate development stage, typically using Test Driven Development (TDD).
