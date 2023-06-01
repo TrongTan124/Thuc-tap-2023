@@ -69,6 +69,10 @@ Người dùng qua internet truy cập máy chủ web được lưu trữ trong 
 |Luồng giao tiếp|Xảy ra khi bên trong mạng được bảo mật bắt đầu giao tiếp với bên ngoài.|Xảy ra khi mạng không an toàn bên ngoài (public network) bắt đầu giao tiếp với bên trong (private network).|
 |Đơn/ đa máy chủ|SNAT cho phép nhiều máy chủ bên trong mạng truy cập vào bất ký máy chủ nào bên ngoài.|DNAT cho phép máy chủ bên ngoài truy cập vào một máy chủ bên trong.|
 
+Tài liệu tham khảo:
+
+<https://youtu.be/7QQLbnRJ0ko>
+
 
 ## Các cách để NAT
 
