@@ -7,16 +7,13 @@ Giao thức UDP thêm tiêu đề riêng của nó vào mỗi gói dữ liệu.
 
 ![pic1](./images/udp_%20.png)
 
-1. Số port nguồn
+|Thành phần|Chiều dài|Công dụng|
+|---|----|----|
+|Số port nguồn|16 bit| xác định cổng nào sẽ gửi gói tin |
+|Số port đích|16 bit| xác định cổng nào sẽ nhận gói ở phía người nhận |
+|Segment length|16 bit| chỉ định độ dài của gói UDP bao gồm tiêu đề |
+|Checksum| 16 bit| Checksum được sử dụng để xác minh nếu dữ liệu bị hỏng. Máy tính nhận sẽ tính toán checksum của dữ liệu và so sánh nó với giá trị này. Nếu 2 checksum không bằng nhau, dữ liệu được xác định là bị hỏng. Tuy nhiên, UDP không có bất kỳ cơ chế nào để sửa lỗi trong quá trình truyền dữ liệu, vì vậy gói dữ liệu có khả năng bị loại bỏ nếu bị hỏng.|
 
-2. Số port đích
-
-Số port nguồn và đích lưu trữ số port của nguồn hoặc đích
-
-3. segment length: lưu trữ độ dài theo byte của phân đoạn
-
-4. checksum:
-Checksum được sử dụng để xác minh nếu dữ liệu bị hỏng. Máy tính nhận sẽ tính toán checksum của dữ liệu và so sánh nó với giá trị này. Nếu 2 checksum không bằng nhau, dữ liệu được xác định là bị hỏng. Tuy nhiên, UDP không có bất kỳ cơ chế nào để sửa lỗi trong quá trình truyền dữ liệu, vì vậy gói dữ liệu có khả năng bị loại bỏ nếu bị hỏng.
 
 ![pic2](./images/UDPprotocol%20.png)
 
@@ -27,6 +24,19 @@ Cấu trúc của tiêu đề TCP:
 Mỗi gói dữ liệu được thêm một tiêu đề TCP khi được truyền bằng giao thức TCP.
 
 ![picTCPheader](./images/TCPheader.png)
+
+|Thành phần|Chiều dài|Công dụng|
+|---|----|----|
+|Số port nguồn|16 bit| xác định cổng nào sẽ gửi gói tin |
+|Số port đích|16 bit| xác định cổng nào sẽ nhận gói ở phía người nhận |
+|Sequence number|32-bit| holds the sequence number so that the receiver can reassemble the data packets|
+|Số xác nhận(acknowledgement number)| 32-bit| nó giữ số byte mà người nhận muốn nhận tiếp theo.|
+|Header length| 4bit| giữ độ dài của TCP segment header |
+|Control flag|6 bit| URG: con trỏ khẩn cấp, ACK: số xác nhận, PSH: yêu cầu đẩy, RST: đặt lại kết nối, SYN: đồng bộ hóa số thứ tự, FIN: kết thúc kết nối|
+|Window size|16 bit| cho biết kích thước window để gửi TPC theo byte|
+|Urgent pointer| 16 bit|khi cờ điều khiển URG được đặt, nó trỏ đến dữ liệu cần đến quá trình nhận sớm nhất|
+|Checksum| 16 bit| Checksum được sử dụng để xác minh nếu dữ liệu bị hỏng. Máy tính nhận sẽ tính toán checksum của dữ liệu và so sánh nó với giá trị này. Nếu 2 checksum không bằng nhau, dữ liệu được xác định là bị hỏng. Tuy nhiên, UDP không có bất kỳ cơ chế nào để sửa lỗi trong quá trình truyền dữ liệu, vì vậy gói dữ liệu có khả năng bị loại bỏ nếu bị hỏng.|
+
 
 Thiết lập kết nối:
 Kết nối cần được thiết lập bằng bắt tay ba bước
@@ -71,3 +81,4 @@ References:
 1. [Source 1](https://bunny.net/academy/network/what-is-user-datagram-protocol-udp-and-how-does-it-work/)
 2. [Source 2](https://www.khanacademy.org/computing/computers-and-internet/xcae6f4a7ff015e7d:the-internet/xcae6f4a7ff015e7d:transporting-packets/a/transmission-control-protocol--tcp)
 3. [Source 3](https://www.avast.com/c-tcp-vs-udp-difference#:~:text=The%20main%20difference%20between%20TCP,reliable%20but%20works%20more%20quickly.)
+4. [Source 4](https://www.geeksforgeeks.org/user-datagram-protocol-udp/)
