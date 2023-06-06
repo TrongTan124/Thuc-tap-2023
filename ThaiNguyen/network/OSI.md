@@ -89,6 +89,14 @@ Nó được chia thành 4 lớp:
 
 ![piccompare](./images/comparemodels.png)
 
+Translation results
+Translation result
+|Mô hình TCP/IP |Mô hình OSI|
+|------|--------|
+|giao thức truyền thông cho phép kết nối các thiết bị với mạng|mô hình có cấu trúc mô tả chi tiết hoạt động của mạng|
+|4 lớp| 7 lớp|
+|tiếp cận theo chiều ngang|tiếp cận theo chiều dọc|
+|phụ thuộc vào giao thức| giao thức độc lập |
 
 
 References:
