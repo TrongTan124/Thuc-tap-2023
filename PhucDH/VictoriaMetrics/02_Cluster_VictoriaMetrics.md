@@ -160,7 +160,7 @@ Xem chi tiết về bảo mật mTLS tại đây: <https://docs.victoriametri
 
 ## Giám sát cụm
 
-Tất cả các thành phần cụm hiển thị các chỉ số khác nhau ở định dạng tương thích với Prometheus tại `/metricstrang` trên cổng TCP được đặt trong cờ `-httpListenAddr`. Các giá trị mặc định là:
+Tất cả các thành phần cụm hiển thị các chỉ số khác nhau ở định dạng tương thích với Prometheus tại `/metrics` trên cổng TCP được đặt trong cờ `-httpListenAddr`. Các giá trị mặc định là:
 
 - vminsert - 8480
 - vmselect - 8481
