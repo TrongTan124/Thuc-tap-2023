@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_migrate import Migrate
@@ -20,6 +20,12 @@ class Todo(db.Model):
     def __repr__(self):
         return '<Task %r>' % self.id
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'content': self.content,
+            'date_created': self.date_created
+        }
     
 with app.app_context():
     db.create_all()
@@ -32,42 +38,76 @@ def bubble_sort(arr):
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
     return arr
 
-@app.route('/', methods=['POST', 'GET'])
+# get, post method
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    if request.method == 'POST':
-        task_content = request.form['content']
+    if request.method == 'GET':
+        tasks = Todo.query.order_by(Todo.content).all()
+        if 'Postman' in request.headers.get('User-Agent'):
+            tasks = [task.to_dict() for task in tasks]
+            return jsonify(tasks)
+        else:
+            return render_template('index.html', tasks=tasks)
+    elif request.method == 'POST':
+        if request.headers.get('Content-Type') == 'application/json':
+            task_content = request.json['content']
+        else:
+            task_content = request.form['content']
         new_task = Todo(content=task_content)
-
         try:
             db.session.add(new_task)
             db.session.commit()
-            return redirect('/')
+            if request.headers.get('Content-Type') == 'application/json':
+                return jsonify(new_task.to_dict())
+            else:
+                return redirect('/')
         except:
             return 'There was an issue adding your task'
-    else:
-        tasks = Todo.query.order_by(Todo.date_created).all()
-        return render_template('index.html', tasks=tasks)
-
-@app.route('/delete/<int:id>')
+    
+# delete method? not done by test api postman
+@app.route('/delete/<int:id>', methods =['DELETE'])
 def delete(id):
-    task_to_delete = Todo.query.get_or_404(id)
+    task_to_delete = Todo.query.get(id)
+    if request.headers.get('Content-Type') == 'application/json':
+        return jsonify(task_to_delete.to_dict())
+    else: 
+        try:
+            db.session.delete(task_to_delete)
+            db.session.commit()
+            return redirect('/')
+        except:
+            return 'There was an issue deleting your task'
 
-    try:
-        db.session.delete(task_to_delete)
-        db.session.commit()
-        return redirect('/')
-    except:
-        return 'There was an issue deleting your task'
+# @app.route('/update/<int:id>', methods= ['GET', 'POST'])
+# def update(id):
+#     task = Todo.query.get_or_404(id)
+#     if request.method == 'POST':
+#         task.content = request.form['content']
 
-@app.route('/update/<int:id>', methods= ['GET', 'POST'])
+#         try:
+#             db.session.commit()
+#             return redirect('/')
+#         except:
+#             return 'There was an issue updating your task'
+#     else:
+#         return render_template('update.html', task=task)
+    
+# put method
+@app.route('/update/<int:id>', methods= ['PUT', 'GET'])
 def update(id):
     task = Todo.query.get_or_404(id)
-    if request.method == 'POST':
-        task.content = request.form['content']
+    if request.method == 'PUT':
+        if request.headers.get('Content-Type') == 'application/json':
+            task.content = request.json['content']
+        else:
+            task.content = request.form['content']
 
         try:
             db.session.commit()
-            return redirect('/')
+            if request.headers.get('Content-Type') == 'application/json':
+                return jsonify(task.to_dict())
+            else:
+                return redirect('/')
         except:
             return 'There was an issue updating your task'
     else:
