@@ -69,7 +69,7 @@ Nó được chia thành 4 lớp:
 
 ![picTCPIP](./images/TCP_IP.png)
 
-###Các giao thức TCP/IP thông dụng
+### Các giao thức TCP/IP thông dụng
 1. HTTP (Giao thức truyền siêu văn bản)
 - cung cấp một tiêu chuẩn cho trình duyệt web và máy chủ web để giao tiếp
 + trình duyệt web gửi URL đến Domain name server (DNS)
