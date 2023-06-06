@@ -69,18 +69,18 @@ Nó được chia thành 4 lớp:
 
 ![picTCPIP](./images/TCP_IP.png)
 
-###Common TCP/IP protocols
-1. HTTP(HyperText Transfer Protocol)
-- provides a standard for web browser and web server to communicate
-	+ web browser sends URL to Domain Name Server (DNS)
-	+ DNS checks records of the URL and returns IP address corresponding to this URL
-	+ browser now communicates with actual server using this IP address
-	
-![pichttp](./images/http.png)	
-	
-2. FTP (File Transfer Protocol)
-- a protocol to allow software and data to be transferred between different kinds of computers using TCP/IP
-- uses the client-server model, where the client uses a control channel to send requests to the server, and server uses a data connection to send data according to client's requests
+###Các giao thức TCP/IP thông dụng
+1. HTTP (Giao thức truyền siêu văn bản)
+- cung cấp một tiêu chuẩn cho trình duyệt web và máy chủ web để giao tiếp
++ trình duyệt web gửi URL đến Domain name server (DNS)
++ DNS kiểm tra các bản ghi của URL và trả về địa chỉ IP tương ứng với URL này
++ trình duyệt hiện giao tiếp với máy chủ thực bằng địa chỉ IP này
+
+![pichttp](./images/http.png)
+
+2. FTP (File transfer protocol)
+- một giao thức cho phép phần mềm và dữ liệu được truyền giữa các loại máy tính khác nhau sử dụng TCP/IP
+- sử dụng mô hình máy khách-máy chủ, trong đó máy khách sử dụng kênh điều khiển để gửi yêu cầu đến máy chủ và máy chủ sử dụng kết nối dữ liệu để gửi dữ liệu theo yêu cầu của máy khách
 
 ![picftp](./images/ftp.png)
 
