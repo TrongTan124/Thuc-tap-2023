@@ -48,11 +48,37 @@ Quá trình này xảy ra theo thứ tự ngược lại trên thiết bị đí
 
 
 ### TCP/IP
-The TCP/IP model details how data is transferred from one device to another over a network.
+Mô hình TCP/IP nêu chi tiết cách dữ liệu được truyền từ thiết bị này sang thiết bị khác qua mạng.
+Nó được chia thành 4 lớp:
+4. Lớp ứng dụng(Application layer):
+- chịu trách nhiệm cung cấp cho người dùng quyền truy cập vào mạng
+- người dùng tương tác trực tiếp với lớp này khi gửi và nhận dữ liệu, chẳng hạn như qua email và ứng dụng nhắn tin
+3. Lớp vận chuyển( transport layer):
+- Chịu trách nhiệm duy trì trao đổi dữ liệu
+- cung cấp cơ chế xác nhận khi nhận được dữ liệu và yêu cầu truyền lại các gói bị thiếu, chẳng hạn như sử dụng giao thức TCP
+2. Tầng Internet(Network layer):
+- truyền các gói dữ liệu đến lớp tiếp theo
+- chịu trách nhiệm cung cấp các gói dữ liệu chính xác đến đích của chúng
+- sử dụng 3 giao thức chính:
++ IP(Internet protocol): chịu trách nhiệm phân phát các gói dữ liệu từ nguồn đến đích bằng cách sử dụng địa chỉ IP được gán cho tiêu đề gói
++ ICMP(Internet Control Message Protocol): là giao thức để các thiết bị mạng giao tiếp các vấn đề về truyền dữ liệu. Nó đóng gói các địa chỉ IP với các tiêu đề ICMP để truyền đạt các vấn đề về mạng, chẳng hạn như sử dụng tiêu đề ICMP để lưu trữ tiêu đề IP của gói gây ra lỗi. ICMP cũng có hai tính năng: theo dõi để hiển thị đường dẫn định tuyến và thời gian trên mỗi 'bước nhảy' của đường dẫn từ nguồn đến đích và ping để hiển thị thời gian một gói dữ liệu di chuyển đến đích và quay lại.
++ ARP (Address Resolution Protocol): chịu trách nhiệm định vị Địa chỉ MAC từ địa chỉ IP
+1. Lớp truy cập mạng(Network access layer)
+- xử lý cơ sở hạ tầng vật lý để các máy tính giao tiếp với nhau, chẳng hạn như cáp và thẻ giao diện mạng (NIC)
+- cũng đóng gói dữ liệu vào các khung(frame) để truyền và kiểm tra lỗi (tương tự như lớp 2 của mô hình OSI)
+
+![picTCPIP](./images/TCP_IP.png)
+
+### TCP/IP vs OSI model
+
+![piccompare(./images/comparemodels.png)
+
 
 
 References:
 1. [Source 1](https://www.ccexpert.us/distance-vector/how-data-flows-through-the-osi-layers.html)
+2. [Source 2](https://www.cloudflare.com/learning/ddos/glossary/internet-control-message-protocol-icmp/)
+3. [Source 3](https://www.guru99.com/tcp-ip-model.html)
 
 
 
