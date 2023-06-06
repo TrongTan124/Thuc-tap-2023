@@ -71,7 +71,7 @@ Nó được chia thành 4 lớp:
 
 ### TCP/IP vs OSI model
 
-![piccompare(./images/comparemodels.png)
+![piccompare](./images/comparemodels.png)
 
 
 
