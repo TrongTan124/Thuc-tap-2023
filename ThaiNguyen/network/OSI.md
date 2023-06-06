@@ -60,14 +60,30 @@ Nó được chia thành 4 lớp:
 - truyền các gói dữ liệu đến lớp tiếp theo
 - chịu trách nhiệm cung cấp các gói dữ liệu chính xác đến đích của chúng
 - sử dụng 3 giao thức chính:
-+ IP(Internet protocol): chịu trách nhiệm phân phát các gói dữ liệu từ nguồn đến đích bằng cách sử dụng địa chỉ IP được gán cho tiêu đề gói
-+ ICMP(Internet Control Message Protocol): là giao thức để các thiết bị mạng giao tiếp các vấn đề về truyền dữ liệu. Nó đóng gói các địa chỉ IP với các tiêu đề ICMP để truyền đạt các vấn đề về mạng, chẳng hạn như sử dụng tiêu đề ICMP để lưu trữ tiêu đề IP của gói gây ra lỗi. ICMP cũng có hai tính năng: theo dõi để hiển thị đường dẫn định tuyến và thời gian trên mỗi 'bước nhảy' của đường dẫn từ nguồn đến đích và ping để hiển thị thời gian một gói dữ liệu di chuyển đến đích và quay lại.
-+ ARP (Address Resolution Protocol): chịu trách nhiệm định vị Địa chỉ MAC từ địa chỉ IP
+	+ IP(Internet protocol): chịu trách nhiệm phân phát các gói dữ liệu từ nguồn đến đích bằng cách sử dụng địa chỉ IP được gán cho tiêu đề gói
+	+ ICMP(Internet Control Message Protocol): là giao thức để các thiết bị mạng giao tiếp các vấn đề về truyền dữ liệu. Nó đóng gói các địa chỉ IP với các tiêu đề ICMP để truyền đạt các vấn đề về mạng, chẳng hạn như sử dụng tiêu đề ICMP để lưu trữ tiêu đề IP của gói gây ra lỗi. ICMP cũng có hai tính năng: theo dõi để hiển thị đường dẫn định tuyến và thời gian trên mỗi 'bước nhảy' của đường dẫn từ nguồn đến đích và ping để hiển thị thời gian một gói dữ liệu di chuyển đến đích và quay lại.
+	+ ARP (Address Resolution Protocol): chịu trách nhiệm định vị MAC address từ địa chỉ IP
 1. Lớp truy cập mạng(Network access layer)
 - xử lý cơ sở hạ tầng vật lý để các máy tính giao tiếp với nhau, chẳng hạn như cáp và thẻ giao diện mạng (NIC)
 - cũng đóng gói dữ liệu vào các khung(frame) để truyền và kiểm tra lỗi (tương tự như lớp 2 của mô hình OSI)
 
 ![picTCPIP](./images/TCP_IP.png)
+
+###Common TCP/IP protocols
+1. HTTP(HyperText Transfer Protocol)
+- provides a standard for web browser and web server to communicate
+	+ web browser sends URL to Domain Name Server (DNS)
+	+ DNS checks records of the URL and returns IP address corresponding to this URL
+	+ browser now communicates with actual server using this IP address
+	
+![pichttp](./images/http.png)	
+	
+2. FTP (File Transfer Protocol)
+- a protocol to allow software and data to be transferred between different kinds of computers using TCP/IP
+- uses the client-server model, where the client uses a control channel to send requests to the server, and server uses a data connection to send data according to client's requests
+
+![picftp](./images/ftp.png)
+
 
 ### TCP/IP vs OSI model
 
@@ -79,6 +95,7 @@ References:
 1. [Source 1](https://www.ccexpert.us/distance-vector/how-data-flows-through-the-osi-layers.html)
 2. [Source 2](https://www.cloudflare.com/learning/ddos/glossary/internet-control-message-protocol-icmp/)
 3. [Source 3](https://www.guru99.com/tcp-ip-model.html)
-
+4. [Source 4](https://afteracademy.com/blog/what-is-ftp-and-how-does-an-ftp-work/)
+5. [Source 5](https://www.geeksforgeeks.org/http-full-form/)
 
 
