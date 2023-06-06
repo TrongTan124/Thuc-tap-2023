@@ -26,11 +26,11 @@
 6. Decorator:
    - Decorators allow us to wrap another function in order to extend the behaviour of the wrapped function, without permanently modifying it.
 
-
 # OOP in python:
 1. Class, method:
    - Class method takes cls as the first parameter while a static method needs no specific parameters.
    - A class method can access or modify the class state while a static method can't access or modify it.
+  
 
 2. Private class;
    - Private class are those methods that should neither be accessed outside the class nor by any base class.
@@ -62,3 +62,5 @@
 3. Pipenv:
    - Là công cụ quản lý gói. Pipenv kết hợp chức năng của Pip và Virtualenv, cùng với các tính năng tốt nhất của các công cụ đóng gói từ các ngôn ngữ khác như Bundler và NPM.
    - Khởi tạo: pip install pipenv.
+
+4......
