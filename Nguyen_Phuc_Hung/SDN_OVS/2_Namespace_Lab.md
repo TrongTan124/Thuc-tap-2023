@@ -47,6 +47,63 @@ Network Namespace là một tính năng trong Linux Namespace cho phép cô lậ
 
 Tổng kết, Network Namespace trong Linux Namespace cho phép cô lập và quản lý độc lập các tài nguyên mạng giữa các tiến trình và ứng dụng. Nó đóng vai trò quan trọng trong việc triển khai container, quản lý mạng và tạo môi trường phát triển cô lập. Sử dụng Network Namespace giúp tăng tính linh hoạt, bảo mật và hiệu suất trong việc triển khai ứng dụng mạng trên hệ điều hành Linux.
 
+**Làm việc với network namespace**
+![](https://github.com/doxuanson/thuctap012017/raw/master/XuanSon/Virtualization/Linux_Network_Namespaces/images/1.png)
+
+\- Khi bắt đầu Linux, bạn sẽ có 1 namespaces mặc định trên hệ thống gọi là root namespaces. Vì vậy mọi quy trình kế thừa network namespaces được sử dụng bởi init (PID 1).  
+\- List namespaces  
+```
+ip netns 
+```
+
+Đầu ra có thể là empty do namespaes mặc định ko bao gồm trong đầu ra câu lệnh `ip netns`.  
+\- Add namespaces  
+```
+ip netns add <namespaces_name>
+```
+
+\- Ví dụ:  
+```
+ip netns add mario
+ip netns add luigi
+```
+
+![](https://github.com/doxuanson/thuctap012017/raw/master/XuanSon/Virtualization/Linux_Network_Namespaces/images/2.png)
+
+Với mỗi namespace được thêm bào, một file mới sẽ được tạo ra trong thư mục `/var/run/netns`.  
+Sau khi restart lại host, namespaces sẽ mất.  
+\- Xóa 1 namespaces:  
+```
+ip netns delete <namespaces_name>
+```
+
+\- Thực thi command trong namespace:  
+```
+ip netns exec <namespaces_name> <command>
+```
+
+Thực thi command trong tất cả các namespaces:  
+```
+ip -all netns exec <namespaces_name> <command>
+```
+
+\- Truy cập 1 namespaces:  
+```
+ip netns exec <namespaces_name> bash
+```
+
+\- Set 1 NIC đến 1 namespaces:  
+```
+ip link set <NIC> netns <namespaces_name>
+```
+
+VD: Set 1 NIC đến namespaces root (default namepsaces):  
+```
+ip link set ens38 netns 1
+```
+
+<a name="3"></a>
+
 ## 3. Lab thử nghiệm tính năng Linux Network Namespaces
 
 ### 3.1. Kết nối hai host trên 2 namespaces sử dụng OpenvSwitch
@@ -99,7 +156,7 @@ B8: Tiến hành ping thử sang địa chỉ của interface eth0-r (10.0.0.1)
 
 ### 3.2. Lab DHCP cấp IP cho các host thuộc các namespaces khác nhau
 
-** Topology:**
+**Topology:**
 
 Topology sau đây lấy ý tưởng từ hệ thống OpenStack. Trên mỗi máy Compute, các máy ảo thuộc về mỗi vlan đại diện cho các máy của một tenant. Chúng tách biệt về layer 2 và được cấp phát IP bởi các DHCP server ảo cùng VLAN (các DHCP server ảo này thuộc về các namespaces khác nhau và không cùng namespace với các máy ảo của các tenant, được cung cấp bởi dịch vụ dnsmasq). Các DHCP server này hoàn toàn có thể cấp dải địa chỉ trùng nhau do tính chất của namespace. Sau đây là mô hình:
 <br><br>
