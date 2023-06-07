@@ -1,0 +1,16 @@
+- Understanding what Docker is, understanding the benefits of Docker, and its differences compared to running on a host machine or using virtual machine containers and Docker images.
+
+---
+- Basic concepts in Docker:
+  + Docker image, image layer
+  + Docker container
+  + Managing Docker images and container commands (list, stop, start, delete)
+  + Volume (anonymous volume, mounted volume, removing anonymous volume)
+  + Dockerignore, environment variables & .env file
+
+---
+- Understanding what a Dockerfile is and its basic contents.
+
+---
+- Learning how to run a Flask app in a container.
+  + Deploying a written Flask app on a container.
