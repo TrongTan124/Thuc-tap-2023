@@ -12,3 +12,4 @@ Nguyen thanh dat/python/flask_mysql/list/__pycache__/python_list.cpython-39.pyc
 Nguyen thanh dat/python/flask_mysql/migrations/alembic.ini
 Nguyen thanh dat/python/flask_mysql/migrations/script.py.mako
 Nguyen thanh dat/python/flask_mysql/migrations/__pycache__/env.cpython-39.pyc
+*.pyc
