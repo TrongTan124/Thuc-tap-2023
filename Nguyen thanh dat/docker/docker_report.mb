@@ -1,5 +1,11 @@
 - Understanding what Docker is, understanding the benefits of Docker, and its differences compared to running on a host machine or using virtual machine containers and Docker images.
+<<<<<<< Updated upstream
 
+=======
+  + Why is Docker 
+  + What is Docker 
+  + 
+>>>>>>> Stashed changes
 ---
 - Basic concepts in Docker:
   + Docker image, image layer
