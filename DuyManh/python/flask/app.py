@@ -26,29 +26,26 @@ class Todo(db.Model):
             'content': self.content,
             'date_created': self.date_created
         }
-    
+        
 with app.app_context():
     db.create_all()
 
-def bubble_sort(arr):
-    n = len(arr)
+def bubble_sort(tasks):
+    n = len(tasks)
     for i in range(n - 1):
         for j in range(n - i - 1):
-            if arr[j] > arr[j + 1]:
-                arr[j], arr[j + 1] = arr[j + 1], arr[j]
-    return arr
+            if tasks[j].content > tasks[j + 1].content:
+                tasks[j], tasks[j + 1] = tasks[j + 1], tasks[j]
+    return tasks
 
-# get, post method
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['POST', 'GET'])
 def index():
-    if request.method == 'GET':
-        tasks = Todo.query.order_by(Todo.content).all()
-        if 'Postman' in request.headers.get('User-Agent'):
-            tasks = [task.to_dict() for task in tasks]
-            return jsonify(tasks)
-        else:
-            return render_template('index.html', tasks=tasks)
-    elif request.method == 'POST':
+    if request.method == 'POST':
+        if 'sort' in request.form:
+            tasks = Todo.query.order_by(Todo.date_created).all()
+            sorted_tasks = bubble_sort(tasks)
+            return render_template('index.html', tasks=sorted_tasks)        
+        
         if request.headers.get('Content-Type') == 'application/json':
             task_content = request.json['content']
         else:
@@ -63,51 +60,36 @@ def index():
                 return redirect('/')
         except:
             return 'There was an issue adding your task'
-    
-# delete method? not done by test api postman
-@app.route('/delete/<int:id>', methods =['DELETE'])
+    else:
+        tasks = Todo.query.order_by(Todo.date_created).all()
+        if 'Postman' in request.headers.get('User-Agent'):
+            tasks = [task.to_dict() for task in tasks]
+            return jsonify(tasks)
+        else:
+            return render_template('index.html', tasks=tasks)
+
+@app.route('/delete/<int:id>')
 def delete(id):
-    task_to_delete = Todo.query.get(id)
-    if request.headers.get('Content-Type') == 'application/json':
-        return jsonify(task_to_delete.to_dict())
-    else: 
-        try:
-            db.session.delete(task_to_delete)
-            db.session.commit()
+    task_to_delete = Todo.query.get_or_404(id)
+    try:
+        db.session.delete(task_to_delete)
+        db.session.commit()
+        if request.headers.get('Content-Type') == 'application/json':
+            return jsonify(task_to_delete.to_dict())
+        else:
             return redirect('/')
-        except:
-            return 'There was an issue deleting your task'
+    except:
+        return 'There was an issue deleting your task'
 
-# @app.route('/update/<int:id>', methods= ['GET', 'POST'])
-# def update(id):
-#     task = Todo.query.get_or_404(id)
-#     if request.method == 'POST':
-#         task.content = request.form['content']
-
-#         try:
-#             db.session.commit()
-#             return redirect('/')
-#         except:
-#             return 'There was an issue updating your task'
-#     else:
-#         return render_template('update.html', task=task)
-    
-# put method
-@app.route('/update/<int:id>', methods= ['PUT', 'GET'])
+@app.route('/update/<int:id>', methods= ['GET', 'POST'])
 def update(id):
     task = Todo.query.get_or_404(id)
-    if request.method == 'PUT':
-        if request.headers.get('Content-Type') == 'application/json':
-            task.content = request.json['content']
-        else:
-            task.content = request.form['content']
+    if request.method == 'POST':
+        task.content = request.form['content']
 
         try:
             db.session.commit()
-            if request.headers.get('Content-Type') == 'application/json':
-                return jsonify(task.to_dict())
-            else:
-                return redirect('/')
+            return redirect('/')
         except:
             return 'There was an issue updating your task'
     else:
@@ -115,4 +97,3 @@ def update(id):
 
 if __name__ == '__main__':
     app.run(debug=True)
-
