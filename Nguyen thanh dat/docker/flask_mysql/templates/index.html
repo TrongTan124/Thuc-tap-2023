@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Book List</title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Category</th>
+            <th>Author</th>
+            <th>Name</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.id }}</td>
+            <td>{{ book.category }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.name }}</td>
+            <td><a href= "update_book/{{book.id}}" >Update</a></td>
+            <td>
+                <form action="delete_book/{{book.id}}" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>Add Book</h2>
+    <form action="/receive_book" method="POST">
+        <label for="category">Category:</label>
+        <input type="text" name="category" id="category"><br>
+
+        <label for="author">Author:</label>
+        <input type="text" name="author" id="author"><br>
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name"><br>
+
+        <input type="submit" value="Add Book">
+    </form>
+    <h2>Sort list</h2>
+    {% if announce %}
+    <p>{{ announce }}</p>
+    {% endif %}
+    <form action="/sort_list" method="post">
+        <input type="text" name="list" id="list">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>
