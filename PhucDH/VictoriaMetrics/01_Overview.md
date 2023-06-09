@@ -142,7 +142,7 @@ Chi tiết hơn tại: <https://docs.victoriametrics.com/vmauth.html>
 
 Khởi tạo dữ liệu sao lưu cho VictoriaMetrics từ việc tạo các snapshots ([instant snapshots.](https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html#how-to-work-with-snapshots)).
 
-vmbackup hỗ trợ sao lưu tăng dần và đầy đủ. Sao lưu tăng dần được tạo tự động nếu đường dẫn đích đã chứa dữ liệu từ bản sao lưu trước đó. Sao lưu đầy đủ có thể được tăng tốc bằng cách sử dụng cờ `-origin` trỏ đến một bản sao lưu đã tồn tại trên một bộ lưu trữ từ xa (backups with server-side copy from existing backup). Trong trường hợp này, vmbackup tạo bản sao giữa các máy chủ cho, sao chép dữ liệu giữa bản sao lưu hiện tại và bản sao lưu mới. Nó tiết kiệm thời gian và chi phí truyền dữ liệu.
+vmbackup hỗ trợ sao lưu tăng dần (Incremental) và đầy đủ. Sao lưu tăng dần được tạo tự động nếu đường dẫn đích đã chứa dữ liệu từ bản sao lưu trước đó. Sao lưu đầy đủ có thể được tăng tốc bằng cách sử dụng cờ `-origin` trỏ đến một bản sao lưu đã tồn tại trên một bộ lưu trữ từ xa (backups with server-side copy from existing backup). Trong trường hợp này, vmbackup tạo bản sao giữa các máy chủ cho, sao chép dữ liệu giữa bản sao lưu hiện tại và bản sao lưu mới. Nó tiết kiệm thời gian và chi phí truyền dữ liệu.
 
 Có thể dừng giữa chừng và tiếp tục sao lưu dữ liệu trở lại ngay tại vị trí dừng trước đó.
 
