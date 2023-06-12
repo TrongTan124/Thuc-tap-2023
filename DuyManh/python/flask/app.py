@@ -13,7 +13,7 @@ migrate = Migrate(app, db)
 
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.String(200), nullable=False)
+    content = db.Column(db.String(100), nullable=False)
     completed = db.Column(db.Integer, default=0)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
@@ -30,21 +30,23 @@ class Todo(db.Model):
 with app.app_context():
     db.create_all()
 
-def bubble_sort(tasks):
-    n = len(tasks)
-    for i in range(n - 1):
-        for j in range(n - i - 1):
-            if tasks[j].content > tasks[j + 1].content:
-                tasks[j], tasks[j + 1] = tasks[j + 1], tasks[j]
-    return tasks
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n-1):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+    return arr
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
+        tasks = Todo.query.order_by(Todo.date_created).all()
         if 'sort' in request.form:
-            tasks = Todo.query.order_by(Todo.date_created).all()
-            sorted_tasks = bubble_sort(tasks)
-            return render_template('index.html', tasks=sorted_tasks)        
+            sort_list = request.form['lists']
+            sort_list = list(map(int, sort_list.split(',')))
+            sort_list = bubble_sort(sort_list)
+            return render_template('index.html', lists=sort_list, tasks=tasks)  
         
         if request.headers.get('Content-Type') == 'application/json':
             task_content = request.json['content']

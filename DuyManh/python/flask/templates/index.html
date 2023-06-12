@@ -16,7 +16,7 @@
                 <td>Added</td>
                 <td>Actions</td>
             </tr>
-            {% for task in tasks %}
+            {% for task in tasks|default([]) %}
                 <tr>
                     <td>{{ task.content }}</td>
                     <td>{{ task.date_created.date() }}</td>
@@ -38,6 +38,7 @@
     </form>
     <br>
     <form action="/" method="post">
+        <input type="text" name="lists" value="{{ lists|join(',') }}">
         <input type="hidden" name="sort" value="true">
         <input type="submit" value="Sort">
     </form>
