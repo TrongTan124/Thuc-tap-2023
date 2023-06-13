@@ -1,4 +1,4 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 
 {% block head %}
 <title>Task Master</title>
@@ -10,24 +10,24 @@
     {% if tasks|length < 1 %}
     <h4>There are no tasks. Create a new one</h4>
     {% else %}
-    <table>
-        <tr>
-            <td>Task</td>
-            <td>Added</td>
-            <td>Actions</td>
-        </tr>
-        {% for task in tasks %}
+        <table>
             <tr>
-                <td>{{ task.content }}</td>
-                <td>{{ task.date_created.date() }}</td>
-                <td>
-                    <a href="/delete/{{task.id}}">Delete</a>
-                    <br>    
-                    <a href="/update/{{task.id}}">Update</a>    
-                </td>
+                <td>Task</td>
+                <td>Added</td>
+                <td>Actions</td>
             </tr>
-        {% endfor %}
-    </table>
+            {% for task in tasks|default([]) %}
+                <tr>
+                    <td>{{ task.content }}</td>
+                    <td>{{ task.date_created.date() }}</td>
+                    <td>
+                        <a href="/delete/{{ task.id }}">Delete</a>
+                        <br>    
+                        <a href="/update/{{ task.id }}">Update</a>    
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
     {% endif %}
 
     <br>    
@@ -35,6 +35,12 @@
     <form action="/" method="post">
         <input type="text" name="content" id="content">
         <input type="submit" value="Add Task">
+    </form>
+    <br>
+    <form action="/" method="post">
+        <input type="text" name="lists" value="{{ lists|join(',') }}">
+        <input type="hidden" name="sort" value="true">
+        <input type="submit" value="Sort">
     </form>
 </div>
 {% endblock %}
