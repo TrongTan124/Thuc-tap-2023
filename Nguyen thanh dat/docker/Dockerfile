@@ -32,10 +32,11 @@ COPY . .
 COPY flask_mysql/requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
+RUN flask db init
 # Mở cổng cho Flask
 EXPOSE 5000
 
 
-CMD  ["python" "run"]
+CMD  flask db migrate && flask db upgrade && flask run 
 
 
