@@ -15,10 +15,10 @@ def sort_list():
             return redirect("/books")
         try:
             input_list = [int(item) for item in input_list]
-            for item in input_list:
-                if not isinstance(item, int):
-                    session['announce'] = f"Input must be an integer number{input_list}"
-                    return redirect("/books")
+            # for item in input_list:
+            #     if not isinstance(item, int):
+            #         session['announce'] = f"Input must be an integer number{input_list}"
+            #         return redirect("/books")
 
             sorted_list = bubble_sort(input_list)
             session['announce'] = f"Sorted list: {sorted_list}"

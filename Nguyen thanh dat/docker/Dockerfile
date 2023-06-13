@@ -1,37 +1,50 @@
-# Sử dụng image Python chứa Flask
-FROM python:3.9-12
+FROM mysql:latest
+
+ENV MYSQL_ROOT_PASSWORD=123
+
+# Create a new database and user
+ENV MYSQL_DATABASE=book_store
+ENV MYSQL_USER=hidro
+ENV MYSQL_PORT = 8080:3306
+ENV MYSQL_PASSWORD=123
+
+COPY init.sql /docker-entrypoint-initdb.d/init.sql
+
+# Use Python image containing Flask
+FROM python:3.9
+
+
+
+# Cài đặt các dependencies
+WORKDIR /docker
+
+COPY /flask_mysql /docker/flask_mysql
+
+WORKDIR /docker/flask_mysql
+
+
 
 # Thiết lập biến môi trường
 ENV FLASK_APP app.py
 ENV FLASK_RUN_HOST 0.0.0.0
 
-# Cài đặt các dependencies
-WORKDIR /docker
 
-COPY ./python/flask_mysql /docker/flask_mysql
+COPY flask_mysql/requirements.txt requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-WORKDIR /docker/flask_mysql
 
-COPY requirements.txt requirements.txt
-RUN pip3 install --no-cache-dir -r requirements.txt
 
-# Sao chép các file ứng dụng vào image
+ENV DB_URL 'mysql://root:123@172.20.64.1:8080/book_store'
+
 COPY . .
 
-# Cài đặt MySQL client
-RUN apt-get update && apt-get install -y default-mysql-client
-
-# Thiết lập và khởi chạy MySQL
-ENV MYSQL_ROOT_PASSWORD 123
-ENV MYSQL_DATABASE book_store
-ENV MYSQL_USER hidro
-ENV MYSQL_PASSWORD 123
-
-# Chạy script khởi tạo database
-COPY init.sql /docker-entrypoint-initdb.d/
-
-# Mở cổng cho Flask
 EXPOSE 5000
 
-# Chạy ứng dụng Flask
-CMD ["flask", "run"]
+RUN flask db init
+RUN flask db migrate -m "version 1.0"
+RUN flask db upgrade
+
+CMD [ "python", "app.py" ]
+
+
+

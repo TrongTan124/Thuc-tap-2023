@@ -11,9 +11,9 @@ Understanding the concept of REST API.
 1. Uniform interface
 2. Client-server decoupling 
 3. Statelessness
-4. Cacheability
-5. Layered system architecture
-6. Code on demand
+4. Cacheability 
+5. Layered system architecture 
+6. Code on demand 
 
 
 ---
@@ -21,7 +21,7 @@ Tools that support API design.
  - Amazon api gateway
  - APImetrics
  - Assertible
- - Possman
+ - Postman
   
 ---
 Understanding the Flask framework.
