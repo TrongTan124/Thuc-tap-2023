@@ -1,5 +1,5 @@
 from flask import Blueprint,redirect,session, request
-import Controller.sort_algorithm as sort
+import controller.sort_algorithm as sort
 python_list_bp = Blueprint("python_list", __name__, template_folder="templates")
 
 
