@@ -16,14 +16,6 @@ RUN apt-get update && apt-get install -y default-mysql-client
 ENV FLASK_APP app.py
 ENV FLASK_RUN_HOST 0.0.0.0
 
-# Cài đặt MySQL client
-ENV MYSQL_ROOT_PASSWORD 123
-ENV MYSQL_DATABASE book_store
-ENV MYSQL_USER hidro
-ENV MYSQL_PASSWORD 123
-
-# Kết nối với database 
-ENV DB_URL 'mysql://root:123@172.20.64.1:8080/book_store'
 
 # Sao chép các file ứng dụng vào image
 COPY . .
@@ -32,7 +24,6 @@ COPY . .
 COPY flask_mysql/requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-RUN flask db init
 # Mở cổng cho Flask
 EXPOSE 5000
 
