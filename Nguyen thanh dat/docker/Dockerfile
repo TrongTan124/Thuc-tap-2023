@@ -1,8 +1,6 @@
 # Use Python image containing Flask
 FROM python:3.9
 
-
-
 # Cài đặt các dependencies
 WORKDIR /docker
 
@@ -11,11 +9,6 @@ COPY /flask_mysql /docker/flask_mysql
 WORKDIR /docker/flask_mysql
 
 RUN apt-get update && apt-get install -y default-mysql-client
-
-# Thiết lập biến môi trường
-ENV FLASK_APP app.py
-ENV FLASK_RUN_HOST 0.0.0.0
-
 
 # Sao chép các file ứng dụng vào image
 COPY . .
