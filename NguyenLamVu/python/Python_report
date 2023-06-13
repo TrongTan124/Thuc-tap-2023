@@ -1,0 +1,66 @@
+# Python core:
+1. History, features:
+   - Python là một ngôn ngữ lập trình được sử dụng rộng rãi trong các ứng dụng web, phát triển phần mềm, khoa học dữ liệu và ML. Các nhà phát triển sử dụng Python vì nó hiệu quả, dễ học và có thể chạy trên nhiều nền tảng khác nhau. Phần mềm Python được tải xuống miễn phí, tích hợp tốt với tất cả các loại hệ thống và tăng tốc độ phát triển.
+  
+2. Python built-in function:
+   - Là những hàm được cung cấp sẵn bởi ngôn ngữ python, được hiểu là các function được đánh giả sử dụng nhiều" khi lập  trình.
+   - Một số built-in function kinh điển: sum, bin, max, min, len,...
+
+3. Data-type:
+   - List: Methods only modify the list have no return value printed - they return the default None. Not all data can be sorted or compare. Ex:
+    fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']
+
+   - Dict: dictionary can be indexed by keys, which can be immutable. Ex:
+    tel = {'jack': 4098, 'sape': 4139}
+
+   - Set: Set is an unordered collection with no duplicate elements. Ex:
+    basket = {'apple', 'orange', 'apple', 'pear', 'orange', 'banana'}
+
+   - Tuple: a tuple consists of a number of values separated by a commas. Ex:
+    t = 12345, 54321, 'hello!'
+
+4. Syntax:
+5. Package, module:
+   - Python modules may contain several classes, functions, variables whereas Python packages contains several modules.In simpler terms, Package in Python is a folder that contains various modules as files.
+  
+6. Decorator:
+   - Decorators allow us to wrap another function in order to extend the behaviour of the wrapped function, without permanently modifying it.
+
+# OOP in python:
+1. Class, method:
+   - Class method takes cls as the first parameter while a static method needs no specific parameters.
+   - A class method can access or modify the class state while a static method can't access or modify it.
+  
+
+2. Private class;
+   - Private class are those methods that should neither be accessed outside the class nor by any base class.
+   - Protected variables are those data members of a clas that can be accessed within the class and the classes derived from that class.
+   - Public access modifier: the members of a class that are declared public are easily accessible from any part of the program. All data members and member functions of a class are public by default.
+
+3. Static method and class method:
+   - Class method takes cls as the first parameter while a static method needs no specific parameters.
+   - A class method can access or modify the class state while a static method can't access or modify it.
+
+4. Get, set, property:
+   - Getters and setters in python are often used to add validation logic around getting and setting a value and to avoid direct access of a class field.
+   - Property() is a built-in function that creates and returns a property object. A property objects has three methods, getter(), setter(), and delete ().
+
+5. Abstract class, method:
+   - Abstract class can be considered as a blueprint for other classes. It allows you to create a set of methods that must be created within any child classes build from the abstract class.
+   - Interface is a collection of method signatures that should be provided by the implementing class. Implementing an interface is a way of organizing an organized code and achieve abstraction.
+
+
+# Tools:
+1. Virtual environment:
+   - Là môi trường ảo, cho phép thoải mái cài đặt rồi xoá các phiên bản khác nhau của packages Python mà không sợ làm ảnh hưởng đến những dự án đang có sẵn.
+   - Tại mỗi VE, người dùng có thể cài đặt các thư viện cần dùng mà không cần lo việc cài thư viện sẽ ảnh hưởng đến việc khởi chạy các dự án khác vì mỗi VE là một môi trường hoàn toàn độc lập.
+
+2. Virtualenv installment: 
+   - Công cụ phổ biến để thiết lập VE: Virtualenv.
+   - Cách khởi tạo: gõ dòng lệnh pip install virtualenv.
+
+3. Pipenv:
+   - Là công cụ quản lý gói. Pipenv kết hợp chức năng của Pip và Virtualenv, cùng với các tính năng tốt nhất của các công cụ đóng gói từ các ngôn ngữ khác như Bundler và NPM.
+   - Khởi tạo: pip install pipenv.
+
+4......
