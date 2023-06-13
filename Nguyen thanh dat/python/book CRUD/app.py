@@ -3,13 +3,13 @@ from dotenv import load_dotenv
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from book.book import book_bp,db
-from list.python_list import python_list_bp
+from Model.book import db
+from route.book_route import book_bp
+from route.list_route import python_list_bp
 
 load_dotenv()
 app = Flask(__name__)
 app.secret_key = "hidrodat"
-# app.config['SQLALCHEMY_DATABASE_URI'] = c
 app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://root:123@127.0.0.1:4449/book_store"
 app.register_blueprint(book_bp)
 app.register_blueprint(python_list_bp)
