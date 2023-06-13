@@ -1,5 +1,5 @@
 from flask import Blueprint, redirect, render_template, session, request
-from Model.book import Book,db
+from model.book import Book,db
 
 book_bp = Blueprint("book_route", __name__, template_folder="templates")
 
