@@ -1,0 +1,30 @@
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    ports:
+      - '8080:3306'
+    
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "hidro", "-p123"]
+      interval: 5s
+      timeout: 1s
+      retries: 10
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '5000:5000'
+    
+    depends_on:
+      db:
+        condition: service_healthy
+    
+    
+volumes:
+  db_data:
+
