@@ -6,6 +6,7 @@ from .api.book_route import book_bp
 from .api.list_route import python_list_bp
 
 load_dotenv()
+
 def create_app(DB_URL = "mysql://root:123@127.0.0.1:4449/book_store"):
     app = Flask(__name__)
     app.secret_key = "hidrodat"

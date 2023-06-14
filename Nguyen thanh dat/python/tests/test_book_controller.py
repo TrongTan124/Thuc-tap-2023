@@ -4,21 +4,18 @@ from flask import Flask
 from sqlalchemy.orm import sessionmaker
 from book_CRUD.model.book import db
 from book_CRUD.controller.book_controller import BookController 
-
+from book_CRUD import create_app
 
 # engine = create_engine('')
 # Session = sessionmaker(bind=engine)
 
-@pytest.fixture(scope='function')
+@pytest.fixture()
 def confbook():
     
-    app = Flask(__name__)
+    app = create_app()
+    app.config['TESTING'] = True
     app_context = app.app_context()
     app_context.push()
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:123@127.0.0.1:4449/book_store'
-
-    db.init_app(app) 
-    
     controller = BookController
     
     yield controller
