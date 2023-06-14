@@ -735,3 +735,16 @@ Hoặc
 tail /var/log/syslog
 ```
 
+## Tài liệu tham khảo
+
+<https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html>
+
+<https://chungphan.com/2020-08-18-victoriametric.html>
+
+<https://www.vultr.com/docs/install-and-configure-victoriametrics-on-debian/#:~:text=Install%20VictoriaMetrics&text=Or%20you%20can%20download%20the,API%20and%20then%20downloads%20it.>
+
+<https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-install-prometheus>
+
+<https://computingforgeeks.com/install-prometheus-server-on-debian-ubuntu-linux/>
+
+<https://computingforgeeks.com/how-to-install-grafana-on-ubuntu-linux-2/>
