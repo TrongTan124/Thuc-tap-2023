@@ -396,3 +396,6 @@ bash scrip: [install-victoriametrics-single-ubuntu](install-victoriametrics-sing
 
 <https://docs.victoriametrics.com/Quick-Start.html>
 
+<https://www.youtube.com/watch?v=6AIu6oA_Zag>
+
+Date accessed: 09/05/2023
