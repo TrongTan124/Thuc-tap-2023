@@ -1,11 +1,10 @@
 import os
 from dotenv import load_dotenv
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from model.book import db
-from api.book_route import book_bp
-from api.list_route import python_list_bp
+from .model.book import db
+from .api.book_route import book_bp
+from .api.list_route import python_list_bp
 
 load_dotenv()
 app = Flask(__name__)

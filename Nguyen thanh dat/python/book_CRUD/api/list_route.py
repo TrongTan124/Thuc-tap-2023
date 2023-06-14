@@ -1,5 +1,5 @@
 from flask import Blueprint,redirect,session, request
-import Controller.sort_algorithm as sort
+from ..controller.sort_algorithm import bubble_sort 
 python_list_bp = Blueprint("python_list", __name__, template_folder="templates")
 
 
@@ -15,7 +15,7 @@ def sort_list():
         return redirect("/books")
     try:
         input_list = [int(item) for item in input_list]
-        sorted_list = sort.bubble_sort(input_list)
+        sorted_list = bubble_sort(input_list)
         session['announce'] = f"Sorted list: {sorted_list}"
         return redirect("/books")
     except ValueError:
