@@ -2,7 +2,7 @@
 
 REST (Representational State Transfer) là một kiến trúc dựa trên giao thức HTTP và được sử dụng để thiết kế các hệ thống phân tán và giao tiếp giữa các thành phần của hệ thống. RESTful API là một tập hợp các quy tắc và hướng dẫn để xây dựng các dịch vụ web dựa trên nguyên tắc của REST.
 
-RESTful API sử dụng các phương thức HTTP như GET, POST, PUT, DELETE để thực hiện các hoạt động trên các tài nguyên (resources) qua URL. Nó cho phép các ứng dụng giao tiếp và trao đổi dữ liệu với nhau một cách đơn giản và tiêu chuẩn.
+RESTful API sử dụng các phương thức HTTP như GET, POST, PUT, DELETE để thực hiện các hoạt động trên resources qua URL. Nó cho phép các ứng dụng giao tiếp và trao đổi dữ liệu với nhau một cách đơn giản và tiêu chuẩn.
 
 ### client gửi requests, server nhận và xử lý và đưa ra output là HTTP status code to tell the client what happens to the reqs:
 
@@ -31,12 +31,12 @@ Flask là một framework web nhẹ, linh hoạt và dễ sử dụng được x
 - Flask được sử dụng rộng rãi trong phát triển các ứng dụng web nhỏ và trung bình.
 - Nó cho phép xây dựng các ứng dụng web tĩnh, động, RESTful API, và cả các ứng dụng web phức tạp hơn.
 - Flask có cấu trúc đơn giản và ít phức tạp, dễ học và dễ triển khai.
-- Nó hỗ trợ các extension mạnh mẽ như Flask-SQLAlchemy, Flask-RESTful, Flask-JWT để xử lý các tác vụ phổ biến như lưu trữ dữ liệu, xây dựng API, xác thực và ủy quyền.
+- Flask-SQLAlchemy, Flask-RESTful, Flask-JWT để xử lý các tác vụ phổ biến như lưu trữ dữ liệu, xây dựng API, xác thực và ủy quyền.
 
 ### Hạn chế của Flask:
 
 - Flask là một framework nhỏ và linh hoạt, không cung cấp một số tính năng nâng cao có sẵn trong các framework lớn hơn như Django.
-- Vì sự đơn giản của Flask, việc phát triển và quản lý các ứng dụng lớn và phức tạp có thể đòi hỏi sự quản lý mã nguồn tốt và hiểu rõ về cách tổ chức dự án.
+- Vì sự đơn giản của Flask, việc phát triển và quản lý các ứng dụng lớn và phức tạp có thể đòi hỏi sự quản lý source code tốt và hiểu rõ về cách tổ chức dự án.
 
 ## Thiết kế và khởi tạo REST API đơn giản bằng Flask và cách kiểm tra API:
 
@@ -48,14 +48,16 @@ Import Flask và tạo ứng dụng Flask:
 from flask import Flask
 app = Flask(name)
 
-@app.route('/api/sort', methods=['POST'])
-def sort_list():
-data = request.json['data']
+
+@app.route('/api/sort', methods=['POST']) #This is a decorator in Flask that associates the /api/sort URL route with the following function. It specifies that this route will only handle HTTP POST requests.
+def sort_list(): # called when a POST request is made to the /api/sort route.
+data = request.json['data'] 
 sorted_data = sorted(data)
 return jsonify(sorted_data)
 
 if name == 'main':
 app.run()
+
 ```
 
 ### Để kiểm tra API, bạn có thể sử dụng công cụ như Postman để gửi yêu cầu HTTP POST tới endpoint '/api/sort' và kiểm tra kết quả trả về.
@@ -96,16 +98,16 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'  # Định nghĩ
 db = SQLAlchemy(app)
 ```
 
-```python
+
 - Tạo model (bảng) trong database:
+ ```python
 class Bug(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(50), nullable=False)
+    title = db.Column(db.String(50))
     description = db.Column(db.Text)
 # Tạo và cập nhật database:
 # Tạo database
 db.create_all()
-
 # Cập nhật database (thêm/sửa/xóa bảng)
 db.session.commit()
 # Thêm bản ghi mới
@@ -133,7 +135,7 @@ db.session.commit()
 Flask-Migrate là một extension của Flask-SQLAlchemy để hỗ trợ việc data migration và quản lý phiên bản database.
 Alembic là một công cụ migration độc lập có thể được sử dụng với Flask-Migrate để tạo, cập nhật và quản lý phiên bản của database.
 
-Để sử dụng Alembic và Flask-Migrate, bạn cần làm như sau:
+## Để sử dụng Alembic và Flask-Migrate, bạn cần làm như sau:
 
 1. Cài đặt Flask-Migrate và Alembic:
    pip install flask-migrate
@@ -150,7 +152,7 @@ flask db upgrade
 
 ## Xây dựng Flask API để quản lý bugs (Get, Create, Update, Delete)
 
-Bạn có thể xây dựng một Flask API để quản lý bugs bằng cách sử dụng các routes và thao tác với database qua SQLAlchemy như đã mô tả ở trên. Dưới đây là một ví dụ:
+Bạn có thể xây dựng một Flask API để quản lý bugs bằng cách sử dụng các routes và thao tác với database qua SQLAlchemy. Dưới đây là một ví dụ:
 
 ```python
 from flask import Flask, request, jsonify
