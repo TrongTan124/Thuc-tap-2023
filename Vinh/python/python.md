@@ -22,11 +22,19 @@ Python là một ngôn ngữ lập trình thông dịch, có cú pháp đơn gi�
 - Mở Terminal hoặc Command Prompt và chạy lệnh sau để cài đặt Jupyter Notebook qua pip (Python package manager):
 - pip install jupyter
 - Sau khi cài đặt thành công, chạy lệnh sau để khởi động Jupyter Notebook:
-- jupyter notebook
-- Trình duyệt web mặc định của bạn sẽ mở và hiển thị giao diện Jupyter Notebook. Bạn có thể tạo mới một Notebook hoặc mở các Notebook đã tồn tại.
-- Cài đặt các thư viện ngoài sử dụng pip module: Để cài đặt các thư viện Python bên ngoài, bạn có thể sử dụng pip, trình quản lý gói mặc định của Python. Ví dụ, để cài đặt thư viện requests, bạn có thể chạy lệnh sau trong
+    jupyter notebook hoặc tạo new file .ipynb
+## Jupiter Notebook và Python được sử dụng cho mục đích khác nhau:
 
-## Terminal hoặc Command Prompt:
+1. Tương tác vs. Lập trình kịch bản: Jupyter Notebook cung cấp một môi trường tương tác, nơi bạn có thể viết và thực thi mã trong các ô (cells). Nó cho phép bạn chạy đoạn mã, xem kết quả và thay đổi mã ngay lập tức. Trong khi đó, tệp Python thường được sử dụng để viết các kịch bản hoặc module được thực thi như một toàn bộ.
+
+2. Tài liệu và Trình bày: Jupyter Notebook cho phép bạn kết hợp ô mã với ô văn bản (được viết bằng Markdown) để tạo nên một trình bày xung quanh mã của bạn. Điều này phù hợp để tạo tài liệu với các giải thích, trực quan hóa và phân tích. Trong khi đó, tệp Python tập trung duy nhất vào logic mã và thiếu hỗ trợ tích hợp cho tài liệu và trình bày.
+
+3. Tổ chức mã: Trong Jupyter Notebook, mã được tổ chức thành các ô riêng biệt có thể được thực thi độc lập hoặc theo một thứ tự cụ thể. Điều này giúp dễ dàng thử nghiệm, lặp lại và chạy mã theo cách phi tuyến. Trong khi đó, tệp Python thường được tổ chức thành các hàm, lớp và module, tuân thủ một cách tổ chức có cấu trúc hơn.
+
+4. Tái sử dụng và Đóng gói: Tệp Python rất phù hợp để tạo mã có thể tái sử dụng, có thể được import và sử dụng trong các tệp Python hoặc dự án khác. Chúng có thể được đóng gói thành thư viện hoặc module và chia sẻ với người khác. Tuy nhiên, tệp Jupyter Notebook, mặc dù có thể được xuất ra dưới dạng tệp Python, chủ yếu được sử dụng cho việc khám phá tương tác và tài liệu hơn là các thành phần mã có thể tái sử dụng.
+
+5. Hợp tác và Kiểm soát phiên bản: Tệp Python thích hợp hơn cho quy trình hợp tác và kiểm soát phiên bản. Nhiều nhà phát triển có thể làm việc trên cùng một dự án Python bằng cách sử dụng các công cụ như Git, và các thay đổi có thể được theo dõi và hợp nhất một cách dễ dàng. Trong khi tệp Jupyter Notebook có thể được chia sẻ và hợp tác, kiểm soát phiên bản với các notebook có thể khó khăn hơn do tính phi tuyến và sự kết hợp giữa mã và ô văn bản.
+### Cài đặt các thư viện ngoài sử dụng pip module: Để cài đặt các thư viện Python bên ngoài, bạn có thể sử dụng pip, trình quản lý gói mặc định của Python. Ví dụ, để cài đặt thư viện requests, bạn có thể chạy lệnh sau trong Terminal hoặc Command Prompt:
 
 - pip install requests
 - Lệnh này sẽ tải xuống và cài đặt thư viện requests từ Python Package Index (PyPI). Bạn có thể thay đổi requests thành tên của thư viện bạn muốn cài đặt.
