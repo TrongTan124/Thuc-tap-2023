@@ -4,6 +4,14 @@ REST (Representational State Transfer) là một kiến trúc dựa trên giao t
 
 RESTful API sử dụng các phương thức HTTP như GET, POST, PUT, DELETE để thực hiện các hoạt động trên các tài nguyên (resources) qua URL. Nó cho phép các ứng dụng giao tiếp và trao đổi dữ liệu với nhau một cách đơn giản và tiêu chuẩn.
 
+### client gửi requests, server nhận và xử lý và đưa ra output là HTTP status code to tell the client what happens to the reqs:
+
+- 200 level: Success
+- 400 level: Sth wrong with the reqs
+- 500 level: sth wrong with the server level.
+
+RESTAPI: stateless
+
 ## Các tool hỗ trợ thiết kế API design:
 
 ### Swagger/OpenAPI:
