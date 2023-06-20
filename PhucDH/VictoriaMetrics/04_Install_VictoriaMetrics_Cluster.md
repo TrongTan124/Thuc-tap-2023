@@ -2,6 +2,34 @@
 
 _Cài đặt và triển khai VictoriaMetrics cluster (chế độ cụm)_
 
+[Ôn lại lý thuyết](#ôn-lại-lý-thuyết)
+
+- [vmstorage](#vmstorage)
+- [vminsert](#vminsert)
+- [vmselect](#vmselect)
+
+[Tiến hành cài đặt](#tiến-hành-cài-đặt)
+
+- [Chuẩn bị](#chuẩn-bị)
+- [Cài đặt triển khai](#cài-đặt-triển-khai)
+  - [Triển khai vmstorage](#triển-khai-vmstorage)
+  - [Triển khai vmselect](#triển-khai-vmselect)
+  - [Triển khai vminsert](#triển-khai-vminsert)
+
+[Kết hợp với Nginx](#kết-hợp-với-nginx)
+
+- [Triển khai thêm một node nginx](#triển-khai-thêm-một-node-nginx)
+
+[Kết hợp với các trình giám sát khác](#kết-hợp-với-các-trình-giám-sát-khác)
+
+- [Cài Prometheus](#cài-prometheus)
+- [Cài phần mềm node_exporter](#cài-phần-mềm-node_exporter)
+
+
+[Tài liệu tham khảo](#tài-liệu-tham-khảo)
+
+
+
 ## Ôn lại lý thuyết
 
 Về cơ bản một cụm VictoriaMetrics đáp ứng các yêu cầu sau:
@@ -362,7 +390,7 @@ root@nginxlb:~#
 
 - Mặc định cài đặt theo `apt` thì nó sẽ tự khởi động và bật khởi động theo hệ thống.
 
-- Tạo file cấu hình cân bằng tải trên Nginx:
+- Tạo file cấu hình điều hướng việc đọc ghi dữ liệu đến cụm VictoriaMetrics trên Nginx:
 
 ```sh
 vim /etc/nginx/sites-enabled/victoriametrics.conf
@@ -397,6 +425,335 @@ vim /etc/nginx/sites-enabled/victoriametrics.conf
       }
    }
 ```
+
+- Kiểm tra cấu hình và khởi động lại
+
+```sh
+nginx -t
+```
+
+>Nếu trong các file cấu hình bị sai cú pháp sẽ được thông báo
+
+
+```sh
+systemctl restart nginx
+```
+
+Nếu khởi động lại bị lỗi hãy kiểm tra log tại:
+
+```sh
+tail /var/log/syslog
+```
+
+hoặc
+
+```sh
+tail /var/log/nginx/error.log
+```
+
+
+### Triển khai thêm một node nginx
+
+- Hãy triển khai thêm một node nginx với cấu hình proxy như trên.
+- Lúc này sẽ có 2 node chạy Nginx để đảm bảo tính sẵn sàng (High Availability) cho dịch vụ.
+- Sử dụng dịch vụ `Keepalived` để đảm bảo tính HA cho hệ thống. Về cơ bản dịch vụ `Keepalived` có các chế độ như nhau:
+
+  - MASTER-BACKUP: ban đầu mọi công việc sẽ do máy MASTER đảm nhiệm. Khi MASTER down, mọi công việc sẽ được chuyển sang cho máy BACKUP. Khi MASTER up, mọi công việc sẽ lại được chuyển về MASTER. Chế độ này dễ cấu hình, triển khai, hoạt động tốt trong môi trường ít sự cố. Tuy nhiên nếu máy MASTER down-up quá nhiều và quá nhanh, rất dễ gây ra lỗi. Để không sử dụng tính năng tự chuyển đổi như thế, thì ta có tính năng `nopreempt` - Không chiếm quyền.
+
+  - ACTIVE-ACTIVE: mọi công việc thực hiện bởi tất cả các máy, đảm bảo hiệu suất cao cho hệ thống. Khi một máy down, các máy còn lại sẽ đảm nhiệm công việc của máy đó. Hơi phức tạp trong triển khai, yêu cầu các máy được cấu hình có uptime đảm bảo là hiệu suất cao.
+
+### Cấu hình keep-alive cho 2 node nginx
+
+- Đã tắt firewall, nếu sử dụng dịch vụ firewall hãy tiến hành thông các port cần thiết.
+
+```sh
+sudo ufw allow to 224.0.0.18 comment 'VRRP Broadcast'
+sudo ufw allow from <ip-của-máy> comment 'VRRP Router'
+```
+
+- Thực hiện cấu hình dịch vụ với tính năng MASTER-BACKUP. Thực hiện trên node MASTER như sau:
+
+  - `B1`: thêm user quản lý dịch vụ
+
+  ```sh
+  sudo useradd --no-create-home --shell /bin/bash keepalived_script
+  ```
+
+  - `B2`: bật tính năng cần thiết trên Linux, cho phép gắn địa chỉ IP ảo lên card mạng và IP Forward.
+
+  ```sh
+  echo "net.ipv4.ip_nonlocal_bind = 1" >> /etc/sysctl.conf
+  echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
+  sysctl -p
+  ```
+
+  - `B3`: Cài đặt dịch vụ
+
+  ```sh
+  apt install -y keepalived
+  ```
+
+  - `B4`: Backup file configure
+
+  ```sh
+  sudo cp /etc/keepalived/keepalived.conf /etc/keepalived/keepalived.conf-org
+  ```
+
+  - `B5`: Cấu hình với các thông số cơ bản như sau
+
+  ```sh
+  sudo vi /etc/keepalived/keepalived.conf
+  ```
+
+  Nhập vào cấu hình như sau:
+
+  ```sh
+  global_defs {
+    # Keepalived process identifier
+    router_id nginx
+  }
+
+  # Script to check whether Nginx is running or not
+  vrrp_script check_nginx {
+  script "/bin/check_nginx.sh"
+  interval 2
+  weight 50
+  }
+
+  # Virtual interface - The priority specifies the order in which the assigned interface to take over in a failover
+  vrrp_instance VI_01 {
+  state MASTER
+  interface enp0s3
+  virtual_router_id 151
+  priority 110
+
+  # The virtual ip address shared between the two NGINX Web Server which will float
+  virtual_ipaddress {
+    192.168.200.250/24 # nên dùng chung dải với IP của máy đang có
+    }
+  track_script {
+    check_nginx
+    }
+  authentication {
+    auth_type PASS
+    auth_pass 11118888 #chỉ nhận các password có độ dài > 8 ký tự
+    }
+  }
+  ```
+
+  - `B6`: Lưu lại và thoát, thực hiện tạo một file script như sau cho dịch vụ:
+
+  ```sh
+  vi /bin/check_nginx.sh
+  ```
+
+  Nhập vào cấu hình sau:
+
+  ```sh
+  #!/bin/bash
+  
+  STATE=$(pidof nginx | wc -l)
+
+  if [ $STATE -eq 1  ]
+  then
+                #SUCCESS
+                exit 0
+  else
+                #FAILED
+                exit 1
+  fi
+  EOF
+  ```
+
+  - `B7`: cấp quyền thực thi cho file .sh vừa tạo:
+
+  ```sh
+  sudo chmod 755 /bin/check_nginx.sh
+  ```
+
+  - `B8`: Khởi động dịch vụ
+
+  ```sh
+  sudo systemctl start keepalived
+  ```
+
+  Kiểm tra tình trạng của dịch vụ:
+
+  ```sh
+  sudo systemctl status keepalived
+  ```
+
+  Nhận được kết quả tượng tự là thành công:
+
+  ```sh
+  root@nginxlb:~# systemctl status keepalived
+   * keepalived.service - Keepalive Daemon (LVS and VRRP)
+     Loaded: loaded (/lib/systemd/system/keepalived.service; enabled; vendor prese>
+     Active: active (running) since Tue 2023-06-20 11:26:18 +07; 3h 16min ago
+   Main PID: 677123 (keepalived)
+      Tasks: 2 (limit: 2284)
+     Memory: 1.9M
+        CPU: 1min 17.318s
+     CGroup: /system.slice/keepalived.service
+             |-677123 /usr/sbin/keepalived --dont-fork
+             `-677124 /usr/sbin/keepalived --dont-fork
+  ```
+
+  - Thực hiện trên máy thứ 2, các bước tương tụ. Với cấu hình BACKUP như sau:
+
+  ```sh
+  global_defs {
+    # Keepalived process identifier
+    router_id nginx
+  }
+
+  # Script to check whether Nginx is running or not
+  vrrp_script check_nginx {
+  script "/bin/check_nginx.sh"
+  interval 2
+  weight 50 # trọng số cộng thêm khi node còn lại down
+  }
+
+  # Virtual interface - The priority specifies the order in which the assigned interface to take over in a failover
+  vrrp_instance VI_01 {
+  state BACKUP
+  interface enp0s3 # card mạng đưuọc sử dụng
+  virtual_router_id 151
+  priority 100 # thể hiện mức độ ưu tiên của máy
+
+  # The virtual ip address shared between the two NGINX Web Server which will float
+  virtual_ipaddress {
+    192.168.200.250/24 # nên dùng chung dải với IP của máy đang có
+    }
+  track_script {
+    check_nginx
+    }
+  authentication {
+    auth_type PASS
+    auth_pass 11118888 #chỉ nhận các password có độ dài > 8 ký tự
+    }
+  }
+  ```
+
+- Trong quá trình cấu hình nếu có bất kỳ lỗi nào hay kiểm tra log:
+
+Check log
+
+```sh
+tail -f /var/log/syslog | grep vrrp
+```
+
+- Kiểm thử hoạt động của dịch vụ, đơn giản với lệnh:
+
+```sh
+ip add show
+```
+
+- Nếu thấy suất hiện VIP trên máy MASTER là cơ bản thành công:
+
+```sh
+root@nginxlb2:~# ip add show
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether fa:16:3e:01:05:78 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.200.99/24 brd 192.168.200.255 scope global dynamic eth0
+       valid_lft 517385sec preferred_lft 517385sec
+    inet 192.168.200.250/24 scope global secondary eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::f816:3eff:fe01:578/64 scope link
+       valid_lft forever preferred_lft forever
+```
+
+- Thử stop dịch vụ của Nginx rồi kiểm tra, ta sẽ không thấy VIP xuất hiện nữa. Sang máy BACKUP kiểm tra, nếu thấy VIP xuất hiện tức là cấu hình thành công.
+
+
+Trang man page về keepalived: <https://manpages.ubuntu.com/manpages/jammy/man5/keepalived.conf.5.html>
+Trang docs của nginx: <https://docs.nginx.com/nginx/admin-guide/high-availability/ha-keepalived-nodes/>
+
+Tham khảo cấu hình
+
+<https://viblo.asia/p/trien-khai-dich-vu-high-available-voi-keepalived-haproxy-tren-server-ubuntu-jOxKdqWlzdm>
+
+<https://cuongquach.com/cau-hinh-keepalived-thuc-hien-ip-failover-he-thong-ha.html>
+
+<https://github.com/nduytg/ansible_keepalived/blob/master/files/check_nginx.sh>
+
+<https://www.linuxtechi.com/setup-highly-available-nginx-keepalived-linux/>
+
+
+#### Lưu ý trong triển khai keepalived
+
+- Trong trường hợp bạn thử nghiệm trong môi trường ảo hoá như VMware, KVM,...Hay thực hiện trên cloud như Google Cloud, AWS,...Thì cần chú ý đến việc thông port hoặc các chính sách bảo mật mạng của dịch vụ đang sử dụng.
+
+Bài viết này sử dụng môi trường OpenStack, nên có một số điều đáng chú ý sau.
+
+- Tạo một IP để có thể sử dụng Virtual IP, vì trên môi trường OpenStack đã được cấu hình không cho phép các VM (virtual machine) tự ý tạo IP. Tạo như sau:
+
+  - Truy cập dashboard
+  - Thực hiện theo thứ tự sau, vì đang sử dụng dải internal nên sẽ chọn nó
+
+  - ![vip1](images/VIP_1.png)
+
+  - Sau khi chọn dải mạng, sẽ được chuyển sang giao diện tương tự như sau, chuyển sang tab `Port` rồi chọn `Create port`
+
+  - ![vip2](images/VIP_2.png)
+
+  - Chọn vào ô `Specify IP address or subnet`, sẽ có một vài chế độ hiện ra, hãy chọn chế độ `Fixed IP Address` - để được quyền tự fix ip cần thiết. Hãy bỏ chọn ở ô `Port Security` - để không nhận bất kỳ chính sách bảo mật nào.
+
+  - ![vip3](images/VIP_3.png)
+
+  - Sau khi chọn `Fixed IP Address`, ta sẽ nhận được giao diện như sau, hãy nhập IP cần thiết vào ô `Fixed IP Address`, rồi chọn `Create`
+
+  - ![vip4](images/VIP_4.png)
+
+  - IP được tạo thành công, sẵn sàng để sử dụng
+
+  - ![done](images/VIP_5.png)
+
+- Tạo xong IP, còn một thứ nữa để ta quan tâm. Nếu bạn có sử dụng `Security Groups` thì cần thông port cho chúng.
+  - Cũng trong mục `Network`, chọn vào `Security Groups`, sẽ nhận được giao diện như dưới. Có thể tạo mới với `Create Security Group`, ở đây đã có sẵn `victoriametric-sg` nên sẽ chọn `Manage Rules`
+
+  - ![scg1](images/scg_1.png)
+
+  - Chọn `Manage Rules` sẽ nhận được giao diện như sau, chọn `Add Rule`:
+
+  - ![add-rule](images/scg_2.png)
+
+  - Sau khi chọn `Add rule`, sẽ thu được một pop-up như sau
+
+  - ![add-rule-pop-up](images/scg_3.png)
+
+  - Trong đó:
+
+    - 1: các giao thức mà rule hỗ trợ như: TCP, UDP, HTTP,...Tuỳ thuộc vào nhu cầu mà chọn giao thức. Ở đây cần sử dụng TCP nên sẽ để TCP.
+    - 2: Mô tả về rule mới này, không bắt buộc phải điền
+    - 3: hướng đi của rule, mặc định là `Ingress` - đi vào, vì thường thì đi vào mới cần phải lọc, đi ra - `Engress` thì thường không cần lọc.
+    - 4: chế độ mở port, có thể mở một port, một dải port hay toàn bộ. Hãy chọn theo nhu cầu. Sau đây sẽ chọn `Port Range`
+    - 5: xác định nơi mà luồng dữ liệu được chấp nhận. `CIDR` tức là mọi nơi, hoặc chỉ định chỉ nhận luồng dữ liệu từ một `Security Group` nhất định nào khác. Ở đây để mặc định
+    - 6: dải IP sẽ được chấp nhận dữ liệu, mặc định chấp nhận tất cả.
+
+  - Sau khi nhập các thông tin cần thiết, hãy chọn `Add` để thêm `Rule`. Hay chắc chắn là thông tin nhập đúng, vì không có chỉnh sửa `Rule`
+
+  - ![add](images/scg_4.png)
+
+  - Thành công thêm `Rule` để dữ liệu có thể di chuyển giữa các máy.
+  
+  - ![done](images/scg_5.png)
+  
+  - Nếu ban đầu bạn không sử dụng `Security Group` này, thì hãy thêm cho máy nào cần.
+
+  - ![add-scg-1](images/add_scg_1.png)
+
+  - Sau khi chọn `Edit...`, sẽ nhận được pop-up như sau, thực hiện theo thứ tự là `Security Group` sẽ được thêm cho máy, với các `Rule` mà ta đã tạo ở trên:
+
+  - ![add-scg-1](images/add_scg_2.png)
+
+
 
 ## Kết hợp với các trình giám sát khác
 
@@ -529,7 +886,7 @@ scrape_configs:
 
 
 remote_write:
-  - url: "http://192.168.200.122:8480/insert/0/prometheus/api/v1/write"
+  - url: "http://<VIP-of-Keepalived>:8480/insert/0/prometheus/api/v1/write"
     queue_config:
         max_samples_per_send: 10000
 
@@ -564,8 +921,7 @@ ExecStart=/usr/local/bin/prometheus \
   --storage.tsdb.path=/var/lib/prometheus \
   --web.console.templates=/etc/prometheus/consoles \
   --web.console.libraries=/etc/prometheus/console_libraries \
-  --web.listen-address=0.0.0.0:9090 \
-  --web.external-url=
+  --web.listen-address=0.0.0.0:9090
 
 SyslogIdentifier=prometheus
 StandardOutput=file:/var/log/Prometheus/prometheus.log
@@ -735,6 +1091,11 @@ Hoặc
 tail /var/log/syslog
 ```
 
+### Kết hợp với Grafana
+
+- Sử dụng Grafana để đọc dữ liệu có trong cụm `vmstorage`
+- Sẽ tiến hành cập nhật tiếp
+
 ## Tài liệu tham khảo
 
 <https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html>
@@ -749,3 +1110,4 @@ tail /var/log/syslog
 
 <https://computingforgeeks.com/how-to-install-grafana-on-ubuntu-linux-2/>
 
+Date accessed: 20/06/2023
