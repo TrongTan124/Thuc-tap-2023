@@ -1,0 +1,43 @@
+# REST API:
+1. REST API:
+   - Restful API is an interface that two computer systems use to exchange information securely over the internet. Most business applications have to communicate with other internal and third-party application to perform various tasks. For example, to geneerate monthly payslips, your internal accounts system has to share data with your customers's banking system to automate invoicing and communicate with an internal adn third-party timesheet applications to perform various tasks. 
+
+2. API:
+   - API defines the rules that you must follow to communicate with other software systems. Developers expose or create APIs so that other application can communicate with their applications programmartically. For example, the timesheet application exposes an API that asks for an emplyee's full name and a range of of fates. When it receives this information, it internally processes the employee's timesheet and returns the number of hours worked in that date range.
+
+3. REST:
+   - Representational State Transfer (REST) is a software architecture that imposes condition on how an API should work.REST was initially created as a guideline to manage communication on a complex network like the internet. You can use REST-based architecture to support high-performing and reliable communication at scale. You can easily implement and modify it, bringing visibility and cross-platform portability to any API system.
+   - API developers can design APIs using several diferent architectures. APIs that follow the REST architecture style are called REST APIs. Web services that implement REST architecture are called REStful web services. The term RESTful API generally refers to RESTful web APIs. However, you can use the terms REST API and RESTful API interchangeably.
+
+# Flask python:
+1. Definition:
+   - Flask is a web framework, it's a Python module that lets you develop web application easily. It's has a small and easy-to-extend core: it's a microframeworl that doesn't include an ORM or such features.
+   - It does have many cool features like url routing, template engine. It is a WSGI web app framework.
+
+2. Web framework:
+   - A Web Application Framework or a simply a Web Framework represents a collection of libralies and modules that enable web application developers to write applications without worrying about low-level details such as protocol, thread management, and so on.
+
+3. Flask:
+   - Flask is a web application framework written in Python. It was developed by Armin Ronacher, who led a team of international Python enthusiasts called Poocco. Flask is based on the Werkzeg WSGI toolkit and the Junja2 template engine.
+   - Flask is a good framework choice: Unlike Django framework, Flask is very Pythonic. It's easy to get started with Flask, because it doesn't have a huge learning curve. Micro means that the the Flask framework is simple but extensible. Flask is also one of the most popular frameworkds, meaning it's up-to-date and modern.
+
+# Build a REST API using Flask:
+1. There are two ways of creating a REST API in Flask.
+   - Method 1: using only Flask.
+   - Method 2: using flask-restful: Flask Restful is an extension for Flask that adds support for building REST APIs in Python using Flask as the back-end. It encourages best practices and is very easy to set up. Flask restful is very easy to pick up if you've already familiar with flask.
+   - In flask_restful, the main building block is a resource. Each resurce can have several methods associated with it such as GET, POST, PUT, DELETE,... Each resource is a class that inherits from the Resource class of flask_restful. Once the resource is created and defined, we can add our custom resource to the api and specify a URL path for that corresponding resource.
+
+2. Design API with input as a list
+
+
+# SQLAlchemy:
+1. SQLAlchemy and SQL database:
+   - SQLAlchemy is basically refered to as the toolkit of Python SQL that provides developers with the flexibility of using the SQL database. The benefit of using this particular library is to allow Python's developers to work with the languague's own objects, and not write separate SQL queries. They can basically use Python to access and work with databases.
+   - SQLAlchemy is also an Object Relational Mapper which is a technique used to convert data between databases or OOP languages such as Python.
+   - SQLAlchemy installationL:
+                        pip install sqlaclchemy
+
+2. SQL database:
+   - SQL is a standard database language used to access and manipulate data in databases. SQL stands for Structured Query Language. SQL was developed by IBM in 1970s. By executing queries SQL can create, up-date, delete, and retrieve data in databases like MySQL, Oracle, PostgreSQL,... Overall SQL is a query language that communicates with databases. 
+
+  
